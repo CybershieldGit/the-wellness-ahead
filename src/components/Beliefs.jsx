@@ -45,18 +45,18 @@ export default function Beliefs() {
         }
       `}</style>
 
-      {/* Top Live Moving Wave Transition */}
-      <div className="absolute top-0 left-0 right-0 h-10 sm:h-12 w-full overflow-hidden leading-none z-0 pointer-events-none">
-        {/* Layer 2: Subtle Ambient Back Wave Flowing Counter-Current */}
-        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-2 opacity-30">
-          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-10 sm:h-12 text-[#ece8df] fill-current">
-            <path d="M0,0 C300,80 600,-25 900,50 C1050,85 1125,65 1200,0 C1500,80 1800,-25 2100,50 C2250,85 2325,65 2400,0 L2400,0 L0,0 Z"></path>
+      {/* Top Live Moving Wave Transition (Both Dual Crests Distinctly Visible) */}
+      <div className="absolute top-0 left-0 right-0 h-14 sm:h-16 md:h-20 w-full overflow-hidden leading-none z-0 pointer-events-none">
+        {/* Layer 2: Counter-Current Wave (Left-to-Right) - Clearly Visible Crest */}
+        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-2 opacity-60">
+          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current">
+            <path d="M0,60 C200,112 400,112 600,60 C800,12 1000,12 1200,60 C1400,112 1600,112 1800,60 C2000,12 2200,12 2400,60 L2400,0 L0,0 Z"></path>
           </svg>
         </div>
-        {/* Layer 1: Primary Foreground Live Wave Flowing Smoothly */}
-        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-1">
-          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-10 sm:h-12 text-[#ece8df] fill-current">
-            <path d="M0,0 C300,90 600,-35 900,60 C1050,95 1125,75 1200,0 C1500,90 1800,-35 2100,60 C2250,95 2325,75 2400,0 L2400,0 L0,0 Z"></path>
+        {/* Layer 1: Primary Foreground Live Wave (Right-to-Left) */}
+        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-1 opacity-90">
+          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current">
+            <path d="M0,55 C180,100 420,100 600,55 C780,10 1020,10 1200,55 C1380,100 1620,100 1800,55 C1980,10 2220,10 2400,55 L2400,0 L0,0 Z"></path>
           </svg>
         </div>
       </div>
@@ -143,18 +143,18 @@ export default function Beliefs() {
         </div>
       </div>
 
-      {/* Bottom Live Moving Wave Transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-10 sm:h-12 w-full overflow-hidden leading-none z-0 pointer-events-none">
-        {/* Layer 2: Subtle Ambient Back Wave Flowing Counter-Current */}
-        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-2 opacity-30">
-          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-10 sm:h-12 text-[#ece8df] fill-current">
-            <path d="M0,50 C300,-25 600,80 900,15 C1050,-20 1125,5 1200,50 C1500,-25 1800,80 2100,15 C2250,-20 2325,5 2400,50 L2400,120 L0,120 Z"></path>
+      {/* Bottom Live Moving Wave Transition (Both Dual Crests Distinctly Visible) */}
+      <div className="absolute bottom-0 left-0 right-0 h-14 sm:h-16 md:h-20 w-full overflow-hidden leading-none z-0 pointer-events-none">
+        {/* Layer 2: Counter-Current Wave (Left-to-Right) - Clearly Visible Crest */}
+        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-2 opacity-60">
+          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current">
+            <path d="M0,60 C200,8 400,8 600,60 C800,108 1000,108 1200,60 C1400,8 1600,8 1800,60 C2000,108 2200,108 2400,60 L2400,120 L0,120 Z"></path>
           </svg>
         </div>
-        {/* Layer 1: Primary Foreground Live Wave Flowing Smoothly */}
-        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-1">
-          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-10 sm:h-12 text-[#ece8df] fill-current">
-            <path d="M0,60 C300,-35 600,90 900,20 C1050,-25 1125,-5 1200,60 C1500,-35 1800,90 2100,20 C2250,-25 2325,-5 2400,60 L2400,120 L0,120 Z"></path>
+        {/* Layer 1: Primary Foreground Live Wave (Right-to-Left) */}
+        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-1 opacity-90">
+          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current">
+            <path d="M0,65 C180,20 420,20 600,65 C780,110 1020,110 1200,65 C1380,20 1620,20 1800,65 C1980,110 2220,110 2400,65 L2400,120 L0,120 Z"></path>
           </svg>
         </div>
       </div>

@@ -2,24 +2,24 @@ import React, { useState, useEffect } from 'react';
 
 const heroBackgroundSlides = [
   {
-    url: '/images/banner.png',
-    alt: 'Serene sunlit forest meditation and botanical harmony',
+    url: '/images/banner1.png',
+    alt: 'Botanical science and clinical herbal formulation',
   },
   {
-    url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=85',
-    alt: 'Strategic marketing advisory, brand positioning and commercial growth planning',
+    url: '/images/banner2.png',
+    alt: 'Clean skincare cosmetics and mindful beauty aesthetic',
   },
   {
-    url: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1920&q=85',
-    alt: 'Authentic Ayurvedic botanical extracts and amber apothecary formulation',
+    url: '/images/banner3.png',
+    alt: 'Bioactive nutraceuticals and longevity wellness science',
   },
   {
-    url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=85',
-    alt: 'Organic botanical vitality and natural herbal restorative wellness',
+    url: '/images/banner4.png',
+    alt: 'Holistic wellness sanctuary and mindful living space',
   },
   {
-    url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1920&q=85',
-    alt: 'Holistic lifestyle and mindful sunrise wellness',
+    url: '/images/banner5.png',
+    alt: 'Artisan modern apothecary and botanical extracts',
   },
 ];
 

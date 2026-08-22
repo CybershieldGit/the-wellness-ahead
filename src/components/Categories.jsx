@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { ArrowUpRight } from 'lucide-react';
 
 const categories = [
   {
@@ -68,22 +67,28 @@ const categories = [
   },
 ];
 
-export default function Categories() {
-  const containerRef = useRef(null);
-  const trackRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [smoothProgress, setSmoothProgress] = useState(0);
-  const targetProgressRef = useRef(0);
-  const currentProgressRef = useRef(0);
-  const rafIdRef = useRef(null);
-  const [singleCardStep, setSingleCardStep] = useState(308);
+// Tripled set for continuous seamless infinite wrapping
+const infiniteCategories = [...categories, ...categories, ...categories];
 
-  // Measure and cache card bounds only on mount and resize (0 forced reflows during scroll)
+export default function Categories() {
+  const trackRef = useRef(null);
+  const [singleCardStep, setSingleCardStep] = useState(320);
+  const [currentOffset, setCurrentOffset] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const offsetRef = useRef(0);
+  const rafIdRef = useRef(null);
+  const isHoveredRef = useRef(false);
+
+  // Keep hover ref in sync for 60fps loop
+  useEffect(() => {
+    isHoveredRef.current = isHovered;
+  }, [isHovered]);
+
+  // Measure card spacing on mount and resize
   useEffect(() => {
     const updateDimensions = () => {
       if (!trackRef.current) return;
-      const track = trackRef.current;
-      const cards = track.querySelectorAll('.category-card-item');
+      const cards = trackRef.current.querySelectorAll('.category-card-item');
       if (cards.length > 1) {
         const step = cards[1].offsetLeft - cards[0].offsetLeft;
         if (step > 0) setSingleCardStep(step);
@@ -92,214 +97,149 @@ export default function Categories() {
 
     updateDimensions();
     const timer = setTimeout(updateDimensions, 400);
-
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const container = containerRef.current;
-      const rect = container.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalScrollable = container.offsetHeight - windowHeight;
-
-      if (totalScrollable <= 0) return;
-
-      const scrolled = -rect.top;
-      const progress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
-      targetProgressRef.current = progress;
-      setScrollProgress(progress);
-    };
-
-    // 60/120fps physics dampening loop for buttery liquid motion
-    const physicsLoop = () => {
-      const diff = targetProgressRef.current - currentProgressRef.current;
-      if (Math.abs(diff) > 0.00005) {
-        currentProgressRef.current += diff * 0.14; // Buttery 14% liquid spring
-        setSmoothProgress(currentProgressRef.current);
-      }
-      rafIdRef.current = requestAnimationFrame(physicsLoop);
-    };
-
-    rafIdRef.current = requestAnimationFrame(physicsLoop);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', () => {
-      updateDimensions();
-      handleScroll();
-    });
-    handleScroll();
+    window.addEventListener('resize', updateDimensions);
 
     return () => {
       clearTimeout(timer);
-      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateDimensions);
     };
   }, []);
 
-  const wavePathRef = useRef(null);
-  const tendrilRef = useRef(null);
-  const [wavePathLength, setWavePathLength] = useState(4800);
-  const [tendrilLength, setTendrilLength] = useState(5000);
-
+  // Butter-smooth automatic 60fps infinite translation loop
   useEffect(() => {
-    const updatePathLengths = () => {
-      if (wavePathRef.current) {
-        const length = wavePathRef.current.getTotalLength();
-        if (length > 0) setWavePathLength(length);
+    let lastTime = performance.now();
+
+    const loop = (currentTime) => {
+      const delta = currentTime - lastTime;
+      lastTime = currentTime;
+
+      const loopWidth = singleCardStep * categories.length;
+
+      if (!isHoveredRef.current && loopWidth > 0) {
+        // Continuous steady glide (~50px per second)
+        const speed = 0.050 * delta;
+        offsetRef.current += speed;
+
+        if (offsetRef.current >= loopWidth) {
+          offsetRef.current -= loopWidth;
+        }
+
+        setCurrentOffset(offsetRef.current);
       }
-      if (tendrilRef.current) {
-        const length = tendrilRef.current.getTotalLength();
-        if (length > 0) setTendrilLength(length);
-      }
+
+      rafIdRef.current = requestAnimationFrame(loop);
     };
-    updatePathLengths();
-    const timer = setTimeout(updatePathLengths, 300);
-    return () => clearTimeout(timer);
-  }, []);
 
-  // Global Progress Timeline (0.0 to 7.0) across all 8 cards with liquid physics dampening
-  const globalProgress = smoothProgress * (categories.length - 1);
+    rafIdRef.current = requestAnimationFrame(loop);
 
-  // Continuous high-order smootherstep for zero-jerk step boundary transitions
-  const smoothStepSequence = (excess) => {
-    const step = Math.floor(excess);
-    const t = Math.max(0, Math.min(1, excess - step));
-    // 5th-order smootherstep: 6t^5 - 15t^4 + 10t^3 (0 velocity and 0 acceleration at step boundaries)
-    const smoothT = t * t * t * (t * (t * 6 - 15) + 10);
-    return step + smoothT;
-  };
+    return () => {
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+    };
+  }, [singleCardStep]);
 
-  // Track Translation Calculation:
-  // Phase 1 (0.0 <= g <= 3.0): Track stays at 0, wave zooms Cards 0 -> 1 -> 2 -> 3
-  // Phase 2 (g > 3.0): Track shifts left 1 card step per unit as upcoming cards arrive at Slot 4 and zoom!
-  let currentTranslateX = 0;
-  if (globalProgress > 3.0) {
-    const excess = globalProgress - 3.0; // 0.0 to 4.0
-    currentTranslateX = smoothStepSequence(excess) * singleCardStep;
-  }
-
-  // Active highlighted card number (1 to 8)
-  const activeCardNumber = Math.min(Math.floor(globalProgress) + 1, categories.length);
+  // Dynamic active card index (01 to 08) that updates in real time as carousel glides
+  const activeCardIndex = singleCardStep > 0
+    ? (Math.floor((currentOffset + singleCardStep * 0.5) / singleCardStep) % categories.length) + 1
+    : 1;
 
   return (
-    <section ref={containerRef} className="relative h-[340vh] bg-[#ece8df]">
-      {/* Sticky Full-Viewport Stage - Positioned with safe clearance below fixed navbar */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center pt-24 sm:pt-28 md:pt-30 pb-6 md:pb-8 overflow-hidden z-20 gap-6 sm:gap-8">
-        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-20">
-          {/* Header Bar with Live Scroll Progress Indicator */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <h2 className="font-raleway text-2xl sm:text-3xl md:text-[34px] lg:text-[40px] xl:text-[44px] text-[#0d3822] font-semibold tracking-tight whitespace-nowrap">
-                Built for the{' '}
-                <span className="relative inline-block pb-1">
-                  Business of Wellness
-                  <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#8fa687] rounded-full"></span>
-                </span>
-              </h2>
-            </div>
+    <section id="categories" className="relative py-16 sm:py-20 md:py-24 bg-[#ece8df] select-none overflow-hidden">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-20 mb-8 sm:mb-10">
+        {/* Header Bar with Dynamic Minimal Category Counter */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <h2 className="font-raleway text-2xl sm:text-3xl md:text-[34px] lg:text-[40px] xl:text-[44px] text-[#0d3822] font-semibold tracking-tight whitespace-nowrap">
+              Built for the{' '}
+              <span className="relative inline-block pb-1">
+                Business of Wellness
+                <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#8fa687] rounded-full"></span>
+              </span>
+            </h2>
+          </div>
 
-            {/* Simple Minimal Index Counter (Top Right) */}
-            <div className="font-mono text-base sm:text-lg md:text-xl font-bold text-[#0d3822] tracking-tight pb-1.5 select-none">
-              <span>{String(activeCardNumber).padStart(2, '0')}</span>
-              <span className="text-[#8e9e8f] font-normal text-sm sm:text-base">/{String(categories.length).padStart(2, '0')}</span>
-            </div>
+          {/* Dynamic Real-Time Minimal Counter (Top Right: 01/08 -> 08/08) */}
+          <div className="font-mono text-base sm:text-lg md:text-xl font-bold text-[#0d3822] tracking-tight pb-1.5 select-none self-start md:self-auto">
+            <span>{String(activeCardIndex).padStart(2, '0')}</span>
+            <span className="text-[#8e9e8f] font-normal text-sm sm:text-base">/08</span>
           </div>
         </div>
+      </div>
 
-        {/* 4-Card Framed Viewport Container (Aligned with Heading at Left, Exactly 4 Cards Visible) */}
-        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative">
-          <div className="overflow-hidden relative w-full -my-6 py-6 sm:-my-8 sm:py-8 px-3 sm:px-5">
-            {/* Horizontal Track of 8 Cards with Synchronized 1-by-1 Step Left Shift */}
-            <div
-              ref={trackRef}
-              className="relative flex gap-4 sm:gap-5 md:gap-6 will-change-transform items-center py-6"
-              style={{
-                transform: `translate3d(-${currentTranslateX}px, 0px, 0px)`,
-              }}
-            >
-              {/* 8 Category Reel Cards */}
-              {categories.map((item, index) => {
-                const dist = Math.abs(index - globalProgress);
-                const mag = Math.max(0, 1 - Math.min(dist, 1.25));
-                const smoothMag = Math.sin(mag * (Math.PI / 2));
-                const scale = 0.94 + smoothMag * 0.14; // 0.94 resting -> 1.08 magnified (Card 0 is pre-zoomed at 1.08)
-                const zIndex = Math.round(smoothMag * 20) + 10;
-                const isCurrentlyMagnified = smoothMag > 0.40;
+      {/* 4-Card Framed Viewport Container with Infinite Automatic Animation & Hover Zoom */}
+      <div
+        className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className="overflow-hidden relative w-full -my-6 py-6 sm:-my-8 sm:py-8 px-3 sm:px-5">
+          {/* Left Edge Fade-Out Gradient Mask */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-gradient-to-r from-[#ece8df] via-[#ece8df]/85 to-transparent pointer-events-none z-30"></div>
 
-                return (
-                  <div
-                    key={index}
-                    className={`category-card-item group relative flex-shrink-0 flex-[0_0_calc((100%-3*1rem)/4)] sm:flex-[0_0_calc((100%-3*1.25rem)/4)] md:flex-[0_0_calc((100%-3*1.5rem)/4)] w-[calc((100%-3*1rem)/4)] sm:w-[calc((100%-3*1.25rem)/4)] md:w-[calc((100%-3*1.5rem)/4)] max-w-[calc((100%-3*1.5rem)/4)] min-w-0 h-[375px] sm:h-[400px] md:h-[420px] bg-[#143520] overflow-hidden rounded-2xl sm:rounded-[1.25rem] transition-all duration-300 ease-out select-none cursor-pointer flex flex-col justify-between will-change-transform opacity-100 ${isCurrentlyMagnified
-                      ? 'ring-2 ring-[#c5deb9]/80'
-                      : ''
-                      }`}
-                    style={{
-                      transform: `scale(${scale})`,
-                      zIndex: zIndex,
-                      transformOrigin: 'center center',
-                    }}
-                  >
-                    {/* 100% Full-Bleed Cover Image */}
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out ${isCurrentlyMagnified ? 'scale-105' : 'scale-100'
-                        }`}
-                      loading="lazy"
-                    />
+          {/* Right Edge Fade-Out Gradient Mask */}
+          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-gradient-to-l from-[#ece8df] via-[#ece8df]/85 to-transparent pointer-events-none z-30"></div>
 
-                    {/* Cinematic Vignette & Text Readability Overlay */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-t from-black/92 via-black/40 via-50% to-black/25 pointer-events-none transition-colors duration-500 ${isCurrentlyMagnified ? 'from-black/90' : 'from-black/95'
-                        }`}
-                    ></div>
+          {/* Horizontal Track with Continuous Infinite Glide */}
+          <div
+            ref={trackRef}
+            className="relative flex gap-4 sm:gap-5 md:gap-6 will-change-transform items-center py-6"
+            style={{
+              transform: `translate3d(-${currentOffset}px, 0px, 0px)`,
+            }}
+          >
+            {/* Infinite Category Cards Stream */}
+            {infiniteCategories.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className="category-card-item group relative flex-shrink-0 flex-[0_0_calc((100%-3*1rem)/4)] sm:flex-[0_0_calc((100%-3*1.25rem)/4)] md:flex-[0_0_calc((100%-3*1.5rem)/4)] w-[calc((100%-3*1rem)/4)] sm:w-[calc((100%-3*1.25rem)/4)] md:w-[calc((100%-3*1.5rem)/4)] max-w-[calc((100%-3*1.5rem)/4)] min-w-0 h-[375px] sm:h-[400px] md:h-[420px] bg-[#143520] overflow-hidden rounded-2xl sm:rounded-[1.25rem] transition-all duration-300 ease-out select-none cursor-pointer flex flex-col justify-between will-change-transform hover:scale-[1.05] hover:z-30 hover:shadow-[0_20px_40px_rgba(13,56,34,0.22)] hover:ring-2 hover:ring-[#c5deb9]/90"
+                  style={{
+                    transformOrigin: 'center center',
+                  }}
+                >
+                  {/* 100% Full-Bleed Cover Image with Smooth Hover Zoom */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    loading="lazy"
+                  />
 
-                    {/* Top Bar: Soft Badges */}
-                    <div className="relative z-10 p-4 sm:p-5 flex items-center justify-between">
-                      {/* Soft Linen Tag */}
-                      <span
-                        className={`px-3 py-1 backdrop-blur-md rounded-full text-[10px] font-semibold tracking-wider uppercase transition-colors duration-300 ${isCurrentlyMagnified
-                          ? 'bg-[#c5deb9] text-[#0d3822] shadow-md font-bold'
-                          : 'bg-white/90 text-[#0d3822]'
-                          }`}
-                      >
-                        {item.tag}
-                      </span>
+                  {/* Theme Light Green (#d1ddcc) Soft Gradient Scrim - Clean Organic Luxury Finish */}
+                  <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#d1ddcc] via-[#d1ddcc]/95 via-60% to-transparent pointer-events-none"></div>
 
-                      {/* Soft Dark Index Pill */}
-                      <span
-                        className={`px-2.5 py-1 backdrop-blur-md rounded-full text-[10px] font-mono font-medium transition-colors duration-300 ${isCurrentlyMagnified
-                          ? 'bg-[#0d3822] text-[#c5deb9] border border-[#c5deb9]/40'
-                          : 'bg-black/60 text-[#c5deb9] border border-white/15'
-                          }`}
-                      >
-                        {item.id}
-                      </span>
-                    </div>
+                  {/* Top Bar: Soft Badges */}
+                  <div className="relative z-20 p-4 sm:p-5 flex items-center justify-between">
+                    {/* Dark Forest Pill Tag */}
+                    <span className="px-3 py-1 backdrop-blur-md rounded-full text-[10px] font-semibold tracking-wider uppercase transition-colors duration-300 bg-[#0d3822] text-[#fbf9f4] shadow-sm">
+                      {item.tag}
+                    </span>
 
-                    {/* Bottom Content Area Over Photo */}
-                    <div className="relative z-10 p-4 sm:p-5">
-                      {/* Domain Meta */}
-                      <div className="text-[10px] font-semibold text-[#c5deb9] tracking-widest uppercase mb-1 drop-shadow-sm">
-                        {item.stats}
-                      </div>
-
-                      {/* Headline */}
-                      <h3
-                        className={`font-raleway text-lg sm:text-xl font-bold leading-snug mb-2 drop-shadow-md transition-colors duration-300 ${isCurrentlyMagnified ? 'text-[#c5deb9]' : 'text-white'
-                          }`}
-                      >
-                        {item.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-xs text-[#e3ece2] leading-relaxed line-clamp-3 drop-shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
-                        {item.description}
-                      </p>
-                    </div>
+                    {/* Light Linen Index Pill */}
+                    <span className="px-2.5 py-1 backdrop-blur-md rounded-full text-[10px] font-mono font-bold transition-colors duration-300 bg-white/90 text-[#0d3822] border border-[#cfc5b3] shadow-sm">
+                      {item.id}
+                    </span>
                   </div>
-                );
-              })}
-            </div>
+
+                  {/* Bottom Content Area Over Light Green Base with Crisp Dark Green Typography */}
+                  <div className="relative z-20 p-4 sm:p-5 transition-transform duration-300 group-hover:-translate-y-1">
+                    {/* Domain Meta */}
+                    <div className="text-[10.5px] font-bold text-[#1a4b2c] tracking-widest uppercase mb-1">
+                      {item.stats}
+                    </div>
+
+                    {/* Headline in Signature Dark Forest Green */}
+                    <h3 className="font-raleway text-lg sm:text-xl font-bold leading-snug mb-2 text-[#0d3822] transition-colors duration-300">
+                      {item.title}
+                    </h3>
+
+                    {/* Description in Soft Dark Botanical Green */}
+                    <p className="text-xs text-[#2c4834] leading-relaxed line-clamp-3 font-medium opacity-95 group-hover:opacity-100 transition-opacity">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
