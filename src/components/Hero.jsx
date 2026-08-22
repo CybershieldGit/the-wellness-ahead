@@ -50,16 +50,14 @@ export default function Hero() {
           return (
             <div
               key={index}
-              className={`absolute inset-0 transition-opacity duration-[1800ms] ease-in-out ${
-                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
+              className={`absolute inset-0 transition-opacity duration-[1800ms] ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
             >
               <img
                 src={slide.url}
                 alt={slide.alt}
-                className={`w-full h-full object-cover object-[center_center] transition-transform duration-[6000ms] ease-out will-change-transform ${
-                  isActive ? 'scale-[1.02]' : 'scale-100'
-                }`}
+                className={`w-full h-full object-cover object-[center_center] transition-transform duration-[6000ms] ease-out will-change-transform ${isActive ? 'scale-[1.02]' : 'scale-100'
+                  }`}
               />
             </div>
           );
@@ -70,7 +68,8 @@ export default function Hero() {
         <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#07170e]/80 via-transparent to-black/20"></div>
       </div>
 
-      {/* Main Hero Content */}
+
+      {/* Main Hero Contenttt */}
       <div className="relative z-30 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 pt-4 md:pt-8 -mt-6 md:-mt-10">
         <div className="max-w-5xl lg:max-w-[980px]">
           {/* Main Headline (Clean Duotone Luxury Contrast Pattern) */}
