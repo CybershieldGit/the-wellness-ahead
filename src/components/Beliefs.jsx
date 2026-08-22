@@ -25,11 +25,40 @@ const beliefPillars = [
 export default function Beliefs() {
   return (
     <section id="beliefs" className="relative py-20 md:py-28 bg-[#d1ddcc] overflow-hidden">
-      {/* Top Wave SVG Transition */}
-      <div className="absolute top-0 left-0 right-0 h-10 w-full overflow-hidden leading-none z-0">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-[#ece8df] fill-current">
-          <path d="M0,0 C150,90 350,-40 500,40 C650,120 900,10 1200,40 L1200,0 L0,0 Z"></path>
-        </svg>
+      {/* Dynamic Keyframes for Continuous Seamless Moving Live Waves */}
+      <style>{`
+        @keyframes waveFlowForward {
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
+        }
+        @keyframes waveFlowBackward {
+          0% { transform: translate3d(-50%, 0, 0); }
+          100% { transform: translate3d(0, 0, 0); }
+        }
+        .animate-wave-flow-1 {
+          animation: waveFlowForward 10s linear infinite;
+          will-change: transform;
+        }
+        .animate-wave-flow-2 {
+          animation: waveFlowBackward 16s linear infinite;
+          will-change: transform;
+        }
+      `}</style>
+
+      {/* Top Live Moving Wave Transition */}
+      <div className="absolute top-0 left-0 right-0 h-10 sm:h-12 w-full overflow-hidden leading-none z-0 pointer-events-none">
+        {/* Layer 2: Subtle Ambient Back Wave Flowing Counter-Current */}
+        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-2 opacity-30">
+          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-10 sm:h-12 text-[#ece8df] fill-current">
+            <path d="M0,0 C300,80 600,-25 900,50 C1050,85 1125,65 1200,0 C1500,80 1800,-25 2100,50 C2250,85 2325,65 2400,0 L2400,0 L0,0 Z"></path>
+          </svg>
+        </div>
+        {/* Layer 1: Primary Foreground Live Wave Flowing Smoothly */}
+        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-1">
+          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-10 sm:h-12 text-[#ece8df] fill-current">
+            <path d="M0,0 C300,90 600,-35 900,60 C1050,95 1125,75 1200,0 C1500,90 1800,-35 2100,60 C2250,95 2325,75 2400,0 L2400,0 L0,0 Z"></path>
+          </svg>
+        </div>
       </div>
 
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10 pt-4">
@@ -114,11 +143,20 @@ export default function Beliefs() {
         </div>
       </div>
 
-      {/* Bottom Wave SVG Transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-10 w-full overflow-hidden leading-none z-0">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-[#ece8df] fill-current">
-          <path d="M0,0 C150,90 350,-40 500,40 C650,120 900,10 1200,40 L1200,120 L0,120 Z"></path>
-        </svg>
+      {/* Bottom Live Moving Wave Transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-10 sm:h-12 w-full overflow-hidden leading-none z-0 pointer-events-none">
+        {/* Layer 2: Subtle Ambient Back Wave Flowing Counter-Current */}
+        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-2 opacity-30">
+          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-10 sm:h-12 text-[#ece8df] fill-current">
+            <path d="M0,50 C300,-25 600,80 900,15 C1050,-20 1125,5 1200,50 C1500,-25 1800,80 2100,15 C2250,-20 2325,5 2400,50 L2400,120 L0,120 Z"></path>
+          </svg>
+        </div>
+        {/* Layer 1: Primary Foreground Live Wave Flowing Smoothly */}
+        <div className="absolute inset-0 w-[200%] flex animate-wave-flow-1">
+          <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-10 sm:h-12 text-[#ece8df] fill-current">
+            <path d="M0,60 C300,-35 600,90 900,20 C1050,-25 1125,-5 1200,60 C1500,-35 1800,90 2100,20 C2250,-25 2325,-5 2400,60 L2400,120 L0,120 Z"></path>
+          </svg>
+        </div>
       </div>
     </section>
   );
