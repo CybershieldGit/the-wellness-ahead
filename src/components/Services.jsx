@@ -142,7 +142,7 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="max-w-[1400px] w-full mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <h2 className="font-raleway text-3xl sm:text-4xl md:text-[38px] text-[#0d3822] font-semibold tracking-tight leading-snug">

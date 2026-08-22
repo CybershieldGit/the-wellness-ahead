@@ -28,7 +28,7 @@ export default function Footer() {
         </span>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Top Header: Logo & Tagline Inline, Socials */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 pb-5 border-b border-white/10">
           <div className="flex flex-wrap items-center gap-3.5 sm:gap-5 max-w-2xl">

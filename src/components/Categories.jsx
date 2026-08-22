@@ -184,7 +184,7 @@ export default function Categories() {
     <section ref={containerRef} className="relative h-[340vh] bg-[#ece8df]">
       {/* Sticky Full-Viewport Stage - Positioned with safe clearance below fixed navbar */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-center pt-24 sm:pt-28 md:pt-30 pb-6 md:pb-8 overflow-hidden z-20 gap-6 sm:gap-8">
-        <div className="max-w-[1400px] w-full mx-auto px-8 sm:px-12 lg:px-16 relative z-20">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-20">
           {/* Header Bar with Live Scroll Progress Indicator */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
@@ -206,8 +206,8 @@ export default function Categories() {
         </div>
 
         {/* 4-Card Framed Viewport Container (Aligned with Heading at Left, Exactly 4 Cards Visible) */}
-        <div className="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-12 relative">
-          <div className="overflow-hidden relative w-full -mx-3 px-3 sm:-mx-4 sm:px-4 md:-mx-5 md:px-5 -my-6 py-6 sm:-my-8 sm:py-8">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative">
+          <div className="overflow-hidden relative w-full -my-6 py-6 sm:-my-8 sm:py-8 px-3 sm:px-5">
             {/* Horizontal Track of 8 Cards with Synchronized 1-by-1 Step Left Shift */}
             <div
               ref={trackRef}

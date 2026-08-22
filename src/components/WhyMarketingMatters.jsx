@@ -132,10 +132,10 @@ export default function WhyMarketingMatters() {
   const currentItem = reasonsList[activeIndex];
 
   return (
-    <section id="why-marketing-matters" className="pt-14 md:pt-20 pb-4 md:pb-6 bg-[#ece8df] overflow-hidden select-none">
-      <div className="max-w-[1400px] w-full mx-auto px-8 sm:px-12 lg:px-16">
+    <section id="why-marketing-matters" className="pt-12 md:pt-16 pb-0 bg-[#ece8df] select-none">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3 shadow-sm">
             <Sparkles size={14} className="text-[#0d3822]" />
             Specialized Advantage
@@ -152,136 +152,134 @@ export default function WhyMarketingMatters() {
           </p>
         </div>
 
-        {/* 2-Column Side-by-Side Synchronized Interactive Showcase (Max-W 1240px) */}
-        <div className="max-w-6xl lg:max-w-[1240px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column (5 Cols): Stacked Nav Headings */}
-            <div className="lg:col-span-5 flex flex-col space-y-3 sm:space-y-4">
-              {reasonsList.map((item, index) => {
-                const isActive = activeIndex === index;
+        {/* 2-Column Side-by-Side Synchronized Interactive Showcase (Flush with Navbar Edges + Zero Extra Gap) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pb-0">
+          {/* Left Column (5 Cols): Stacked Nav Headings */}
+          <div className="lg:col-span-5 flex flex-col space-y-3 sm:space-y-4">
+            {reasonsList.map((item, index) => {
+              const isActive = activeIndex === index;
 
-                return (
-                  <button
-                    key={index}
-                    onClick={() => handleSelectIndex(index)}
-                    className={`group w-full text-left p-4 sm:p-4.5 rounded-xl sm:rounded-2xl transition-all duration-300 flex items-center justify-between cursor-pointer ${
-                      isActive
-                        ? 'bg-[#fbf9f4] text-[#0d3822] border-l-4 border-l-[#0d3822] border-y border-r border-[#cfc5b3] shadow-[0_6px_20px_rgba(13,56,34,0.07)]'
-                        : 'bg-[#fbf9f4]/40 hover:bg-[#fbf9f4]/85 text-[#657d67] hover:text-[#0d3822] border-l-4 border-l-transparent border-y border-r border-[#ddd6c9]/70 hover:border-r-[#cfc5b3]'
-                    }`}
-                  >
-                    <div className="flex items-center gap-3.5 sm:gap-4">
-                      {/* Index Number */}
-                      <span
-                        className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md transition-colors duration-300 ${
-                          isActive
-                            ? 'bg-[#0d3822] text-[#fbf9f4]'
-                            : 'bg-[#ded5c5] text-[#556d58] group-hover:bg-[#0d3822] group-hover:text-white'
-                        }`}
-                      >
-                        {item.id}
-                      </span>
-
-                      {/* Uppercase Heading Title with Dark Green Highlight */}
-                      <span
-                        className={`font-raleway text-base sm:text-[17px] md:text-[18px] uppercase tracking-wide transition-colors duration-300 ${
-                          isActive ? 'font-bold text-[#0d3822]' : 'font-semibold'
-                        }`}
-                      >
-                        {item.navTitle}
-                      </span>
-                    </div>
-
-                    {/* Active Chevron Indicator */}
-                    <ChevronRight
-                      size={19}
-                      className={`transition-all duration-300 ${
-                        isActive
-                          ? 'opacity-100 translate-x-0 text-[#0d3822]'
-                          : 'opacity-0 -translate-x-1.5 group-hover:opacity-40 group-hover:translate-x-0 text-[#0d3822]'
-                      }`}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Right Column (7 Cols): Dynamic Swipe-Up Feature Showcase Card (Light Green #d1ddcc Theme) */}
-            <div className="lg:col-span-7">
-              <div className="bg-[#d1ddcc] text-[#0d3822] rounded-[2.25rem] p-6 sm:p-9 lg:p-10 shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#b8cbb4] relative overflow-hidden min-h-[460px] flex flex-col justify-between">
-                {/* Background Ambient Glow */}
-                <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#ffffff]/30 rounded-full blur-3xl pointer-events-none"></div>
-
-                {/* Dynamic Swipe-Up Content Container with bulletproof key={activeIndex} */}
-                <div
-                  key={activeIndex}
-                  className="relative z-10 animate-swipeUp"
+              return (
+                <button
+                  key={index}
+                  onClick={() => handleSelectIndex(index)}
+                  className={`group w-full text-left p-4 sm:p-4.5 rounded-xl sm:rounded-2xl transition-all duration-300 flex items-center justify-between cursor-pointer ${
+                    isActive
+                      ? 'bg-[#fbf9f4] text-[#0d3822] border-l-4 border-l-[#0d3822] border-y border-r border-[#cfc5b3] shadow-[0_6px_20px_rgba(13,56,34,0.07)]'
+                      : 'bg-[#fbf9f4]/40 hover:bg-[#fbf9f4]/85 text-[#657d67] hover:text-[#0d3822] border-l-4 border-l-transparent border-y border-r border-[#ddd6c9]/70 hover:border-r-[#cfc5b3]'
+                  }`}
                 >
-                  {/* Top Hook Statement */}
-                  <h3 className="font-raleway text-lg sm:text-xl md:text-[22px] font-bold text-[#0d3822] uppercase tracking-tight leading-snug mb-3">
-                    {currentItem.hook}
-                  </h3>
+                  <div className="flex items-center gap-3.5 sm:gap-4">
+                    {/* Index Number */}
+                    <span
+                      className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md transition-colors duration-300 ${
+                        isActive
+                          ? 'bg-[#0d3822] text-[#fbf9f4]'
+                          : 'bg-[#ded5c5] text-[#556d58] group-hover:bg-[#0d3822] group-hover:text-white'
+                      }`}
+                    >
+                      {item.id}
+                    </span>
 
-                  {/* Subtitle Description */}
-                  <p className="text-xs sm:text-sm text-[#38513e] leading-relaxed mb-6 font-normal">
-                    {currentItem.description}
-                  </p>
+                    {/* Uppercase Heading Title with Dark Green Highlight */}
+                    <span
+                      className={`font-raleway text-base sm:text-[17px] md:text-[18px] uppercase tracking-wide transition-colors duration-300 ${
+                        isActive ? 'font-bold text-[#0d3822]' : 'font-semibold'
+                      }`}
+                    >
+                      {item.navTitle}
+                    </span>
+                  </div>
 
-                  {/* 2-Column Inside Layout: Bullet Checklist + Compact Media */}
-                  <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center pt-2">
-                    {/* Bullets (7 cols) */}
-                    <div className="sm:col-span-7">
-                      <span className="text-[11px] font-bold tracking-widest text-[#1e462a] uppercase block mb-3">
-                        KEY PILLARS & IMPACT:
-                      </span>
-                      <ul className="space-y-2.5">
-                        {currentItem.bullets.map((bullet, bIdx) => (
-                          <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#1c3822] font-semibold leading-tight">
-                            <CheckCircle2 size={16} className="text-[#0d3822] flex-shrink-0 mt-0.5" />
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  {/* Active Chevron Indicator */}
+                  <ChevronRight
+                    size={19}
+                    className={`transition-all duration-300 ${
+                      isActive
+                        ? 'opacity-100 translate-x-0 text-[#0d3822]'
+                        : 'opacity-0 -translate-x-1.5 group-hover:opacity-40 group-hover:translate-x-0 text-[#0d3822]'
+                    }`}
+                  />
+                </button>
+              );
+            })}
+          </div>
 
-                    {/* Media Showcase (5 cols) */}
-                    <div className="sm:col-span-5">
-                      <div className="relative aspect-[4/3.2] rounded-2xl overflow-hidden border border-[#b4c8b0] shadow-md bg-[#c0d0bc]">
-                        <img
-                          src={currentItem.image}
-                          alt={currentItem.navTitle}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+          {/* Right Column (7 Cols): Dynamic Swipe-Up Feature Showcase Card (Light Green #d1ddcc Theme - Scaled Down) */}
+          <div className="lg:col-span-7">
+            <div className="bg-[#d1ddcc] text-[#0d3822] rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_16px_40px_rgba(13,56,34,0.10)] border border-[#b8cbb4] relative overflow-hidden min-h-[400px] flex flex-col justify-between">
+              {/* Background Ambient Glow */}
+              <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#ffffff]/30 rounded-full blur-3xl pointer-events-none"></div>
+
+              {/* Dynamic Swipe-Up Content Container with bulletproof key={activeIndex} */}
+              <div
+                key={activeIndex}
+                className="relative z-10 animate-swipeUp"
+              >
+                {/* Top Hook Statement */}
+                <h3 className="font-raleway text-base sm:text-lg md:text-[20px] font-bold text-[#0d3822] uppercase tracking-tight leading-snug mb-2.5">
+                  {currentItem.hook}
+                </h3>
+
+                {/* Subtitle Description */}
+                <p className="text-xs sm:text-[13px] text-[#38513e] leading-relaxed mb-4 font-normal">
+                  {currentItem.description}
+                </p>
+
+                {/* 2-Column Inside Layout: Bullet Checklist + Compact Media */}
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center pt-1">
+                  {/* Bullets (7 cols) */}
+                  <div className="sm:col-span-7">
+                    <span className="text-[10.5px] font-bold tracking-widest text-[#1e462a] uppercase block mb-2.5">
+                      KEY PILLARS & IMPACT:
+                    </span>
+                    <ul className="space-y-2">
+                      {currentItem.bullets.map((bullet, bIdx) => (
+                        <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-[12.5px] text-[#1c3822] font-semibold leading-tight">
+                          <CheckCircle2 size={15} className="text-[#0d3822] flex-shrink-0 mt-0.5" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Media Showcase (5 cols) */}
+                  <div className="sm:col-span-5">
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-[#b4c8b0] shadow-md bg-[#c0d0bc]">
+                      <img
+                        src={currentItem.image}
+                        alt={currentItem.navTitle}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Bottom Navigation & Indicator Bar */}
-                <div className="relative z-10 pt-6 mt-6 border-t border-[#b8cbb4]/80 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#143420]">
-                    <span className="bg-[#fbf9f4]/80 px-2 py-0.5 rounded border border-[#b8cbb4]">
-                      {currentItem.id} / 06
-                    </span>
-                    <span className="text-[#3b5541] font-sans font-medium text-[11px] uppercase tracking-wider hidden sm:inline-block">
-                      {currentItem.navTitle}
-                    </span>
-                  </div>
+              {/* Bottom Navigation & Indicator Bar */}
+              <div className="relative z-10 pt-4 mt-4 border-t border-[#b8cbb4]/80 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#143420]">
+                  <span className="bg-[#fbf9f4]/80 px-2 py-0.5 rounded border border-[#b8cbb4]">
+                    {currentItem.id} / 06
+                  </span>
+                  <span className="text-[#3b5541] font-sans font-medium text-[11px] uppercase tracking-wider hidden sm:inline-block">
+                    {currentItem.navTitle}
+                  </span>
+                </div>
 
-                  <div className="flex items-center gap-1.5">
-                    {reasonsList.map((_, dotIdx) => (
-                      <button
-                        key={dotIdx}
-                        onClick={() => handleSelectIndex(dotIdx)}
-                        className={`h-1.5 rounded-full transition-all duration-400 cursor-pointer ${
-                          activeIndex === dotIdx
-                            ? 'w-6 bg-[#0d3822]'
-                            : 'w-1.5 bg-[#8fa687]/60 hover:bg-[#0d3822]'
-                        }`}
-                        aria-label={`Go to slide ${dotIdx + 1}`}
-                      />
-                    ))}
-                  </div>
+                <div className="flex items-center gap-1.5">
+                  {reasonsList.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      onClick={() => handleSelectIndex(dotIdx)}
+                      className={`h-1.5 rounded-full transition-all duration-400 cursor-pointer ${
+                        activeIndex === dotIdx
+                          ? 'w-6 bg-[#0d3822]'
+                          : 'w-1.5 bg-[#8fa687]/60 hover:bg-[#0d3822]'
+                      }`}
+                      aria-label={`Go to slide ${dotIdx + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>

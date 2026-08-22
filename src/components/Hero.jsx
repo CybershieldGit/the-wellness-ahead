@@ -71,7 +71,7 @@ export default function Hero() {
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-30 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 w-full pt-4 md:pt-8 -mt-6 md:-mt-10">
+      <div className="relative z-30 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 pt-4 md:pt-8 -mt-6 md:-mt-10">
         <div className="max-w-5xl lg:max-w-[980px]">
           {/* Main Headline (Clean Duotone Luxury Contrast Pattern) */}
           <h1 className="font-raleway text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] text-white tracking-[0.025em] drop-shadow-sm flex flex-col gap-3 sm:gap-4 font-normal leading-tight">

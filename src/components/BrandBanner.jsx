@@ -3,7 +3,7 @@ import React from 'react';
 export default function BrandBanner() {
   return (
     <section className="py-12 md:py-16 bg-[#ece8df]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
         <div className="relative overflow-hidden bg-[#e5dcce] border border-[#d6ccbc] rounded-[2.5rem] p-8 sm:p-12 lg:p-16 shadow-sm">
           {/* Subtle background growth line vector */}
           <div className="absolute right-12 top-8 opacity-25 pointer-events-none hidden md:block">

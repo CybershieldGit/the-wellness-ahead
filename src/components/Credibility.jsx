@@ -30,7 +30,7 @@ const credibilityStats = [
 export default function Credibility() {
   return (
     <section className="relative z-20 w-full bg-[#fbf9f4] border-y border-[#d5cbba] py-6 sm:py-8">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-8 divide-y sm:divide-y-0 lg:divide-x divide-[#d5cbba]/80">
           {credibilityStats.map((item, idx) => (
             <div

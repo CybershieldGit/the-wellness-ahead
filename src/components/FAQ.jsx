@@ -32,11 +32,11 @@ export default function FAQ() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section id="faq" className="pt-6 sm:pt-8 pb-12 md:pb-16 bg-[#ece8df]">
+    <section id="faq" className="pt-4 sm:pt-6 pb-8 md:pb-12 bg-[#ece8df]">
       <div className="max-w-4xl mx-auto px-6 sm:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <h2 className="font-raleway text-2xl sm:text-3xl md:text-[34px] text-[#0d3822] font-semibold tracking-tight leading-snug">
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
+          <h2 className="font-raleway text-3xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight leading-snug">
             Frequently Asked Questions For <br />
             <span className="relative inline-block pb-2 mt-0.5">
               Businesses
@@ -45,8 +45,8 @@ export default function FAQ() {
           </h2>
         </div>
 
-        {/* Modern Animated FAQ Cards List */}
-        <div className="flex flex-col gap-3 sm:gap-3.5">
+        {/* Modern Animated FAQ Cards List (Concise & Compact Height) */}
+        <div className="flex flex-col gap-2.5 sm:gap-3">
           {faqs.map((faq, index) => {
             const isOpen = hoveredIndex === index;
 
@@ -58,13 +58,13 @@ export default function FAQ() {
                 onClick={() => setHoveredIndex(hoveredIndex === index ? null : index)}
                 className={`group rounded-xl sm:rounded-2xl border transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer overflow-hidden ${
                   isOpen
-                    ? 'bg-[#fbf9f4] border-[#8fa687] shadow-[0_10px_28px_rgba(13,56,34,0.09)] -translate-y-0.5'
+                    ? 'bg-[#fbf9f4] border-[#8fa687] shadow-[0_8px_24px_rgba(13,56,34,0.08)] -translate-y-0.5'
                     : 'bg-[#f4efe4]/80 hover:bg-[#fbf9f4]/90 border-[#ded6c7] hover:border-[#b4c5af]'
                 }`}
               >
                 {/* Question Row */}
-                <div className="p-4 sm:p-5 px-5 sm:px-6 flex items-center justify-between gap-4 select-none">
-                  <div className="flex items-center gap-3.5 sm:gap-4.5">
+                <div className="p-3.5 sm:p-4 px-4 sm:px-5 flex items-center justify-between gap-4 select-none">
+                  <div className="flex items-center gap-3 sm:gap-4">
                     {/* Index Number */}
                     <span
                       className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border transition-colors duration-500 ease-out ${
@@ -78,7 +78,7 @@ export default function FAQ() {
 
                     {/* Question Title */}
                     <h3
-                      className={`font-raleway text-[15px] sm:text-base md:text-[17px] font-semibold transition-colors duration-500 ease-out ${
+                      className={`font-raleway text-[14.5px] sm:text-base md:text-[16.5px] font-semibold transition-colors duration-500 ease-out ${
                         isOpen ? 'text-[#0d3822]' : 'text-[#1d3b27] group-hover:text-[#0d3822]'
                       }`}
                     >
@@ -88,13 +88,13 @@ export default function FAQ() {
 
                   {/* Dynamic Action Icon */}
                   <div
-                    className={`flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center border transition-all duration-500 ease-out ${
+                    className={`flex-shrink-0 w-7.5 h-7.5 sm:w-8 sm:h-8 rounded-full flex items-center justify-center border transition-all duration-500 ease-out ${
                       isOpen
                         ? 'bg-[#0d3822] text-white border-[#0d3822] rotate-180'
                         : 'bg-[#ede7dc] text-[#3d5c39] border-[#ded5c5] group-hover:border-[#8fa687] group-hover:scale-105'
                     }`}
                   >
-                    <ChevronDown size={17} />
+                    <ChevronDown size={16} />
                   </div>
                 </div>
 
@@ -114,10 +114,10 @@ export default function FAQ() {
                         opacity: isOpen ? 1 : 0,
                         transition: 'transform 0.75s cubic-bezier(0.25, 1, 0.4, 1), opacity 0.6s ease',
                       }}
-                      className="px-5 sm:px-6 pb-4 sm:pb-5 pt-0.5"
+                      className="px-4 sm:px-5 pb-3.5 sm:pb-4 pt-0.5"
                     >
                       <div className="pl-4 border-l-2 border-[#8fa687]/70">
-                        <p className="text-xs sm:text-sm md:text-[14.5px] text-[#4a5f4c] leading-relaxed">
+                        <p className="text-xs sm:text-[13.5px] md:text-[14px] text-[#4a5f4c] leading-relaxed">
                           {faq.answer}
                         </p>
                       </div>

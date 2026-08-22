@@ -103,17 +103,13 @@ export default function Process() {
   return (
     <section ref={containerRef} id="process" className="relative h-[240vh] bg-[#ece8df] select-none">
       {/* Sticky Full-Viewport Stage */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center pt-10 sm:pt-12 pb-4 sm:pb-6 overflow-hidden z-20">
-        <div className="max-w-[1400px] w-full mx-auto px-8 sm:px-12 lg:px-16">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center pt-0 sm:pt-1 pb-2 sm:pb-4 overflow-hidden z-20">
+        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
           {/* Section Header with Live Scroll Progress Tracker */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0d3822]"></span>
-                Structured Methodology
-              </div>
-              <h2 className="font-raleway text-2xl sm:text-3xl md:text-4xl text-[#0d3822] font-semibold tracking-tight leading-snug">
-                A Clear Process for Better Marketing <br />
+            <div className="max-w-3xl lg:max-w-4xl flex-1">
+              <h2 className="font-raleway text-3xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight leading-snug">
+                A Clear Process for Better Marketing <br className="hidden sm:inline" />
                 <span className="relative inline-block pb-1 mt-0.5">
                   Decisions
                   <span className="absolute bottom-0 left-0 w-28 sm:w-36 h-[2.5px] bg-[#8fa687] rounded-full"></span>
