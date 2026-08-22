@@ -12,6 +12,7 @@ import WhyMarketingMatters from './components/WhyMarketingMatters';
 import Process from './components/Process';
 import Insights from './components/Insights';
 import FAQ from './components/FAQ';
+import BottomCTA from './components/BottomCTA';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -102,6 +103,9 @@ export default function App() {
 
       {/* 11. Frequently Asked Questions For Businesses */}
       <FAQ />
+
+      {/* 11.5 Final Bottom CTA Section */}
+      <BottomCTA />
 
       {/* 12. Deep Green Footer */}
       <Footer />

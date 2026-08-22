@@ -142,7 +142,7 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="max-w-5xl lg:max-w-[1080px] mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
+      <div className="max-w-[1400px] w-full mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <h2 className="font-raleway text-3xl sm:text-4xl md:text-[38px] text-[#0d3822] font-semibold tracking-tight leading-snug">
@@ -154,62 +154,64 @@ export default function Services() {
           </h2>
         </div>
 
-        {/* Editorial Text-Based Interactive Capability Rows */}
-        <div
-          className="border-t border-[#d5ccbe]"
-          onMouseLeave={() => setActiveService(null)}
-        >
-          {servicesList.map((service, index) => {
-            const isHovered = activeService === index;
+        {/* Editorial Text-Based Interactive Capability Rows (Slightly Reduced Width) */}
+        <div className="max-w-6xl lg:max-w-[1240px] mx-auto">
+          <div
+            className="border-t border-[#d5ccbe]"
+            onMouseLeave={() => setActiveService(null)}
+          >
+            {servicesList.map((service, index) => {
+              const isHovered = activeService === index;
 
-            return (
-              <div
-                key={index}
-                onMouseEnter={(e) => handleRowMouseEnter(e, index)}
-                className={`group border-b border-[#d5ccbe] py-5 sm:py-6 px-4 sm:px-6 transition-all duration-350 cursor-pointer flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 rounded-2xl ${
-                  isHovered
-                    ? 'bg-[#fbf9f4]/90 shadow-[0_8px_26px_rgba(13,56,34,0.07)]'
-                    : 'bg-transparent hover:bg-[#fbf9f4]/50'
-                }`}
-              >
-                {/* Left: Index + Title + Capability Tag */}
-                <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 max-w-xl">
-                  {/* Number Badge */}
-                  <span
-                    className={`font-raleway text-xs sm:text-sm font-semibold px-3 py-1 rounded-full border transition-colors duration-300 ${
-                      isHovered
-                        ? 'bg-[#0d3822] text-[#fbf9f4] border-[#0d3822]'
-                        : 'bg-[#dfd7c8] text-[#556b53] border-[#cec2af]'
-                    }`}
-                  >
-                    {service.id}
-                  </span>
-
-                  <div>
-                    <h3
-                      className={`font-raleway text-lg sm:text-xl md:text-[22px] font-semibold transition-all duration-300 ${
+              return (
+                <div
+                  key={index}
+                  onMouseEnter={(e) => handleRowMouseEnter(e, index)}
+                  className={`group border-b border-[#d5ccbe] py-5 sm:py-6 px-4 sm:px-6 transition-all duration-350 cursor-pointer flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 rounded-2xl ${
+                    isHovered
+                      ? 'bg-[#fbf9f4]/90 shadow-[0_8px_26px_rgba(13,56,34,0.07)]'
+                      : 'bg-transparent hover:bg-[#fbf9f4]/50'
+                  }`}
+                >
+                  {/* Left: Index + Title + Capability Tag */}
+                  <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 max-w-xl">
+                    {/* Number Badge */}
+                    <span
+                      className={`font-raleway text-xs sm:text-sm font-semibold px-3 py-1 rounded-full border transition-colors duration-300 ${
                         isHovered
-                          ? 'text-[#075f2c] translate-x-1.5'
-                          : 'text-[#0d3822]'
+                          ? 'bg-[#0d3822] text-[#fbf9f4] border-[#0d3822]'
+                          : 'bg-[#dfd7c8] text-[#556b53] border-[#cec2af]'
                       }`}
                     >
-                      {service.title}
-                    </h3>
-                    <p className="text-xs sm:text-[13px] font-medium text-[#7a8e78] tracking-wide uppercase mt-1">
-                      {service.tag}
+                      {service.id}
+                    </span>
+
+                    <div>
+                      <h3
+                        className={`font-raleway text-lg sm:text-xl md:text-[22px] font-semibold transition-all duration-300 ${
+                          isHovered
+                            ? 'text-[#075f2c] translate-x-1.5'
+                            : 'text-[#0d3822]'
+                        }`}
+                      >
+                        {service.title}
+                      </h3>
+                      <p className="text-xs sm:text-[13px] font-medium text-[#7a8e78] tracking-wide uppercase mt-1">
+                        {service.tag}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right: Description */}
+                  <div className="lg:max-w-md lg:text-right">
+                    <p className="text-xs sm:text-sm md:text-[14px] text-[#4a5f4d] leading-relaxed">
+                      {service.description}
                     </p>
                   </div>
                 </div>
-
-                {/* Right: Description */}
-                <div className="lg:max-w-md lg:text-right">
-                  <p className="text-xs sm:text-sm md:text-[14px] text-[#4a5f4d] leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         {/* CTA Button */}
@@ -218,7 +220,7 @@ export default function Services() {
             href="#contact"
             className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-sm font-semibold text-white bg-[#0e3520] hover:bg-[#072415] transition-all duration-200 shadow-md hover:shadow-lg hover:scale-[1.02]"
           >
-            Start Strategic Engagement &rarr;
+            View All Services &rarr;
           </a>
         </div>
       </div>

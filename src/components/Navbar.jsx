@@ -35,7 +35,7 @@ export default function Navbar() {
         {/* Brand Logo Container with Vertical Swapping Animation */}
         <a
           href="#"
-          className="relative flex items-center h-11 sm:h-12 md:h-13 lg:h-[58px] w-[150px] sm:w-[185px] md:w-[205px] overflow-hidden group select-none"
+          className="relative flex items-center h-9 sm:h-10 md:h-11 lg:h-[46px] w-[130px] sm:w-[155px] md:w-[175px] overflow-hidden group select-none"
         >
           {/* Logo 1: White SVG Logo (Visible on Hero, slides UP out on scroll) */}
           <div
@@ -125,7 +125,7 @@ export default function Navbar() {
             className={`inline-block px-6 py-2 text-xs sm:text-sm font-semibold rounded-full backdrop-blur-md transition-all duration-300 shadow-sm hover:shadow hover:scale-[1.02] ${
               isScrolled
                 ? 'bg-[#0d3822] text-white hover:bg-[#072a18] border border-[#0d3822]'
-                : 'bg-white/15 text-white hover:bg-white/25 border border-white/40'
+                : 'bg-[#9eb393] text-[#0a2315] hover:bg-[#8da382] border border-[#9eb393]/80'
             }`}
           >
             Start Conversation

@@ -101,10 +101,10 @@ export default function Process() {
   const isResting = smoothProgress <= 0.008;
 
   return (
-    <section ref={containerRef} id="process" className="relative h-[280vh] bg-[#ece8df] select-none">
+    <section ref={containerRef} id="process" className="relative h-[240vh] bg-[#ece8df] select-none">
       {/* Sticky Full-Viewport Stage */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center pt-20 sm:pt-24 pb-8 overflow-hidden z-20">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center pt-10 sm:pt-12 pb-4 sm:pb-6 overflow-hidden z-20">
+        <div className="max-w-[1400px] w-full mx-auto px-8 sm:px-12 lg:px-16">
           {/* Section Header with Live Scroll Progress Tracker */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
             <div className="max-w-2xl">
@@ -291,14 +291,6 @@ export default function Process() {
                 );
               })}
             </div>
-          </div>
-
-          {/* Bottom Context Callout */}
-          <div className="mt-8 sm:mt-10 text-center">
-            <p className="text-xs sm:text-[13px] text-[#697d6b] font-medium inline-flex items-center gap-2 bg-[#dfd7c8]/60 px-4 py-1.5 rounded-full border border-[#d0c5b3]">
-              <Sparkles size={14} className="text-[#0d3822]" />
-              Continuous 6-Stage Strategic Framework Designed Exclusively for Wellness Brands
-            </p>
           </div>
         </div>
       </div>

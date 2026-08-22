@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, ChevronRight, Sparkles } from 'lucide-react';
 
 const reasonsList = [
@@ -90,36 +90,52 @@ const reasonsList = [
 
 export default function WhyMarketingMatters() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [animateKey, setAnimateKey] = useState(0);
+  const timerRef = useRef(null);
 
-  // Automatic Infinite Loop (2.3s per slide)
+  // Reliable robust auto-advance interval that never gets permanently hung
   useEffect(() => {
-    if (isPaused) return;
+    const startTimer = () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+      timerRef.current = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % reasonsList.length);
+      }, 2600);
+    };
 
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => {
-        const next = (prev + 1) % reasonsList.length;
-        setAnimateKey((k) => k + 1);
-        return next;
-      });
-    }, 2300);
+    startTimer();
 
-    return () => clearInterval(interval);
-  }, [isPaused]);
+    // Handle tab visibility change so timer never drifts when tab is backgrounded
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (timerRef.current) clearInterval(timerRef.current);
+      } else {
+        startTimer();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
 
   const handleSelectIndex = (index) => {
     setActiveIndex(index);
-    setAnimateKey((k) => k + 1);
+    // Restart timer from the newly selected index with a clean cadence
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % reasonsList.length);
+    }, 3200);
   };
 
   const currentItem = reasonsList[activeIndex];
 
   return (
-    <section id="why-marketing-matters" className="py-20 md:py-28 bg-[#ece8df] overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
+    <section id="why-marketing-matters" className="pt-14 md:pt-20 pb-4 md:pb-6 bg-[#ece8df] overflow-hidden select-none">
+      <div className="max-w-[1400px] w-full mx-auto px-8 sm:px-12 lg:px-16">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-18">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3 shadow-sm">
             <Sparkles size={14} className="text-[#0d3822]" />
             Specialized Advantage
@@ -136,139 +152,136 @@ export default function WhyMarketingMatters() {
           </p>
         </div>
 
-        {/* 2-Column Side-by-Side Synchronized Interactive Showcase */}
-        <div
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Left Column (5 Cols): Stacked Nav Headings */}
-          <div className="lg:col-span-5 flex flex-col space-y-3 sm:space-y-4">
-            {reasonsList.map((item, index) => {
-              const isActive = activeIndex === index;
+        {/* 2-Column Side-by-Side Synchronized Interactive Showcase (Max-W 1240px) */}
+        <div className="max-w-6xl lg:max-w-[1240px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column (5 Cols): Stacked Nav Headings */}
+            <div className="lg:col-span-5 flex flex-col space-y-3 sm:space-y-4">
+              {reasonsList.map((item, index) => {
+                const isActive = activeIndex === index;
 
-              return (
-                <button
-                  key={index}
-                  onClick={() => handleSelectIndex(index)}
-                  className={`group w-full text-left p-4 sm:p-5 rounded-2xl sm:rounded-[1.4rem] transition-all duration-400 flex items-center justify-between border cursor-pointer ${
-                    isActive
-                      ? 'bg-[#0d3822] text-white border-[#0d3822] shadow-[0_12px_28px_rgba(13,56,34,0.25)] translate-x-2 sm:translate-x-3 scale-[1.02]'
-                      : 'bg-[#f4f0e6]/70 hover:bg-[#f4f0e6] text-[#697f66] hover:text-[#0d3822] border-[#d7cfbe] hover:border-[#a8be9e]'
-                  }`}
-                >
-                  <div className="flex items-center gap-3.5 sm:gap-4">
-                    {/* Index Number */}
-                    <span
-                      className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md transition-colors duration-300 ${
-                        isActive
-                          ? 'bg-[#8fa687] text-[#0d3822]'
-                          : 'bg-[#e5ded0] text-[#7a8e77] group-hover:bg-[#0d3822] group-hover:text-white'
-                      }`}
-                    >
-                      {item.id}
-                    </span>
-
-                    {/* Uppercase Heading Title */}
-                    <span
-                      className={`font-raleway text-base sm:text-lg md:text-[19px] uppercase tracking-wide transition-all duration-300 ${
-                        isActive ? 'font-bold text-white' : 'font-semibold'
-                      }`}
-                    >
-                      {item.navTitle}
-                    </span>
-                  </div>
-
-                  {/* Active Chevron Indicator */}
-                  <ChevronRight
-                    size={20}
-                    className={`transition-all duration-400 ${
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleSelectIndex(index)}
+                    className={`group w-full text-left p-4 sm:p-4.5 rounded-xl sm:rounded-2xl transition-all duration-300 flex items-center justify-between cursor-pointer ${
                       isActive
-                        ? 'opacity-100 translate-x-0 text-[#c5deb9]'
-                        : 'opacity-0 -translate-x-2 group-hover:opacity-60 group-hover:translate-x-0 text-[#0d3822]'
+                        ? 'bg-[#fbf9f4] text-[#0d3822] border-l-4 border-l-[#0d3822] border-y border-r border-[#cfc5b3] shadow-[0_6px_20px_rgba(13,56,34,0.07)]'
+                        : 'bg-[#fbf9f4]/40 hover:bg-[#fbf9f4]/85 text-[#657d67] hover:text-[#0d3822] border-l-4 border-l-transparent border-y border-r border-[#ddd6c9]/70 hover:border-r-[#cfc5b3]'
                     }`}
-                  />
-                </button>
-              );
-            })}
-          </div>
+                  >
+                    <div className="flex items-center gap-3.5 sm:gap-4">
+                      {/* Index Number */}
+                      <span
+                        className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md transition-colors duration-300 ${
+                          isActive
+                            ? 'bg-[#0d3822] text-[#fbf9f4]'
+                            : 'bg-[#ded5c5] text-[#556d58] group-hover:bg-[#0d3822] group-hover:text-white'
+                        }`}
+                      >
+                        {item.id}
+                      </span>
 
-          {/* Right Column (7 Cols): Dynamic Swipe-Up Feature Showcase Card (Light Green #d1ddcc Theme) */}
-          <div className="lg:col-span-7">
-            <div className="bg-[#d1ddcc] text-[#0d3822] rounded-[2.25rem] p-6 sm:p-9 lg:p-10 shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#b8cbb4] relative overflow-hidden min-h-[460px] flex flex-col justify-between">
-              {/* Background Ambient Glow */}
-              <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#ffffff]/30 rounded-full blur-3xl pointer-events-none"></div>
+                      {/* Uppercase Heading Title with Dark Green Highlight */}
+                      <span
+                        className={`font-raleway text-base sm:text-[17px] md:text-[18px] uppercase tracking-wide transition-colors duration-300 ${
+                          isActive ? 'font-bold text-[#0d3822]' : 'font-semibold'
+                        }`}
+                      >
+                        {item.navTitle}
+                      </span>
+                    </div>
 
-              {/* Dynamic Swipe-Up Content Container */}
-              <div
-                key={animateKey}
-                className="relative z-10 animate-swipeUp"
-              >
-                {/* Top Hook Statement */}
-                <h3 className="font-raleway text-lg sm:text-xl md:text-[22px] font-bold text-[#0d3822] uppercase tracking-tight leading-snug mb-3">
-                  {currentItem.hook}
-                </h3>
+                    {/* Active Chevron Indicator */}
+                    <ChevronRight
+                      size={19}
+                      className={`transition-all duration-300 ${
+                        isActive
+                          ? 'opacity-100 translate-x-0 text-[#0d3822]'
+                          : 'opacity-0 -translate-x-1.5 group-hover:opacity-40 group-hover:translate-x-0 text-[#0d3822]'
+                      }`}
+                    />
+                  </button>
+                );
+              })}
+            </div>
 
-                {/* Subtitle Description */}
-                <p className="text-xs sm:text-sm text-[#38513e] leading-relaxed mb-6 font-normal">
-                  {currentItem.description}
-                </p>
+            {/* Right Column (7 Cols): Dynamic Swipe-Up Feature Showcase Card (Light Green #d1ddcc Theme) */}
+            <div className="lg:col-span-7">
+              <div className="bg-[#d1ddcc] text-[#0d3822] rounded-[2.25rem] p-6 sm:p-9 lg:p-10 shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#b8cbb4] relative overflow-hidden min-h-[460px] flex flex-col justify-between">
+                {/* Background Ambient Glow */}
+                <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#ffffff]/30 rounded-full blur-3xl pointer-events-none"></div>
 
-                {/* 2-Column Inside Layout: Bullet Checklist + Compact Media */}
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center pt-2">
-                  {/* Bullets (7 cols) */}
-                  <div className="sm:col-span-7">
-                    <span className="text-[11px] font-bold tracking-widest text-[#1e462a] uppercase block mb-3">
-                      KEY PILLARS & IMPACT:
-                    </span>
-                    <ul className="space-y-2.5">
-                      {currentItem.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#1c3822] font-semibold leading-tight">
-                          <CheckCircle2 size={16} className="text-[#0d3822] flex-shrink-0 mt-0.5" />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                {/* Dynamic Swipe-Up Content Container with bulletproof key={activeIndex} */}
+                <div
+                  key={activeIndex}
+                  className="relative z-10 animate-swipeUp"
+                >
+                  {/* Top Hook Statement */}
+                  <h3 className="font-raleway text-lg sm:text-xl md:text-[22px] font-bold text-[#0d3822] uppercase tracking-tight leading-snug mb-3">
+                    {currentItem.hook}
+                  </h3>
 
-                  {/* Media Showcase (5 cols) */}
-                  <div className="sm:col-span-5">
-                    <div className="relative aspect-[4/3.2] rounded-2xl overflow-hidden border border-[#b4c8b0] shadow-md bg-[#c0d0bc]">
-                      <img
-                        src={currentItem.image}
-                        alt={currentItem.alt}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-                      <div className="absolute bottom-2 left-2.5 right-2.5 text-center">
-                        <span className="text-[10px] font-semibold text-white tracking-wider uppercase bg-[#0d3822]/85 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20 inline-block">
-                          Domain {currentItem.id} Focus
-                        </span>
+                  {/* Subtitle Description */}
+                  <p className="text-xs sm:text-sm text-[#38513e] leading-relaxed mb-6 font-normal">
+                    {currentItem.description}
+                  </p>
+
+                  {/* 2-Column Inside Layout: Bullet Checklist + Compact Media */}
+                  <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center pt-2">
+                    {/* Bullets (7 cols) */}
+                    <div className="sm:col-span-7">
+                      <span className="text-[11px] font-bold tracking-widest text-[#1e462a] uppercase block mb-3">
+                        KEY PILLARS & IMPACT:
+                      </span>
+                      <ul className="space-y-2.5">
+                        {currentItem.bullets.map((bullet, bIdx) => (
+                          <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#1c3822] font-semibold leading-tight">
+                            <CheckCircle2 size={16} className="text-[#0d3822] flex-shrink-0 mt-0.5" />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Media Showcase (5 cols) */}
+                    <div className="sm:col-span-5">
+                      <div className="relative aspect-[4/3.2] rounded-2xl overflow-hidden border border-[#b4c8b0] shadow-md bg-[#c0d0bc]">
+                        <img
+                          src={currentItem.image}
+                          alt={currentItem.navTitle}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Bottom Progress Tracker Dots */}
-              <div className="mt-8 pt-4 border-t border-[#b8cbb4] flex items-center justify-between text-xs text-[#3a5440]">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-semibold text-[#183a24]">
-                  Strategic Pillar 0{activeIndex + 1} / 0{reasonsList.length}
-                </span>
+                {/* Bottom Navigation & Indicator Bar */}
+                <div className="relative z-10 pt-6 mt-6 border-t border-[#b8cbb4]/80 flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#143420]">
+                    <span className="bg-[#fbf9f4]/80 px-2 py-0.5 rounded border border-[#b8cbb4]">
+                      {currentItem.id} / 06
+                    </span>
+                    <span className="text-[#3b5541] font-sans font-medium text-[11px] uppercase tracking-wider hidden sm:inline-block">
+                      {currentItem.navTitle}
+                    </span>
+                  </div>
 
-                <div className="flex items-center gap-1.5">
-                  {reasonsList.map((_, dotIdx) => (
-                    <button
-                      key={dotIdx}
-                      onClick={() => handleSelectIndex(dotIdx)}
-                      className={`h-1.5 rounded-full transition-all duration-400 cursor-pointer ${
-                        activeIndex === dotIdx
-                          ? 'w-6 bg-[#0d3822]'
-                          : 'w-1.5 bg-[#8fa687]/60 hover:bg-[#0d3822]'
-                      }`}
-                      aria-label={`Go to slide ${dotIdx + 1}`}
-                    />
-                  ))}
+                  <div className="flex items-center gap-1.5">
+                    {reasonsList.map((_, dotIdx) => (
+                      <button
+                        key={dotIdx}
+                        onClick={() => handleSelectIndex(dotIdx)}
+                        className={`h-1.5 rounded-full transition-all duration-400 cursor-pointer ${
+                          activeIndex === dotIdx
+                            ? 'w-6 bg-[#0d3822]'
+                            : 'w-1.5 bg-[#8fa687]/60 hover:bg-[#0d3822]'
+                        }`}
+                        aria-label={`Go to slide ${dotIdx + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

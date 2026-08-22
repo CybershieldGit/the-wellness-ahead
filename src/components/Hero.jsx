@@ -1,22 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+const heroBackgroundSlides = [
+  {
+    url: '/images/banner.png',
+    alt: 'Serene sunlit forest meditation and botanical harmony',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=85',
+    alt: 'Strategic marketing advisory, brand positioning and commercial growth planning',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1920&q=85',
+    alt: 'Authentic Ayurvedic botanical extracts and amber apothecary formulation',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=85',
+    alt: 'Organic botanical vitality and natural herbal restorative wellness',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1920&q=85',
+    alt: 'Holistic lifestyle and mindful sunrise wellness',
+  },
+];
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Cinematic Ambient Slide Rotation (5.2s interval with subtle breathing crossfade)
+  useEffect(() => {
+    // Preload background images to guarantee instant 60fps video-like playback
+    heroBackgroundSlides.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.url;
+    });
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroBackgroundSlides.length);
+    }, 5200);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="relative min-h-[92vh] md:min-h-screen flex items-center justify-start overflow-hidden pt-28 sm:pt-32 pb-16 md:pb-20">
-      {/* Background Image with Forest Meditation & Sunbeams */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <img
-          src="/images/banner.png"
-          alt="The Wellness Ahead Banner"
-          className="w-full h-full object-cover object-[center_20%]"
-        />
-        {/* Clean subtle contrast scrim to preserve natural forest sunbeams while ensuring text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 via-55% to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
+      {/* Cinematic Ambient Video-Like Background Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-[#07170e]">
+        {heroBackgroundSlides.map((slide, index) => {
+          const isActive = currentSlide === index;
+          return (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-[1800ms] ease-in-out ${
+                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
+            >
+              <img
+                src={slide.url}
+                alt={slide.alt}
+                className={`w-full h-full object-cover object-[center_center] transition-transform duration-[6000ms] ease-out will-change-transform ${
+                  isActive ? 'scale-[1.02]' : 'scale-100'
+                }`}
+              />
+            </div>
+          );
+        })}
+
+        {/* Clean subtle contrast scrim to preserve natural vibrant imagery while ensuring razor-sharp text readability */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/75 via-black/35 via-55% to-transparent"></div>
+        <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#07170e]/80 via-transparent to-black/20"></div>
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 w-full pt-4 md:pt-8 -mt-6 md:-mt-10">
+      <div className="relative z-30 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 w-full pt-4 md:pt-8 -mt-6 md:-mt-10">
         <div className="max-w-5xl lg:max-w-[980px]">
           {/* Main Headline (Clean Duotone Luxury Contrast Pattern) */}
           <h1 className="font-raleway text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] text-white tracking-[0.025em] drop-shadow-sm flex flex-col gap-3 sm:gap-4 font-normal leading-tight">
@@ -51,6 +106,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
     </section>
   );
 }

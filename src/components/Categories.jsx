@@ -156,12 +156,8 @@ export default function Categories() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Initial resting state guard: When user first lands on the section, all cards are at normal resting scale
-  const isResting = smoothProgress <= 0.006;
-  const waveRamp = Math.min(smoothProgress * 15, 1.0); // Smoothly ramps in the magnification wave as scroll initiates
-
   // Global Progress Timeline (0.0 to 7.0) across all 8 cards with liquid physics dampening
-  const globalProgress = Math.max(0, (smoothProgress - 0.006) / 0.994) * 7.0;
+  const globalProgress = smoothProgress * (categories.length - 1);
 
   // Continuous high-order smootherstep for zero-jerk step boundary transitions
   const smoothStepSequence = (excess) => {
@@ -182,60 +178,40 @@ export default function Categories() {
   }
 
   // Active highlighted card number (1 to 8)
-  const activeCardNumber = isResting ? 1 : Math.min(Math.floor(globalProgress) + 1, categories.length);
+  const activeCardNumber = Math.min(Math.floor(globalProgress) + 1, categories.length);
 
   return (
     <section ref={containerRef} className="relative h-[340vh] bg-[#ece8df]">
       {/* Sticky Full-Viewport Stage - Positioned with safe clearance below fixed navbar */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-center pt-24 sm:pt-28 md:pt-30 pb-6 md:pb-8 overflow-hidden z-20 gap-6 sm:gap-8">
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-12 relative z-20">
+        <div className="max-w-[1400px] w-full mx-auto px-8 sm:px-12 lg:px-16 relative z-20">
           {/* Header Bar with Live Scroll Progress Indicator */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0d3822]"></span>
-                Core Wellness Domains
-              </div>
-              <h2 className="font-raleway text-2xl sm:text-3xl md:text-4xl text-[#0d3822] font-semibold tracking-tight">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h2 className="font-raleway text-2xl sm:text-3xl md:text-[34px] lg:text-[40px] xl:text-[44px] text-[#0d3822] font-semibold tracking-tight whitespace-nowrap">
                 Built for the{' '}
                 <span className="relative inline-block pb-1">
                   Business of Wellness
-                  <span className="absolute bottom-0 left-0 w-28 sm:w-36 h-[2.5px] bg-[#8fa687] rounded-full"></span>
+                  <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#8fa687] rounded-full"></span>
                 </span>
               </h2>
             </div>
 
-            {/* Smooth 60fps Scroll Progress Bar & Counter */}
-            <div className="flex items-center gap-4 bg-[#e2dcce]/70 px-4 py-2 rounded-full border border-[#d2c9b8] backdrop-blur-sm">
-              <div className="text-xs font-semibold text-[#143420] tracking-wider uppercase flex items-center gap-1 min-w-[42px]">
-                <span className="font-bold text-[#0d3822] text-sm">{activeCardNumber}</span>
-                <span className="text-[#7d8f7e]">/ {categories.length}</span>
-              </div>
-              {/* Hardware-accelerated smooth progress bar */}
-              <div className="w-32 sm:w-44 h-2 rounded-full bg-[#cfc5b2] overflow-hidden relative">
-                <div
-                  className="absolute inset-0 bg-[#0d3822] rounded-full will-change-transform origin-left"
-                  style={{
-                    transform: `scaleX(${Math.max(scrollProgress, 0.08)})`,
-                  }}
-                ></div>
-              </div>
+            {/* Simple Minimal Index Counter (Top Right) */}
+            <div className="font-mono text-base sm:text-lg md:text-xl font-bold text-[#0d3822] tracking-tight pb-1.5 select-none">
+              <span>{String(activeCardNumber).padStart(2, '0')}</span>
+              <span className="text-[#8e9e8f] font-normal text-sm sm:text-base">/{String(categories.length).padStart(2, '0')}</span>
             </div>
           </div>
         </div>
 
-        {/* 4-Card Framed Viewport Container (Zero 5th card edge visible, with ample vertical & horizontal room) */}
-        <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-8 lg:px-10 relative">
-          <div
-            className="overflow-hidden relative mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4"
-            style={{
-              maxWidth: singleCardStep > 0 ? `${singleCardStep * 4 + 32}px` : '100%',
-            }}
-          >
+        {/* 4-Card Framed Viewport Container (Aligned with Heading at Left, Exactly 4 Cards Visible) */}
+        <div className="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-12 relative">
+          <div className="overflow-hidden relative w-full -mx-3 px-3 sm:-mx-4 sm:px-4 md:-mx-5 md:px-5 -my-6 py-6 sm:-my-8 sm:py-8">
             {/* Horizontal Track of 8 Cards with Synchronized 1-by-1 Step Left Shift */}
             <div
               ref={trackRef}
-              className="relative flex gap-5 sm:gap-6 lg:gap-7 will-change-transform items-center py-4"
+              className="relative flex gap-4 sm:gap-5 md:gap-6 will-change-transform items-center py-6"
               style={{
                 transform: `translate3d(-${currentTranslateX}px, 0px, 0px)`,
               }}
@@ -244,19 +220,18 @@ export default function Categories() {
               {categories.map((item, index) => {
                 const dist = Math.abs(index - globalProgress);
                 const mag = Math.max(0, 1 - Math.min(dist, 1.25));
-                const smoothMag = isResting ? 0 : Math.sin(mag * (Math.PI / 2)) * waveRamp;
-                const scale = 0.94 + smoothMag * 0.14; // 0.94 resting -> 1.08 magnified
+                const smoothMag = Math.sin(mag * (Math.PI / 2));
+                const scale = 0.94 + smoothMag * 0.14; // 0.94 resting -> 1.08 magnified (Card 0 is pre-zoomed at 1.08)
                 const zIndex = Math.round(smoothMag * 20) + 10;
                 const isCurrentlyMagnified = smoothMag > 0.40;
 
                 return (
                   <div
                     key={index}
-                    className={`category-card-item group relative flex-shrink-0 w-[220px] sm:w-[245px] md:w-[260px] lg:w-[270px] h-[365px] sm:h-[390px] md:h-[410px] bg-[#143520] overflow-hidden rounded-2xl sm:rounded-[1.25rem] transition-all duration-300 ease-out select-none cursor-pointer flex flex-col justify-between will-change-transform opacity-100 ${
-                      isCurrentlyMagnified
-                        ? 'ring-2 ring-[#c5deb9]/80'
-                        : ''
-                    }`}
+                    className={`category-card-item group relative flex-shrink-0 flex-[0_0_calc((100%-3*1rem)/4)] sm:flex-[0_0_calc((100%-3*1.25rem)/4)] md:flex-[0_0_calc((100%-3*1.5rem)/4)] w-[calc((100%-3*1rem)/4)] sm:w-[calc((100%-3*1.25rem)/4)] md:w-[calc((100%-3*1.5rem)/4)] max-w-[calc((100%-3*1.5rem)/4)] min-w-0 h-[375px] sm:h-[400px] md:h-[420px] bg-[#143520] overflow-hidden rounded-2xl sm:rounded-[1.25rem] transition-all duration-300 ease-out select-none cursor-pointer flex flex-col justify-between will-change-transform opacity-100 ${isCurrentlyMagnified
+                      ? 'ring-2 ring-[#c5deb9]/80'
+                      : ''
+                      }`}
                     style={{
                       transform: `scale(${scale})`,
                       zIndex: zIndex,
@@ -267,39 +242,35 @@ export default function Categories() {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out ${
-                        isCurrentlyMagnified ? 'scale-105' : 'scale-100'
-                      }`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out ${isCurrentlyMagnified ? 'scale-105' : 'scale-100'
+                        }`}
                       loading="lazy"
                     />
 
                     {/* Cinematic Vignette & Text Readability Overlay */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-t from-black/92 via-black/40 via-50% to-black/25 pointer-events-none transition-colors duration-500 ${
-                        isCurrentlyMagnified ? 'from-black/90' : 'from-black/95'
-                      }`}
+                      className={`absolute inset-0 bg-gradient-to-t from-black/92 via-black/40 via-50% to-black/25 pointer-events-none transition-colors duration-500 ${isCurrentlyMagnified ? 'from-black/90' : 'from-black/95'
+                        }`}
                     ></div>
 
                     {/* Top Bar: Soft Badges */}
                     <div className="relative z-10 p-4 sm:p-5 flex items-center justify-between">
                       {/* Soft Linen Tag */}
                       <span
-                        className={`px-3 py-1 backdrop-blur-md rounded-full text-[10px] font-semibold tracking-wider uppercase transition-colors duration-300 ${
-                          isCurrentlyMagnified
-                            ? 'bg-[#c5deb9] text-[#0d3822] shadow-md font-bold'
-                            : 'bg-white/90 text-[#0d3822]'
-                        }`}
+                        className={`px-3 py-1 backdrop-blur-md rounded-full text-[10px] font-semibold tracking-wider uppercase transition-colors duration-300 ${isCurrentlyMagnified
+                          ? 'bg-[#c5deb9] text-[#0d3822] shadow-md font-bold'
+                          : 'bg-white/90 text-[#0d3822]'
+                          }`}
                       >
                         {item.tag}
                       </span>
 
                       {/* Soft Dark Index Pill */}
                       <span
-                        className={`px-2.5 py-1 backdrop-blur-md rounded-full text-[10px] font-mono font-medium transition-colors duration-300 ${
-                          isCurrentlyMagnified
-                            ? 'bg-[#0d3822] text-[#c5deb9] border border-[#c5deb9]/40'
-                            : 'bg-black/60 text-[#c5deb9] border border-white/15'
-                        }`}
+                        className={`px-2.5 py-1 backdrop-blur-md rounded-full text-[10px] font-mono font-medium transition-colors duration-300 ${isCurrentlyMagnified
+                          ? 'bg-[#0d3822] text-[#c5deb9] border border-[#c5deb9]/40'
+                          : 'bg-black/60 text-[#c5deb9] border border-white/15'
+                          }`}
                       >
                         {item.id}
                       </span>
@@ -314,9 +285,8 @@ export default function Categories() {
 
                       {/* Headline */}
                       <h3
-                        className={`font-raleway text-lg sm:text-xl font-bold leading-snug mb-2 drop-shadow-md transition-colors duration-300 ${
-                          isCurrentlyMagnified ? 'text-[#c5deb9]' : 'text-white'
-                        }`}
+                        className={`font-raleway text-lg sm:text-xl font-bold leading-snug mb-2 drop-shadow-md transition-colors duration-300 ${isCurrentlyMagnified ? 'text-[#c5deb9]' : 'text-white'
+                          }`}
                       >
                         {item.title}
                       </h3>

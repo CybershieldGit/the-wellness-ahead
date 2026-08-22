@@ -34,13 +34,13 @@ export default function BrandBanner() {
 
             {/* Right Product Mockup */}
             <div className="lg:col-span-5 flex justify-center items-center">
-              <div className="relative w-full max-w-sm aspect-square rounded-3xl overflow-hidden shadow-md bg-[#ded5c6]">
+              <div className="relative w-full max-w-sm aspect-square rounded-3xl overflow-hidden shadow-lg border border-[#d2c5b3] bg-[#ded5c6] group">
                 <img
-                  src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=85"
-                  alt="The Wellness Ahead product packaging"
-                  className="w-full h-full object-cover"
+                  src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=900&q=85"
+                  alt="Premium botanical wellness formulation and amber apothecary packaging"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none"></div>
               </div>
             </div>
           </div>
