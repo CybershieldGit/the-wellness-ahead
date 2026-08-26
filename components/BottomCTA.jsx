@@ -5,7 +5,7 @@ export default function BottomCTA() {
   return (
     <section className="relative z-10 bg-[#ece8df] py-12 sm:py-16 md:py-20 overflow-hidden">
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
-        {/* Luxury Deep Forest Card (35-40% Viewport Height Footprint) */}
+        {/* Luxury Deep Forest Card */}
         <div className="relative bg-[#0d3822] text-white rounded-3xl sm:rounded-[2.25rem] px-6 py-12 sm:px-12 sm:py-16 text-center border border-[#235839] shadow-[0_20px_50px_rgba(13,56,34,0.22)] overflow-hidden">
           {/* Subtle Organic Background Lighting */}
           <div className="absolute -top-28 -left-28 w-80 h-80 bg-[#1f5c38]/40 rounded-full blur-3xl pointer-events-none"></div>

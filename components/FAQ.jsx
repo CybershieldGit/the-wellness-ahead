@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { ChevronDown, Plus } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
@@ -45,7 +47,7 @@ export default function FAQ() {
           </h2>
         </div>
 
-        {/* Modern Animated FAQ Cards List (Concise & Compact Height) */}
+        {/* Modern Animated FAQ Cards List */}
         <div className="flex flex-col gap-2.5 sm:gap-3">
           {faqs.map((faq, index) => {
             const isOpen = hoveredIndex === index;
@@ -98,7 +100,7 @@ export default function FAQ() {
                   </div>
                 </div>
 
-                {/* True Liquid Height Grid Expansion (Calibrated 750ms Sweet Spot) */}
+                {/* Liquid Height Grid Expansion */}
                 <div
                   style={{
                     display: 'grid',

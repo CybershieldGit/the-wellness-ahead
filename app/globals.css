@@ -1,6 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-wellness-bg: #EAE6DC;
+  --color-wellness-cream: #F4F0E6;
+  --color-wellness-card: #F6F3EC;
+  --color-wellness-greenDark: #0D3823;
+  --color-wellness-greenDeep: #062B17;
+  --color-wellness-forest: #0A3B22;
+  --color-wellness-footer: #065F2B;
+  --color-wellness-sage: #98AC8E;
+  --color-wellness-sageDark: #788C6E;
+  --color-wellness-sageLight: #CCD6C3;
+  --color-wellness-pillMuted: #CBD5C3;
+  --color-wellness-pillSoft: #DDD8CB;
+  --color-wellness-border: #D9D3C3;
+  --color-wellness-textDark: #1A2E20;
+  --color-wellness-textMuted: #4F5E52;
+  --color-wellness-textLight: #6B7A6E;
+
+  --font-raleway: "Raleway", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-fraunces: "Fraunces", Georgia, serif;
+  --font-dm: "DM Serif Display", Georgia, serif;
+  --font-sans: "Inter", "Plus Jakarta Sans", system-ui, sans-serif;
+}
 
 @layer base {
   html {
@@ -92,4 +116,20 @@ html.lenis, html.lenis body {
 .animate-swipeUp {
   animation: swipeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: transform, opacity, filter;
+}
+
+/* Smooth Fade In Keyframe */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

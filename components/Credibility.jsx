@@ -35,8 +35,9 @@ export default function Credibility() {
           {credibilityStats.map((item, idx) => (
             <div
               key={idx}
-              className={`flex flex-col justify-center transition-all duration-200 ${idx !== 0 ? 'pt-5 sm:pt-0 lg:pl-8' : ''
-                }`}
+              className={`flex flex-col justify-center transition-all duration-200 ${
+                idx !== 0 ? 'pt-5 sm:pt-0 lg:pl-8' : ''
+              }`}
             >
               {/* Metric Number & Unit */}
               <div className="flex items-baseline gap-2 mb-1">
@@ -62,4 +63,3 @@ export default function Credibility() {
     </section>
   );
 }
-

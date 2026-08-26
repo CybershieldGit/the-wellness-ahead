@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, BarChart3, Puzzle, Laptop, ClipboardCheck, TrendingUp, Sparkles } from 'lucide-react';
+import { Search, BarChart3, Puzzle, Laptop, ClipboardCheck, TrendingUp } from 'lucide-react';
 
 const processSteps = [
   {
@@ -48,7 +50,6 @@ const processSteps = [
 
 export default function Process() {
   const containerRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [smoothProgress, setSmoothProgress] = useState(0);
   const targetProgressRef = useRef(0);
   const currentProgressRef = useRef(0);
@@ -67,7 +68,6 @@ export default function Process() {
       const scrolled = -rect.top;
       const progress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
       targetProgressRef.current = progress;
-      setScrollProgress(progress);
     };
 
     // 60/120fps physics dampening loop for buttery-smooth scroll inking
@@ -117,7 +117,7 @@ export default function Process() {
               </h2>
             </div>
 
-            {/* Simple Minimal Index Counter (Matching Carousel Section) */}
+            {/* Simple Minimal Index Counter */}
             <div className="font-mono text-base sm:text-lg md:text-xl font-bold text-[#0d3822] tracking-tight pb-1.5 select-none self-start md:self-auto">
               <span>{isResting ? '01' : String(activeStep + 1).padStart(2, '0')}</span>
               <span className="text-[#8e9e8f] font-normal text-sm sm:text-base">/06</span>
@@ -187,7 +187,7 @@ export default function Process() {
                         : 'border border-transparent opacity-60 hover:opacity-80'
                     }`}
                   >
-                    {/* 1. Base Muted Background Layer (Always present) */}
+                    {/* 1. Base Muted Background Layer */}
                     <div className="absolute inset-0 bg-[#ede7dc]/55 -z-20"></div>
 
                     {/* 2. Smooth Fade-in Warm Ivory Layer (#fbf9f4) */}

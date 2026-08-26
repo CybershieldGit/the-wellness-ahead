@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,7 +16,8 @@ export default function Navbar() {
         // Swaps precisely when the hero section's bottom line crosses the top viewport edge / navbar
         setIsScrolled(heroRect.bottom <= 80);
       } else {
-        setIsScrolled(window.scrollY > 400);
+        // On pages with light theme hero (like /about), default to crisp light navigation
+        setIsScrolled(true);
       }
     };
 
@@ -33,8 +37,8 @@ export default function Navbar() {
         }`}
       >
         {/* Brand Logo Container with Vertical Swapping Animation */}
-        <a
-          href="#"
+        <Link
+          href="/"
           className="relative flex items-center h-9 sm:h-10 md:h-11 lg:h-[46px] w-[130px] sm:w-[155px] md:w-[175px] overflow-hidden group select-none"
         >
           {/* Logo 1: White SVG Logo (Visible on Hero, slides UP out on scroll) */}
@@ -66,7 +70,7 @@ export default function Navbar() {
               className="h-full w-auto object-contain"
             />
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav Links (Smooth Color Transition) */}
         <div
@@ -74,54 +78,52 @@ export default function Navbar() {
             isScrolled ? 'text-[#143420]' : 'text-white/95'
           }`}
         >
-          <a
-            href="#home"
-            className={`relative font-semibold transition-colors ${
-              isScrolled
-                ? 'text-[#0d3822] after:bg-[#0d3822]'
-                : 'text-white after:bg-white'
-            } after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-full after:h-[2px]`}
+          <Link
+            href="/"
+            className={`transition-colors ${
+              isScrolled ? 'hover:text-[#075f2c]' : 'hover:text-white/80'
+            }`}
           >
             Home
-          </a>
-          <a
-            href="#services"
+          </Link>
+          <Link
+            href="/services"
             className={`transition-colors ${
               isScrolled ? 'hover:text-[#075f2c]' : 'hover:text-white/80'
             }`}
           >
             Services
-          </a>
-          <a
-            href="#insights"
+          </Link>
+          <Link
+            href="/#insights"
             className={`transition-colors ${
               isScrolled ? 'hover:text-[#075f2c]' : 'hover:text-white/80'
             }`}
           >
             Insights
-          </a>
-          <a
-            href="#contact"
-            className={`transition-colors ${
-              isScrolled ? 'hover:text-[#075f2c]' : 'hover:text-white/80'
-            }`}
-          >
-            Contact Us
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            href="/about"
             className={`transition-colors ${
               isScrolled ? 'hover:text-[#075f2c]' : 'hover:text-white/80'
             }`}
           >
             About Us
-          </a>
+          </Link>
+          <Link
+            href="/#contact"
+            className={`transition-colors ${
+              isScrolled ? 'hover:text-[#075f2c]' : 'hover:text-white/80'
+            }`}
+          >
+            Contact Us
+          </Link>
         </div>
 
         {/* Action Button */}
         <div className="hidden sm:block">
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className={`inline-block px-6 py-2 text-xs sm:text-sm font-semibold rounded-full backdrop-blur-md transition-all duration-300 shadow-sm hover:shadow hover:scale-[1.02] ${
               isScrolled
                 ? 'bg-[#0d3822] text-white hover:bg-[#072a18] border border-[#0d3822]'
@@ -129,7 +131,7 @@ export default function Navbar() {
             }`}
           >
             Start Conversation
-          </a>
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -153,48 +155,48 @@ export default function Navbar() {
               : 'bg-[#092214]/95 border-white/25 text-white'
           }`}
         >
-          <a
-            href="#home"
+          <Link
+            href="/"
             onClick={() => setMobileMenuOpen(false)}
             className="text-base font-medium py-1 border-b border-white/15"
           >
             Home
-          </a>
-          <a
-            href="#services"
+          </Link>
+          <Link
+            href="/services"
             onClick={() => setMobileMenuOpen(false)}
             className="text-base py-1 border-b border-white/15 text-white/80 hover:text-white"
           >
             Services
-          </a>
-          <a
-            href="#insights"
+          </Link>
+          <Link
+            href="/#insights"
             onClick={() => setMobileMenuOpen(false)}
             className="text-base py-1 border-b border-white/15 text-white/80 hover:text-white"
           >
             Insights
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            href="/about"
             onClick={() => setMobileMenuOpen(false)}
             className="text-base py-1 border-b border-white/15 text-white/80 hover:text-white"
           >
             About Us
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href="/#contact"
             onClick={() => setMobileMenuOpen(false)}
             className="text-base py-1 text-white/80 hover:text-white"
           >
             Contact Us
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href="/#contact"
             onClick={() => setMobileMenuOpen(false)}
             className="mt-2 text-center py-2.5 px-4 rounded-xl bg-wellness-sage text-wellness-greenDark font-medium"
           >
             Start Conversation
-          </a>
+          </Link>
         </div>
       )}
     </header>

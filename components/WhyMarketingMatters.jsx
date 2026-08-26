@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, ChevronRight, Sparkles } from 'lucide-react';
 
@@ -103,7 +105,6 @@ export default function WhyMarketingMatters() {
 
     startTimer();
 
-    // Handle tab visibility change so timer never drifts when tab is backgrounded
     const handleVisibilityChange = () => {
       if (document.hidden) {
         if (timerRef.current) clearInterval(timerRef.current);
@@ -122,7 +123,6 @@ export default function WhyMarketingMatters() {
 
   const handleSelectIndex = (index) => {
     setActiveIndex(index);
-    // Restart timer from the newly selected index with a clean cadence
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % reasonsList.length);
@@ -152,7 +152,7 @@ export default function WhyMarketingMatters() {
           </p>
         </div>
 
-        {/* 2-Column Side-by-Side Synchronized Interactive Showcase (Flush with Navbar Edges + Zero Extra Gap) */}
+        {/* 2-Column Side-by-Side Synchronized Interactive Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pb-0">
           {/* Left Column (5 Cols): Stacked Nav Headings */}
           <div className="lg:col-span-5 flex flex-col space-y-3 sm:space-y-4">
@@ -205,13 +205,13 @@ export default function WhyMarketingMatters() {
             })}
           </div>
 
-          {/* Right Column (7 Cols): Dynamic Swipe-Up Feature Showcase Card (Light Green #d1ddcc Theme - Scaled Down) */}
+          {/* Right Column (7 Cols): Dynamic Swipe-Up Feature Showcase Card */}
           <div className="lg:col-span-7">
             <div className="bg-[#d1ddcc] text-[#0d3822] rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_16px_40px_rgba(13,56,34,0.10)] border border-[#b8cbb4] relative overflow-hidden min-h-[400px] flex flex-col justify-between">
               {/* Background Ambient Glow */}
               <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#ffffff]/30 rounded-full blur-3xl pointer-events-none"></div>
 
-              {/* Dynamic Swipe-Up Content Container with bulletproof key={activeIndex} */}
+              {/* Dynamic Swipe-Up Content Container */}
               <div
                 key={activeIndex}
                 className="relative z-10 animate-swipeUp"

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
 
 const servicesList = [
@@ -154,7 +156,7 @@ export default function Services() {
           </h2>
         </div>
 
-        {/* Editorial Text-Based Interactive Capability Rows (Slightly Reduced Width) */}
+        {/* Editorial Text-Based Interactive Capability Rows */}
         <div className="max-w-6xl lg:max-w-[1240px] mx-auto">
           <div
             className="border-t border-[#d5ccbe]"
