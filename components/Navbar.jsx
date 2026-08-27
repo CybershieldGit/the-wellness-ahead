@@ -95,7 +95,7 @@ export default function Navbar() {
             Services
           </Link>
           <Link
-            href="/#insights"
+            href="/insights"
             className={`transition-colors ${
               isScrolled ? 'hover:text-[#075f2c]' : 'hover:text-white/80'
             }`}
@@ -111,7 +111,7 @@ export default function Navbar() {
             About Us
           </Link>
           <Link
-            href="/#contact"
+            href="/contact"
             className={`transition-colors ${
               isScrolled ? 'hover:text-[#075f2c]' : 'hover:text-white/80'
             }`}
@@ -123,12 +123,8 @@ export default function Navbar() {
         {/* Action Button */}
         <div className="hidden sm:block">
           <Link
-            href="/#contact"
-            className={`inline-block px-6 py-2 text-xs sm:text-sm font-semibold rounded-full backdrop-blur-md transition-all duration-300 shadow-sm hover:shadow hover:scale-[1.02] ${
-              isScrolled
-                ? 'bg-[#0d3822] text-white hover:bg-[#072a18] border border-[#0d3822]'
-                : 'bg-[#9eb393] text-[#0a2315] hover:bg-[#8da382] border border-[#9eb393]/80'
-            }`}
+            href="/contact"
+            className="inline-block px-6 py-2 text-xs sm:text-sm font-semibold rounded-full backdrop-blur-md transition-all duration-300 shadow-sm hover:shadow-[0_6px_20px_rgba(10,90,99,0.35)] hover:scale-[1.02] bg-[#0A5A63] hover:bg-[#07454C] text-white border border-[#0A5A63]"
           >
             Start Conversation
           </Link>
@@ -170,7 +166,7 @@ export default function Navbar() {
             Services
           </Link>
           <Link
-            href="/#insights"
+            href="/insights"
             onClick={() => setMobileMenuOpen(false)}
             className="text-base py-1 border-b border-white/15 text-white/80 hover:text-white"
           >
@@ -184,16 +180,16 @@ export default function Navbar() {
             About Us
           </Link>
           <Link
-            href="/#contact"
+            href="/contact"
             onClick={() => setMobileMenuOpen(false)}
             className="text-base py-1 text-white/80 hover:text-white"
           >
             Contact Us
           </Link>
           <Link
-            href="/#contact"
+            href="/contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="mt-2 text-center py-2.5 px-4 rounded-xl bg-wellness-sage text-wellness-greenDark font-medium"
+            className="mt-2 text-center py-2.5 px-4 rounded-xl bg-[#0A5A63] text-white font-medium hover:bg-[#07454C] transition-colors"
           >
             Start Conversation
           </Link>

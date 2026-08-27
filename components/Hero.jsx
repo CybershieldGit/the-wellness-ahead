@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const heroBackgroundSlides = [
   {
@@ -93,18 +94,18 @@ export default function Hero() {
 
           {/* Dual Action Buttons */}
           <div className="mt-8 sm:mt-9 flex flex-wrap items-center gap-4 sm:gap-5">
-            <a
-              href="#services"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-medium text-[#112316] bg-[#9eb393] hover:bg-[#8da382] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-[0_8px_25px_rgba(10,90,99,0.35)] hover:shadow-[0_12px_32px_rgba(10,90,99,0.45)] transform hover:-translate-y-0.5"
             >
               Explore Services
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-medium text-white border border-white/50 hover:bg-white/15 hover:border-white/80 backdrop-blur-md transition-all duration-200 shadow-sm"
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-medium text-white border border-white/50 hover:bg-white/15 hover:border-white/80 backdrop-blur-md transition-all duration-300 shadow-sm"
             >
               Start Conversation
-            </a>
+            </Link>
           </div>
         </div>
       </div>

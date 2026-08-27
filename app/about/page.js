@@ -169,13 +169,13 @@ export default function AboutPage() {
               <div className="mt-9 sm:mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-5">
                 <a
                   href="#approach"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-base font-medium text-white bg-[#0e3520] hover:bg-[#072415] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(14,53,32,0.28)] transform hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.38)] transform hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span>Explore Our Approach</span>
                   <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
                 </a>
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-medium text-[#0d3822] bg-[#fbf9f4] hover:bg-white border border-[#d5cbba] hover:border-[#b8cbb4] transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Start Conversation
@@ -470,14 +470,14 @@ export default function AboutPage() {
 
                 <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4">
                   <Link
-                    href="/#services"
-                    className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 rounded-xl text-base font-semibold text-[#092214] bg-[#c5deb9] hover:bg-[#b4d0a6] transition-all duration-300 shadow-[0_8px_25px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_32px_rgba(197,222,185,0.35)] transform hover:-translate-y-0.5 group"
+                    href="/services"
+                    className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 rounded-xl text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-[0_8px_25px_rgba(10,90,99,0.35)] hover:shadow-[0_12px_32px_rgba(10,90,99,0.48)] transform hover:-translate-y-0.5 group border border-[#0A5A63]/60"
                   >
                     <span>Explore Our Services</span>
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                   <Link
-                    href="/#contact"
+                    href="/contact"
                     className="inline-flex items-center justify-center px-8 py-3.5 sm:py-4 rounded-xl text-base font-semibold text-white border border-white/50 hover:bg-white/15 hover:border-white/80 backdrop-blur-md transition-all duration-300 shadow-sm"
                   >
                     Start a Conversation

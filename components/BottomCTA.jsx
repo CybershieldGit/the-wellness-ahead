@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export default function BottomCTA() {
@@ -31,13 +32,13 @@ export default function BottomCTA() {
 
             {/* Action CTA Button */}
             <div className="mt-8 sm:mt-10 flex items-center justify-center">
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-xl text-base font-semibold text-[#092214] bg-[#c5deb9] hover:bg-[#b4d0a6] transition-all duration-300 shadow-[0_8px_25px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_32px_rgba(197,222,185,0.35)] transform hover:-translate-y-0.5 group"
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-xl text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-[0_8px_25px_rgba(10,90,99,0.35)] hover:shadow-[0_12px_32px_rgba(10,90,99,0.5)] transform hover:-translate-y-0.5 group border border-[#0A5A63]/60"
               >
                 <span>Start a Conversation</span>
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
             </div>
           </div>
         </div>

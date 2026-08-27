@@ -39,9 +39,8 @@ export default function FAQ() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
           <h2 className="font-raleway text-3xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight leading-snug">
-            Frequently Asked Questions For <br />
-            <span className="relative inline-block pb-2 mt-0.5">
-              Businesses
+            <span className="relative inline-block pb-2">
+              FAQs for Businesses
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-28 sm:w-36 h-[2.5px] bg-[#8fa687] rounded-full"></span>
             </span>
           </h2>

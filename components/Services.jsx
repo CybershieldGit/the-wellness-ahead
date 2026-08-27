@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 const servicesList = [
   {
@@ -218,12 +219,13 @@ export default function Services() {
 
         {/* CTA Button */}
         <div className="mt-10 sm:mt-12 text-center">
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-sm font-semibold text-white bg-[#0e3520] hover:bg-[#072415] transition-all duration-200 shadow-md hover:shadow-lg hover:scale-[1.02]"
+          <Link
+            href="/services"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-sm font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.35)] hover:scale-[1.02]"
           >
-            View All Services &rarr;
-          </a>
+            <span>View All Services</span>
+            <span>&rarr;</span>
+          </Link>
         </div>
       </div>
     </section>
