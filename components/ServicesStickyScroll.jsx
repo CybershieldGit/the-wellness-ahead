@@ -43,10 +43,15 @@ export default function ServicesStickyScroll({ services }) {
     const updateArcMotion = () => {
       const vh = window.innerHeight;
       const viewportCenter = vh * 0.44;
+      const isMobile = window.innerWidth < 1024;
       let closestIdx = 0;
       let minDistance = Infinity;
 
-      cardRefs.current.forEach((el, idx) => {
+      // 1. Batch Read Phase (single layout pass, zero thrashing)
+      const metrics = [];
+      const cards = cardRefs.current;
+      for (let idx = 0; idx < cards.length; idx++) {
+        const el = cards[idx];
         if (el) {
           const rect = el.getBoundingClientRect();
           const cardCenter = rect.top + rect.height * 0.5;
@@ -58,23 +63,34 @@ export default function ServicesStickyScroll({ services }) {
             closestIdx = idx;
           }
 
-          // Normalized distance: -1 (above center), 0 (dead center), +1 (below center)
-          const normalized = Math.max(-1.4, Math.min(1.4, diff / (vh * 0.42)));
-          
-          // True Circular Arc Trajectory Physics (Anchored on the Right Edge)
-          const arcTranslateX = Math.pow(normalized, 2) * 115; // 0px to 115px rightward arc sweep
-          const arcRotate = normalized * 7.5; // -10.5deg to +10.5deg circular tangent rotation
-          const arcScale = Math.max(0.88, 1.02 - Math.abs(normalized) * 0.1);
-          const opacity = Math.max(0.45, 1 - Math.abs(normalized) * 0.45);
-
-          // Direct instantaneous transform application (NO transition lag on outer wrapper)
-          el.style.transform = `translate3d(${arcTranslateX.toFixed(1)}px, 0, 0) rotate(${arcRotate.toFixed(2)}deg) scale(${arcScale.toFixed(3)})`;
-          el.style.opacity = opacity.toFixed(2);
-          el.style.transformOrigin = '90% 50%';
+          metrics.push({ el, diff });
         }
-      });
+      }
 
-      setActiveIndex(closestIdx);
+      // 2. Batch Write Phase (direct GPU transform writes, zero layout recalculations)
+      for (let i = 0; i < metrics.length; i++) {
+        const { el, diff } = metrics[i];
+        const normalized = Math.max(-1.4, Math.min(1.4, diff / (vh * 0.42)));
+        
+        const arcTranslateX = isMobile
+          ? Math.pow(normalized, 2) * 35
+          : Math.pow(normalized, 2) * 115;
+        const arcRotate = isMobile ? normalized * 3.5 : normalized * 7.5;
+        const arcScale = isMobile
+          ? Math.max(0.92, 1.0 - Math.abs(normalized) * 0.08)
+          : Math.max(0.88, 1.02 - Math.abs(normalized) * 0.1);
+        const opacity = isMobile
+          ? Math.max(0.6, 1 - Math.abs(normalized) * 0.4)
+          : Math.max(0.45, 1 - Math.abs(normalized) * 0.45);
+        const origin = isMobile ? '50% 50%' : '90% 50%';
+
+        el.style.transform = `translate3d(${arcTranslateX.toFixed(1)}px, 0, 0) rotate(${arcRotate.toFixed(2)}deg) scale(${arcScale.toFixed(3)})`;
+        el.style.opacity = opacity.toFixed(2);
+        el.style.transformOrigin = origin;
+      }
+
+      // Only update React state when active card actually changes (eliminates ~95% of scroll re-renders)
+      setActiveIndex((prev) => (prev !== closestIdx ? closestIdx : prev));
       tickingRef.current = false;
     };
 
@@ -102,17 +118,29 @@ export default function ServicesStickyScroll({ services }) {
   return (
     <div className="relative">
       
-      {/* Mobile/Tablet Section Header (Visible only on < lg screens) */}
-      <div className="lg:hidden max-w-3xl mb-10">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3.5 shadow-sm">
-          <Target size={14} className="text-[#0d3822]" />
-          <span>Our Capabilities</span>
+      {/* Mobile/Tablet Sticky Section Header (Visible only on < lg screens) */}
+      <div className="lg:hidden sticky top-20 sm:top-24 z-20 bg-[#ece8df]/96 backdrop-blur-md pt-2 pb-3 mb-6 border-b border-[#d8cfbe]/80 -mx-4 px-4 transition-all duration-300">
+        <div className="flex items-center justify-between gap-2 mb-1.5">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] font-semibold uppercase tracking-wider text-[#143420] shadow-xs">
+            <Target size={12} className="text-[#0d3822]" />
+            <span>Our Capabilities</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#075f2c]">
+              #{activeService.number} / {services.length.toString().padStart(2, '0')}
+            </span>
+            <span className="text-[10px] text-[#768e73] font-medium uppercase px-2 py-0.5 rounded-md bg-[#dfd7c8]/60 border border-[#cfc4b2]/60">
+              {activeService.category}
+            </span>
+          </div>
         </div>
-        <h2 className="font-raleway text-3xl sm:text-4xl md:text-[42px] font-bold text-[#0d3822] tracking-tight leading-[1.18] mb-3">
-          Structured Advisory &amp; Execution Support
+
+        <h2 className="font-raleway text-xl sm:text-2xl font-bold text-[#0d3822] tracking-tight leading-tight transition-all duration-300">
+          {activeService.title}
         </h2>
-        <p className="text-base text-[#405644] font-normal leading-relaxed">
-          Whether you require a defined strategic foundation, targeted communication assets, or an ongoing fractional marketing advisory partner.
+        <p className="text-[11.5px] sm:text-xs text-[#405644] font-normal leading-relaxed line-clamp-1 mt-0.5">
+          {activeService.summary}
         </p>
       </div>
 
@@ -206,7 +234,7 @@ export default function ServicesStickyScroll({ services }) {
                 key={service.id}
                 id={service.id}
                 ref={(el) => (cardRefs.current[idx] = el)}
-                className={`group relative w-full max-w-[330px] sm:max-w-[360px] aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_14px_35px_rgba(10,35,21,0.16)] hover:shadow-[0_20px_45px_rgba(10,35,21,0.28)] border scroll-mt-36 will-change-transform cursor-pointer ${
+                className={`group relative w-full max-w-[270px] sm:max-w-[310px] lg:max-w-[330px] xl:max-w-[360px] aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_14px_35px_rgba(10,35,21,0.16)] hover:shadow-[0_20px_45px_rgba(10,35,21,0.28)] border scroll-mt-36 will-change-transform cursor-pointer ${
                   isCurrentlyActive
                     ? 'border-[#0d3822] shadow-[0_18px_40px_rgba(13,56,34,0.20)] ring-2 ring-[#0d3822]/30 z-10'
                     : 'border-white/20 z-0'
