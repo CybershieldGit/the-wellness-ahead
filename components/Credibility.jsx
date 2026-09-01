@@ -29,19 +29,19 @@ const credibilityStats = [
 
 export default function Credibility() {
   return (
-    <section className="relative z-20 w-full bg-[#fbf9f4] border-y border-[#d5cbba] py-6 sm:py-8">
+    <section className="relative z-20 w-full bg-[#fbf9f4] border-y border-[#d5cbba] py-3 sm:py-8">
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-8 divide-y sm:divide-y-0 lg:divide-x divide-[#d5cbba]/80">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8 lg:gap-8 divide-y-0 sm:divide-y-0 lg:divide-x divide-[#d5cbba]/80">
           {credibilityStats.map((item, idx) => (
             <div
               key={idx}
-              className={`flex flex-col justify-center transition-all duration-200 ${
-                idx !== 0 ? 'pt-5 sm:pt-0 lg:pl-8' : ''
+              className={`flex flex-col justify-center transition-all duration-200 border border-[#d5cbba]/50 sm:border-0 rounded-lg sm:rounded-none p-3 sm:p-0 ${
+                idx !== 0 ? 'sm:pt-0 lg:pl-8' : ''
               }`}
             >
               {/* Metric Number & Unit */}
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="font-raleway text-3xl sm:text-4xl md:text-[38px] font-bold text-[#0d3822] tracking-tight leading-none">
+                <span className="font-raleway text-2xl sm:text-4xl md:text-[38px] font-bold text-[#0d3822] tracking-tight leading-none">
                   {item.value}
                 </span>
                 <span className="text-[11px] font-bold uppercase tracking-widest text-[#617e65]">
