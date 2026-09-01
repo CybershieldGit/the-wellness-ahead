@@ -144,7 +144,7 @@ export default function AboutPage() {
         {/* 2. Hero Section: Signature Organic Light Theme with Mild Interactive Hover Animations */}
         <section
           id="about-hero"
-          className="group relative min-h-[65vh] md:min-h-[72vh] flex items-center justify-center overflow-hidden pt-44 sm:pt-52 md:pt-56 pb-20 sm:pb-24 bg-gradient-to-b from-[#ece8df] via-[#f4efe4] to-[#ece8df] text-center border-b border-[#ded6c7] transition-all duration-700 select-none"
+          className="group relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-32 pb-16 sm:pb-20 bg-gradient-to-b from-[#ece8df] via-[#f4efe4] to-[#ece8df] text-center border-b border-[#ded6c7] transition-all duration-700 select-none"
         >
           {/* Subtle Organic Radial Glows that gently breathe & expand on hover */}
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-[#d1ddcc]/45 rounded-full blur-[100px] pointer-events-none group-hover:scale-125 group-hover:bg-[#c5deb9]/65 transition-all duration-1000 ease-out"></div>
@@ -152,11 +152,12 @@ export default function AboutPage() {
 
           <div className="relative z-20 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center justify-center">
             <div className="max-w-3xl sm:max-w-4xl mx-auto flex flex-col items-center mt-4 sm:mt-6 md:mt-8">
-              {/* Main Headline (Centered with subtle micro-scale and color radiance on hover) */}
-              <h1 className="font-raleway text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.18] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01]">
-                <span className="inline-block transition-colors duration-500">Marketing Built Around the </span>
-                <span className="block mt-1 sm:mt-2 text-[#075f2c] font-bold transition-all duration-500 group-hover:text-[#0b6c34] group-hover:drop-shadow-[0_2px_20px_rgba(7,95,44,0.18)]">
-                  Realities of Wellness.
+              {/* Main Headline (Clean 3-Line Structured Layout) */}
+              <h1 className="font-raleway text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.18] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-1 sm:gap-1.5">
+                <span>Marketing Built</span>
+                <span>Around the Realities</span>
+                <span className="text-[#075f2c] font-bold transition-all duration-500 group-hover:text-[#0b6c34] group-hover:drop-shadow-[0_2px_20px_rgba(7,95,44,0.18)]">
+                  of Wellness.
                 </span>
               </h1>
 

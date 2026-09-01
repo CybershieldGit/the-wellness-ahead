@@ -36,7 +36,7 @@ export default function BrandBanner() {
             <div className="lg:col-span-5 flex justify-center items-center">
               <div className="relative w-full max-w-sm aspect-square rounded-3xl overflow-hidden shadow-lg border border-[#d2c5b3] bg-[#ded5c6] group">
                 <img
-                  src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=900&q=85"
+                  src="/images/brand_banner.png"
                   alt="Premium botanical wellness formulation and amber apothecary packaging"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
