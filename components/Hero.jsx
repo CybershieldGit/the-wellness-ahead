@@ -55,16 +55,16 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-[92vh] md:min-h-screen flex items-center justify-start overflow-hidden pt-36 sm:pt-40 md:pt-44 pb-16 md:pb-20">
-      {/* Cinematic Ambient Background Layer */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-[#ece8df]">
+    <section id="home" className="relative min-h-[75vh] md:min-h-screen flex items-start sm:items-center justify-start overflow-hidden pt-32 sm:pt-40 md:pt-44 pb-6 sm:pb-16 md:pb-20">
+      {/* DESKTOP: Cinematic Ambient Slideshow */}
+      <div className="hidden sm:block absolute inset-0 z-0 pointer-events-none overflow-hidden bg-[#ece8df]">
         {heroBackgroundSlides.map((slide, index) => {
           const isActive = currentSlide === index;
           return (
             <div
               key={index}
-              className={`absolute inset-0 transition-opacity duration-[1400ms] ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                }`}
+              className={`absolute inset-0 transition-opacity duration-[1400ms] ease-in-out translate-z-0 will-change-[opacity] ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              style={{ transform: 'translateZ(0)' }}
             >
               <img
                 src={slide.url}
@@ -76,14 +76,24 @@ export default function Hero() {
         })}
       </div>
 
+      {/* MOBILE: Static right-half ban1 image over beige background */}
+      <div className="sm:hidden absolute inset-0 z-0 pointer-events-none bg-[#ece8df]">
+        <img
+          src="/images/ban_responsive.png"
+          alt="Hero background"
+          className="absolute inset-0 w-full h-full object-cover object-top opacity-90"
+        />
+      </div>
+
+
       {/* Main Hero Content */}
-      <div className="relative z-30 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 pt-2 md:pt-4 mt-2 sm:mt-4 md:mt-6">
+      <div className="relative z-30 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 pt-2 md:pt-4 mt-0 sm:mt-4 md:mt-6">
         <div className="max-w-4xl lg:max-w-[780px]">
 
           {/* Top-Left Emblem with True Slot-Ticker Swipe-Up Animation */}
-          <div className="mb-4 sm:mb-6 flex items-center gap-1.5 sm:gap-2 select-none">
+          <div className="hidden sm:flex mb-4 sm:mb-6 items-center gap-1.5 sm:gap-2 select-none">
             {/* 1. Static Left Emblem Badge (Shifted slightly right and 2px upward) */}
-            <div className="w-[72px] sm:w-[84px] md:w-[94px] h-[72px] sm:h-[84px] md:h-[94px] flex-shrink-0 drop-shadow-xs -translate-y-[2px] translate-x-[3px]">
+            <div className="w-[36px] sm:w-[84px] md:w-[94px] h-[36px] sm:h-[84px] md:h-[94px] flex-shrink-0 drop-shadow-xs -translate-y-[2px] translate-x-[3px]">
               <svg
                 viewBox="0 0 146 157"
                 fill="none"
@@ -128,7 +138,7 @@ export default function Hero() {
             </div>
 
             {/* 2. Synchronized Vertical Text Ticker (Current moves UP, next comes from BELOW) */}
-            <div className="relative h-[62px] sm:h-[72px] md:h-[78px] w-[260px] sm:w-[320px] md:w-[380px] overflow-hidden">
+            <div className="relative h-[62px] sm:h-[72px] md:h-[78px] w-[190px] sm:w-[320px] md:w-[380px] overflow-hidden">
               {heroBackgroundSlides.map((slide, index) => {
                 const isActive = currentSlide === index;
                 const isPrev =
@@ -152,8 +162,8 @@ export default function Hero() {
                     <span
                       className="text-[#3F4039] font-medium uppercase font-sans leading-none mb-1.5"
                       style={{
-                        fontSize: `${slide.line1Size * 0.9}px`,
-                        letterSpacing: `${slide.line1Spacing}px`,
+                        fontSize: `clamp(10px, 3.5vw, ${slide.line1Size * 0.9}px)`,
+                        letterSpacing: `clamp(1.8px, 0.9vw, ${slide.line1Spacing}px)`,
                       }}
                     >
                       {slide.line1}
@@ -163,8 +173,8 @@ export default function Hero() {
                     <span
                       className="text-[#3F4039] font-medium uppercase font-sans leading-none"
                       style={{
-                        fontSize: `${slide.line2Size * 0.9}px`,
-                        letterSpacing: `${slide.line2Spacing}px`,
+                        fontSize: `clamp(10px, 3.5vw, ${slide.line2Size * 0.9}px)`,
+                        letterSpacing: `clamp(1.8px, 0.9vw, ${slide.line2Spacing}px)`,
                       }}
                     >
                       {slide.line2}
@@ -181,28 +191,28 @@ export default function Hero() {
           </div>
 
           {/* Main Headline (Exact Reference Typography & Editorial Serif Aesthetic) */}
-          <h1 className="font-fraunces text-4xl sm:text-5xl md:text-[54px] lg:text-[58px] xl:text-[62px] text-[#0f2a17] font-normal tracking-[-0.015em] leading-[1.08] flex flex-col gap-1 sm:gap-1.5 max-w-fit drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
+          <h1 className="font-fraunces text-4xl sm:text-5xl md:text-[54px] lg:text-[58px] xl:text-[62px] text-black sm:text-[#0f2a17] font-normal tracking-[-0.015em] leading-[1.08] flex flex-col gap-1 sm:gap-1.5 max-w-fit drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)] sm:drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
             <span className="block">Strategic Marketing</span>
             <span className="block">That Makes Wellness</span>
             <span className="block">Brands Stand Out.</span>
           </h1>
 
           {/* Subtitle matching reference layout & typography */}
-          <p className="mt-6 sm:mt-7 text-base sm:text-lg md:text-[18px] text-[#2c4031] font-normal leading-[1.55] max-w-lg drop-shadow-[0_1px_1px_rgba(255,255,255,0.3)]">
+          <p className="mt-4 sm:mt-6 md:mt-7 text-sm sm:text-lg md:text-[18px] text-[#1c2e22] sm:text-[#2c4031] font-normal leading-[1.6] sm:leading-[1.55] max-w-lg drop-shadow-none sm:drop-shadow-[0_1px_1px_rgba(255,255,255,0.3)]">
             We help wellness brands build trust, strengthen their positioning, and grow through focused, industry-specific marketing.
           </p>
 
           {/* Dual Action Buttons matching reference mockup */}
-          <div className="mt-8 sm:mt-9 flex flex-wrap items-center gap-3.5 sm:gap-4">
+          <div className="mt-5 sm:mt-9 flex flex-row flex-wrap items-start sm:items-center gap-2.5 sm:gap-3.5 md:gap-4">
             <Link
               href="/services"
-              className="inline-flex items-center justify-center px-7 sm:px-8 py-3.5 rounded-xl text-base font-semibold text-white bg-[#255953] hover:bg-[#1a433e] transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+              className="hidden sm:inline-flex items-center justify-center px-4 sm:px-7 md:px-8 py-2 sm:py-3.5 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold text-white bg-[#255953] hover:bg-[#1a433e] transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
             >
               Explore Services
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-7 sm:px-8 py-3.5 rounded-xl text-base font-semibold text-[#273f2c] border border-[#526655] hover:bg-black/5 transition-all duration-300 shadow-2xs"
+              className="inline-flex items-center justify-center px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 rounded-lg sm:rounded-xl text-base sm:text-base font-semibold text-white sm:text-[#273f2c] bg-[#255953] sm:bg-transparent border-0 sm:border sm:border-[#526655] hover:bg-[#1a433e] sm:hover:bg-black/5 transition-all duration-300 shadow-sm sm:shadow-2xs"
             >
               Start Conversation
             </Link>

@@ -94,44 +94,47 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Navigation Links (Vertically Stacked) (3 Cols) */}
-          <div className="lg:col-span-3">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#c5deb9] block mb-4">
-              Navigation
-            </span>
-            <ul className="flex flex-col space-y-3 text-sm sm:text-[15px] text-[#c7dcc3]">
-              {pages.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={item.href}
-                    className="hover:text-white transition-colors duration-200 inline-flex items-center gap-2 group"
-                  >
-                    <span className="text-[#64875f] text-sm font-mono group-hover:text-[#c5deb9] transition-colors">›</span>
-                    <span>{item.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Columns 2 & 3: Navigation & Legal/Policy Links (Side-by-Side on Mobile, 3 Cols Each on Desktop) */}
+          <div className="lg:col-span-6 grid grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+            {/* Column 2: Navigation Links */}
+            <div>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#c5deb9] block mb-3 sm:mb-4">
+                Navigation
+              </span>
+              <ul className="flex flex-col space-y-2.5 sm:space-y-3 text-xs sm:text-sm md:text-[15px] text-[#c7dcc3]">
+                {pages.map((item, i) => (
+                  <li key={i}>
+                    <Link
+                      href={item.href}
+                      className="hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 sm:gap-2 group"
+                    >
+                      <span className="text-[#64875f] text-xs sm:text-sm font-mono group-hover:text-[#c5deb9] transition-colors">›</span>
+                      <span>{item.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Column 3: Legal & Regulatory Links (Vertically Stacked) (3 Cols) */}
-          <div className="lg:col-span-3">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#c5deb9] block mb-4">
-              Legal &amp; Policy
-            </span>
-            <ul className="flex flex-col space-y-3 text-sm sm:text-[15px] text-[#c7dcc3]">
-              {legal.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={item.href}
-                    className="hover:text-white transition-colors duration-200 inline-flex items-center gap-2 group"
-                  >
-                    <span className="text-[#64875f] text-sm font-mono group-hover:text-[#c5deb9] transition-colors">›</span>
-                    <span>{item.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Column 3: Legal & Regulatory Links */}
+            <div>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#c5deb9] block mb-3 sm:mb-4">
+                Legal &amp; Policy
+              </span>
+              <ul className="flex flex-col space-y-2.5 sm:space-y-3 text-xs sm:text-sm md:text-[15px] text-[#c7dcc3]">
+                {legal.map((item, i) => (
+                  <li key={i}>
+                    <Link
+                      href={item.href}
+                      className="hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 sm:gap-2 group"
+                    >
+                      <span className="text-[#64875f] text-xs sm:text-sm font-mono group-hover:text-[#c5deb9] transition-colors">›</span>
+                      <span>{item.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
         </div>

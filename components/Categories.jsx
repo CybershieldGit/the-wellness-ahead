@@ -150,7 +150,7 @@ export default function Categories() {
         {/* Header Bar with Dynamic Minimal Category Counter */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h2 className="font-raleway text-2xl sm:text-3xl md:text-[34px] lg:text-[40px] xl:text-[44px] text-[#0d3822] font-semibold tracking-tight whitespace-nowrap">
+            <h2 className="font-raleway text-[27px] sm:text-3xl md:text-[34px] lg:text-[40px] xl:text-[44px] text-[#0d3822] font-semibold tracking-tight whitespace-normal sm:whitespace-nowrap">
               Built for the{' '}
               <span className="relative inline-block pb-1">
                 Business of Wellness
@@ -187,7 +187,7 @@ export default function Categories() {
               return (
                 <div
                   key={index}
-                  className="category-card-item group relative flex-shrink-0 flex-[0_0_calc((100%-3*1rem)/4)] sm:flex-[0_0_calc((100%-3*1.25rem)/4)] md:flex-[0_0_calc((100%-3*1.5rem)/4)] w-[calc((100%-3*1rem)/4)] sm:w-[calc((100%-3*1.25rem)/4)] md:w-[calc((100%-3*1.5rem)/4)] max-w-[calc((100%-3*1.5rem)/4)] min-w-0 h-[375px] sm:h-[400px] md:h-[420px] bg-[#143520] overflow-hidden rounded-2xl sm:rounded-[1.25rem] transition-all duration-300 ease-out select-none cursor-pointer flex flex-col justify-between will-change-transform hover:scale-[1.05] hover:z-30 hover:shadow-[0_20px_40px_rgba(13,56,34,0.22)] hover:ring-2 hover:ring-[#c5deb9]/90"
+                  className="category-card-item group relative flex-shrink-0 flex-[0_0_calc((100%-1*1rem)/2.3)] sm:flex-[0_0_calc((100%-3*1.25rem)/4)] md:flex-[0_0_calc((100%-3*1.5rem)/4)] w-[calc((100%-1*1rem)/2.3)] sm:w-[calc((100%-3*1.25rem)/4)] md:w-[calc((100%-3*1.5rem)/4)] min-w-0 h-[320px] sm:h-[400px] md:h-[420px] bg-[#143520] overflow-hidden rounded-2xl sm:rounded-[1.25rem] transition-all duration-300 ease-out select-none cursor-pointer flex flex-col justify-between will-change-transform hover:scale-[1.05] hover:z-30 hover:shadow-[0_20px_40px_rgba(13,56,34,0.22)] hover:ring-2 hover:ring-[#c5deb9]/90"
                   style={{
                     transformOrigin: 'center center',
                   }}

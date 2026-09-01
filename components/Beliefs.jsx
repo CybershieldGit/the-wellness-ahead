@@ -24,7 +24,7 @@ const beliefPillars = [
 
 export default function Beliefs() {
   return (
-    <section id="beliefs" className="relative py-20 md:py-28 bg-[#d1ddcc] overflow-hidden">
+    <section id="beliefs" className="relative pt-10 pb-12 sm:py-16 md:py-28 bg-[#d1ddcc] overflow-hidden">
       {/* Dynamic Keyframes for Continuous Seamless Moving Live Waves */}
       <style>{`
         @keyframes waveFlowForward {
@@ -61,14 +61,14 @@ export default function Beliefs() {
         </div>
       </div>
 
-      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10 pt-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10 pt-2 sm:pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-14 items-center">
           
           {/* Left Column: Premium Studio Imagery with Luxury Framing (5 Cols) */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md bg-[#f6f3eb] rounded-[2.5rem] p-4 sm:p-5 shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#c4d0bf]">
+            <div className="relative w-full max-w-[280px] sm:max-w-md bg-[#f6f3eb] rounded-2xl sm:rounded-[2.5rem] p-2.5 sm:p-5 shadow-[0_12px_30px_rgba(13,56,34,0.1)] sm:shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#c4d0bf]">
               {/* Central Botanical Science Image */}
-              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#ded8ca]">
+              <div className="relative aspect-[16/10] sm:aspect-[4/5] rounded-xl sm:rounded-[2rem] overflow-hidden bg-[#ded8ca]">
                 <img
                   src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=900&q=80"
                   alt="Organic botanical nutraceutical formulation and apothecary extracts"
@@ -77,13 +77,13 @@ export default function Beliefs() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d3822]/60 via-transparent to-transparent"></div>
                 
                 {/* Floating Philosophy Badge inside image */}
-                <div className="absolute bottom-5 left-5 right-5">
-                  <div className="bg-[#fbf9f4]/95 backdrop-blur-md border border-[#c5deb9]/50 rounded-2xl p-4 shadow-lg text-left">
-                    <div className="flex items-center gap-2 text-[11px] font-mono font-bold uppercase tracking-widest text-[#0d3822] mb-1">
-                      <span className="w-2 h-2 rounded-full bg-[#0d3822]"></span>
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-5 sm:left-5 sm:right-5">
+                  <div className="bg-[#fbf9f4]/95 backdrop-blur-md border border-[#c5deb9]/50 rounded-xl sm:rounded-2xl p-2.5 sm:p-4 shadow-lg text-left">
+                    <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-widest text-[#0d3822] mb-0.5 sm:mb-1">
+                      <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#0d3822]"></span>
                       Core Manifesto
                     </div>
-                    <p className="text-xs text-[#3a5440] font-medium leading-relaxed">
+                    <p className="text-[11px] sm:text-xs text-[#3a5440] font-medium leading-snug sm:leading-relaxed">
                       "Positioning first, promotion second. Clarity prevents wasted capital."
                     </p>
                   </div>
@@ -95,43 +95,43 @@ export default function Beliefs() {
           {/* Right Column: Editorial Title, Manifesto & 3 Core Pillars (7 Cols) */}
           <div className="lg:col-span-7">
             {/* Header */}
-            <div className="mb-6 text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3.5 shadow-sm">
-                <Sparkles size={14} className="text-[#0d3822]" />
+            <div className="mb-4 sm:mb-6 text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-2.5 sm:mb-3.5 shadow-sm">
+                <Sparkles size={13} className="text-[#0d3822]" />
                 <span>Our Guiding Philosophy</span>
               </div>
 
-              <h2 className="font-raleway text-3xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight">
-                <span className="relative inline-block pb-3">
+              <h2 className="font-raleway text-[28px] sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight leading-tight">
+                <span className="relative inline-block pb-2 sm:pb-3">
                   What We Believe
-                  <span className="absolute bottom-0 left-0 w-32 sm:w-44 h-[3px] bg-[#788e6e] rounded-full"></span>
+                  <span className="absolute bottom-0 left-0 w-32 sm:w-44 h-[2.5px] sm:h-[3px] bg-[#788e6e] rounded-full"></span>
                 </span>
               </h2>
 
               {/* Editorial Statement */}
-              <p className="font-raleway text-lg sm:text-xl md:text-[22px] text-[#0d3822] font-medium leading-snug mt-6 max-w-2xl">
+              <p className="font-raleway text-sm sm:text-xl md:text-[22px] text-[#0d3822] font-medium leading-snug mt-3 sm:mt-6 max-w-2xl">
                 We believe sustainable category leadership in wellness is built on <span className="text-[#194a2e] font-bold">clinical trust</span>, <span className="text-[#194a2e] font-bold">scientific clarity</span>, and <span className="text-[#194a2e] font-bold">ethical conviction</span>.
               </p>
             </div>
 
             {/* 3 Meaningful Pillars - Pure Editorial Typography Presentation (No Cards) */}
-            <div className="mt-8 border-t border-[#b8cbb4]/80 divide-y divide-[#b8cbb4]/80">
+            <div className="mt-4 sm:mt-8 border-t border-[#b8cbb4]/80 divide-y divide-[#b8cbb4]/80">
               {beliefPillars.map((pillar, index) => (
                 <div
                   key={index}
-                  className="py-5 sm:py-6 flex items-start gap-4 sm:gap-6 group"
+                  className="py-3 sm:py-5 md:py-6 flex items-start gap-3 sm:gap-6 group"
                 >
                   {/* Subtle Monospace Index Badge */}
-                  <span className="text-xs sm:text-sm font-mono font-bold text-[#0d3822] bg-[#c5deb9]/70 px-2.5 py-1 rounded-lg flex-shrink-0 mt-0.5 shadow-sm">
+                  <span className="text-[11px] sm:text-sm font-mono font-bold text-[#0d3822] bg-[#c5deb9]/70 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg flex-shrink-0 mt-0.5 shadow-sm">
                     {pillar.number}
                   </span>
 
                   {/* Typographic Title & Body */}
                   <div className="flex-1">
-                    <h3 className="font-raleway text-lg sm:text-xl md:text-[21px] font-bold text-[#0d3822] tracking-tight group-hover:text-[#184a2b] transition-colors">
+                    <h3 className="font-raleway text-base sm:text-xl md:text-[21px] font-bold text-[#0d3822] tracking-tight group-hover:text-[#184a2b] transition-colors">
                       {pillar.title}
                     </h3>
-                    <p className="text-sm sm:text-[15px] text-[#354f3b] leading-relaxed font-normal mt-1.5 max-w-xl">
+                    <p className="text-xs sm:text-[15px] text-[#354f3b] leading-relaxed font-normal mt-1 sm:mt-1.5 max-w-xl">
                       {pillar.description}
                     </p>
                   </div>

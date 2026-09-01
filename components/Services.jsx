@@ -116,7 +116,7 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative py-14 md:py-18 bg-[#ece8df] overflow-hidden select-none"
+      className="relative py-12 sm:py-14 md:py-18 bg-[#ece8df] overflow-hidden select-none"
     >
       {/* Floating Cursor-Following Vertical Portrait Image Preview with Top-Backward Lean */}
       <div
@@ -147,10 +147,10 @@ export default function Services() {
 
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <h2 className="font-raleway text-3xl sm:text-4xl md:text-[38px] text-[#0d3822] font-semibold tracking-tight leading-snug">
+        <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-10">
+          <h2 className="font-raleway text-[27px] sm:text-4xl md:text-[38px] text-[#0d3822] font-semibold tracking-tight leading-snug">
             Where Strategy Meets Market <br />
-            <span className="relative inline-block pb-2.5 mt-1">
+            <span className="relative inline-block pb-2 sm:pb-2.5 mt-1">
               Communication
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-[2.5px] bg-[#8fa687] rounded-full"></span>
             </span>
@@ -170,17 +170,17 @@ export default function Services() {
                 <div
                   key={index}
                   onMouseEnter={(e) => handleRowMouseEnter(e, index)}
-                  className={`group border-b border-[#d5ccbe] py-5 sm:py-6 px-4 sm:px-6 transition-all duration-350 cursor-pointer flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 rounded-2xl ${
+                  className={`group border-b border-[#d5ccbe] py-3.5 sm:py-6 px-3 sm:px-6 transition-all duration-350 cursor-pointer flex flex-col lg:flex-row lg:items-center justify-between gap-2 sm:gap-6 rounded-xl sm:rounded-2xl ${
                     isHovered
                       ? 'bg-[#fbf9f4]/90 shadow-[0_8px_26px_rgba(13,56,34,0.07)]'
                       : 'bg-transparent hover:bg-[#fbf9f4]/50'
                   }`}
                 >
                   {/* Left: Index + Title + Capability Tag */}
-                  <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 max-w-xl">
+                  <div className="flex items-start sm:items-center gap-3 sm:gap-5 max-w-xl">
                     {/* Number Badge */}
                     <span
-                      className={`font-raleway text-xs sm:text-sm font-semibold px-3 py-1 rounded-full border transition-colors duration-300 ${
+                      className={`font-raleway text-xs sm:text-sm font-semibold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border transition-colors duration-300 ${
                         isHovered
                           ? 'bg-[#0d3822] text-[#fbf9f4] border-[#0d3822]'
                           : 'bg-[#dfd7c8] text-[#556b53] border-[#cec2af]'
@@ -199,7 +199,7 @@ export default function Services() {
                       >
                         {service.title}
                       </h3>
-                      <p className="text-xs sm:text-[13px] font-medium text-[#7a8e78] tracking-wide uppercase mt-1">
+                      <p className="text-xs sm:text-[13px] font-medium text-[#7a8e78] tracking-wide uppercase mt-0.5 sm:mt-1">
                         {service.tag}
                       </p>
                     </div>
@@ -218,10 +218,10 @@ export default function Services() {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-10 sm:mt-12 text-center">
+        <div className="mt-6 sm:mt-12 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-sm font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.35)] hover:scale-[1.02]"
+            className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3 sm:py-3.5 rounded-xl text-sm font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.35)] hover:scale-[1.02]"
           >
             <span>View All Services</span>
             <span>&rarr;</span>

@@ -1,22 +1,34 @@
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
-import SmoothScroll from '../../components/SmoothScroll';
-import Link from 'next/link';
-import { Sparkles, ArrowRight, ShieldCheck, Target, Compass, CheckCircle2, Award } from 'lucide-react';
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import SmoothScroll from "../../components/SmoothScroll";
+import Link from "next/link";
+import {
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  Target,
+  Compass,
+  CheckCircle2,
+  Award,
+} from "lucide-react";
 
 export const metadata = {
-  title: "About Us — Marketing Built Around the Realities of Wellness | The Wellness Ahead",
-  description: "Learn about The Wellness Ahead — an independent strategic marketing and insights platform helping nutraceutical, herbal, and wellness brands communicate with clarity, scientific trust, and ethical growth.",
+  title:
+    "About Us — Marketing Built Around the Realities of Wellness | The Wellness Ahead",
+  description:
+    "Learn about The Wellness Ahead — an independent strategic marketing and insights platform helping nutraceutical, herbal, and wellness brands communicate with clarity, scientific trust, and ethical growth.",
   keywords: [
     "About The Wellness Ahead",
     "Wellness Marketing Strategy Platform",
     "Nutraceutical Strategic Advisory",
     "Scientific Communication for Supplements",
-    "Herbal Brand Positioning Expertise"
+    "Herbal Brand Positioning Expertise",
   ],
   openGraph: {
-    title: "About Us — Marketing Built Around the Realities of Wellness | The Wellness Ahead",
-    description: "The Wellness Ahead is an independent strategic marketing and insights platform created to help wellness businesses communicate with greater clarity, relevance and confidence.",
+    title:
+      "About Us — Marketing Built Around the Realities of Wellness | The Wellness Ahead",
+    description:
+      "The Wellness Ahead is an independent strategic marketing and insights platform created to help wellness businesses communicate with greater clarity, relevance and confidence.",
     url: "https://thewellnessahead.com/about",
     siteName: "The Wellness Ahead",
     images: [
@@ -33,7 +45,8 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "About Us — Strategic Marketing for Wellness Brands",
-    description: "Independent strategic marketing and insights for the wellness industry.",
+    description:
+      "Independent strategic marketing and insights for the wellness industry.",
     images: ["/images/banner.png"],
   },
   alternates: {
@@ -48,85 +61,119 @@ const aboutJsonLd = {
     {
       "@type": "AboutPage",
       "@id": "https://thewellnessahead.com/about/#webpage",
-      "url": "https://thewellnessahead.com/about",
-      "name": "About The Wellness Ahead",
-      "description": "Strategic marketing and insights platform helping wellness brands communicate with clarity, scientific trust, and ethical growth.",
-      "breadcrumb": {
+      url: "https://thewellnessahead.com/about",
+      name: "About The Wellness Ahead",
+      description:
+        "Strategic marketing and insights platform helping wellness brands communicate with clarity, scientific trust, and ethical growth.",
+      breadcrumb: {
         "@type": "BreadcrumbList",
-        "itemListElement": [
+        itemListElement: [
           {
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://thewellnessahead.com"
+            position: 1,
+            name: "Home",
+            item: "https://thewellnessahead.com",
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "About Us",
-            "item": "https://thewellnessahead.com/about"
-          }
-        ]
+            position: 2,
+            name: "About Us",
+            item: "https://thewellnessahead.com/about",
+          },
+        ],
       },
-      "mainEntity": {
+      mainEntity: {
         "@type": "Organization",
         "@id": "https://thewellnessahead.com/#organization",
-        "name": "The Wellness Ahead",
-        "url": "https://thewellnessahead.com",
-        "logo": "https://thewellnessahead.com/images/Color.svg",
-        "knowsAbout": [
+        name: "The Wellness Ahead",
+        url: "https://thewellnessahead.com",
+        logo: "https://thewellnessahead.com/images/Color.svg",
+        knowsAbout: [
           "Nutraceutical Marketing",
           "Scientific Communication",
           "Dietary Supplements Positioning",
-          "Functional Food Strategy"
-        ]
-      }
-    }
-  ]
+          "Functional Food Strategy",
+        ],
+      },
+    },
+  ],
 };
 
 // 7-Point Strategic Approach Methodology
 const approachSteps = [
-  { step: '01', title: 'Industry Understanding', desc: 'Category dynamics, regulatory realities, and clinical nuances.' },
-  { step: '02', title: 'Market Research', desc: 'Competitor void discovery, purchase triggers, and market gap mapping.' },
-  { step: '03', title: 'Audience Clarity', desc: 'Aligning practitioner authority with consumer lifestyle drivers.' },
-  { step: '04', title: 'Strategic Positioning', desc: 'Establishing defensible, value-driven category differentiation.' },
-  { step: '05', title: 'Responsible Communication', desc: 'Science translated into clear, compelling, hype-free narratives.' },
-  { step: '06', title: 'Practical Execution', desc: 'Connecting messaging directly to commercial channels and pipelines.' },
-  { step: '07', title: 'Continuous Improvement', desc: 'Iterating strategy based on market shifts and real performance.' },
+  {
+    step: "01",
+    title: "Industry Understanding",
+    desc: "Category dynamics, regulatory realities, and clinical nuances.",
+  },
+  {
+    step: "02",
+    title: "Market Research",
+    desc: "Competitor void discovery, purchase triggers, and market gap mapping.",
+  },
+  {
+    step: "03",
+    title: "Audience Clarity",
+    desc: "Aligning practitioner authority with consumer lifestyle drivers.",
+  },
+  {
+    step: "04",
+    title: "Strategic Positioning",
+    desc: "Establishing defensible, value-driven category differentiation.",
+  },
+  {
+    step: "05",
+    title: "Responsible Communication",
+    desc: "Science translated into clear, compelling, hype-free narratives.",
+  },
+  {
+    step: "06",
+    title: "Practical Execution",
+    desc: "Connecting messaging directly to commercial channels and pipelines.",
+  },
+  {
+    step: "07",
+    title: "Continuous Improvement",
+    desc: "Iterating strategy based on market shifts and real performance.",
+  },
 ];
 
 // 5 Core Brand Values
 const brandValues = [
   {
-    number: '01',
-    title: 'Clarity',
-    description: 'Make complex ideas easier to understand and act upon without diluting authority.',
+    number: "01",
+    title: "Clarity",
+    description:
+      "Make complex ideas easier to understand and act upon without diluting authority.",
   },
   {
-    number: '02',
-    title: 'Trust',
-    description: 'Prioritise credible, consistent and responsible communication that earns consumer confidence.',
+    number: "02",
+    title: "Trust",
+    description:
+      "Prioritise credible, consistent and responsible communication that earns consumer confidence.",
   },
   {
-    number: '03',
-    title: 'Relevance',
-    description: 'Build strategy around real-world market dynamics, genuine audience needs, and commercial realities.',
+    number: "03",
+    title: "Relevance",
+    description:
+      "Build strategy around real-world market dynamics, genuine audience needs, and commercial realities.",
   },
   {
-    number: '04',
-    title: 'Research',
-    description: 'Use insight, evidence, and clinical substance to guide every strategic marketing decision.',
+    number: "04",
+    title: "Research",
+    description:
+      "Use insight, evidence, and clinical substance to guide every strategic marketing decision.",
   },
   {
-    number: '05',
-    title: 'Ethical Growth',
-    description: 'Support long-term commercial expansion without relying on misleading claims or short-lived gimmicks.',
+    number: "05",
+    title: "Ethical Growth",
+    description:
+      "Support long-term commercial expansion without relying on misleading claims or short-lived gimmicks.",
   },
 ];
 
 // Enforce Static Site Generation (SSG) for ultra-fast CDN delivery & perfect SEO crawling
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 export default function AboutPage() {
   return (
@@ -163,7 +210,9 @@ export default function AboutPage() {
 
               {/* Subtitle (Centered with subtle color depth on hover) */}
               <p className="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-[#344d39] font-normal leading-[1.75] tracking-[0.02em] max-w-2xl mx-auto text-center transition-colors duration-500 group-hover:text-[#1e3b26]">
-                The Wellness Ahead is an independent strategic marketing and insights platform created to help wellness businesses communicate with greater clarity, relevance and confidence.
+                The Wellness Ahead is an independent strategic marketing and
+                insights platform created to help wellness businesses
+                communicate with greater clarity, relevance and confidence.
               </p>
 
               {/* Dual Action CTA Buttons (Interactive Hover Elevations) */}
@@ -173,7 +222,9 @@ export default function AboutPage() {
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.38)] transform hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span>Explore Our Approach</span>
-                  <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+                  <span className="transition-transform duration-300 group-hover:translate-y-0.5">
+                    ↓
+                  </span>
                 </a>
                 <Link
                   href="/contact"
@@ -190,7 +241,6 @@ export default function AboutPage() {
         <section className="py-16 sm:py-24 bg-[#ece8df]">
           <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              
               {/* Left Column: Narrative Copy & Perspective (7 Cols) */}
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-4 shadow-sm">
@@ -207,28 +257,37 @@ export default function AboutPage() {
 
                 <div className="space-y-5 text-base sm:text-lg text-[#324b37] leading-relaxed font-normal">
                   <p>
-                    Many wellness businesses invest heavily in product development, quality sourcing, clinical research, manufacturing excellence, and bio-available formulation.
+                    Many wellness businesses invest heavily in product
+                    development, quality sourcing, clinical research,
+                    manufacturing excellence, and bio-available formulation.
                   </p>
                   <p className="font-medium text-[#0d3822] text-lg sm:text-xl border-l-3 border-[#8fa687] pl-5 my-6 py-1 italic">
-                    "Yet their marketing often fails to communicate those strengths effectively to the market."
+                    "Yet their marketing often fails to communicate those
+                    strengths effectively to the market."
                   </p>
                   <p>
-                    The Wellness Ahead exists to help close that gap by bringing together deep industry understanding, strategic thinking, business perspective, and clear, ethical communication.
+                    The Wellness Ahead exists to help close that gap by bringing
+                    together deep industry understanding, strategic thinking,
+                    business perspective, and clear, ethical communication.
                   </p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-[#d6ccbc] flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm font-semibold text-[#0d3822]">
                   <span className="flex items-center gap-2">
-                    <CheckCircle2 size={17} className="text-[#075f2c]" /> Industry Understanding
+                    <CheckCircle2 size={17} className="text-[#075f2c]" />{" "}
+                    Industry Understanding
                   </span>
                   <span className="flex items-center gap-2">
-                    <CheckCircle2 size={17} className="text-[#075f2c]" /> Strategic Thinking
+                    <CheckCircle2 size={17} className="text-[#075f2c]" />{" "}
+                    Strategic Thinking
                   </span>
                   <span className="flex items-center gap-2">
-                    <CheckCircle2 size={17} className="text-[#075f2c]" /> Business Perspective
+                    <CheckCircle2 size={17} className="text-[#075f2c]" />{" "}
+                    Business Perspective
                   </span>
                   <span className="flex items-center gap-2">
-                    <CheckCircle2 size={17} className="text-[#075f2c]" /> Clear Communication
+                    <CheckCircle2 size={17} className="text-[#075f2c]" /> Clear
+                    Communication
                   </span>
                 </div>
               </div>
@@ -238,7 +297,7 @@ export default function AboutPage() {
                 <div className="group relative w-full max-w-md bg-[#f4efe4] rounded-[2.5rem] p-4 sm:p-5 shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#d2c5b3] transition-all duration-500 hover:shadow-[0_24px_60px_rgba(13,56,34,0.18)]">
                   <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#ded5c6]">
                     <img
-                      src="/images/banner2.png"
+                      src="/images/insights3.png"
                       alt="Nutraceutical and botanical formulation innovation"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
@@ -251,14 +310,14 @@ export default function AboutPage() {
                           Strategic Alignment
                         </div>
                         <p className="text-xs text-[#3a5440] font-medium leading-relaxed">
-                          Translating clinical credibility into irresistible commercial value.
+                          Translating clinical credibility into irresistible
+                          commercial value.
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
@@ -267,7 +326,11 @@ export default function AboutPage() {
         <section className="relative py-20 md:py-28 bg-[#d1ddcc] overflow-hidden">
           {/* Top Live Wave */}
           <div className="absolute top-0 left-0 right-0 h-14 sm:h-16 md:h-20 w-full overflow-hidden leading-none z-0 pointer-events-none">
-            <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current">
+            <svg
+              viewBox="0 0 2400 120"
+              preserveAspectRatio="none"
+              className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current"
+            >
               <path d="M0,60 C200,112 400,112 600,60 C800,12 1000,12 1200,60 C1400,112 1600,112 1800,60 C2000,12 2200,12 2400,60 L2400,0 L0,0 Z"></path>
             </svg>
           </div>
@@ -299,7 +362,9 @@ export default function AboutPage() {
                     Our Purpose
                   </h3>
                   <p className="text-sm sm:text-[15px] text-[#344d3a] leading-relaxed font-normal">
-                    To help wellness businesses make better marketing decisions and communicate their value in ways that build understanding, trust and sustainable growth.
+                    To help wellness businesses make better marketing decisions
+                    and communicate their value in ways that build
+                    understanding, trust and sustainable growth.
                   </p>
                 </div>
               </div>
@@ -317,7 +382,8 @@ export default function AboutPage() {
                     Our Vision
                   </h3>
                   <p className="text-sm sm:text-[15px] text-[#344d3a] leading-relaxed font-normal">
-                    To become a trusted strategic marketing and knowledge platform for the wellness and nutraceutical industry.
+                    To become a trusted strategic marketing and knowledge
+                    platform for the wellness and nutraceutical industry.
                   </p>
                 </div>
               </div>
@@ -335,7 +401,10 @@ export default function AboutPage() {
                     Our Mission
                   </h3>
                   <p className="text-sm sm:text-[15px] text-[#344d3a] leading-relaxed font-normal">
-                    To provide focused marketing strategy, practical communication support, valuable industry insights and ethical growth direction for businesses across the wellness ecosystem.
+                    To provide focused marketing strategy, practical
+                    communication support, valuable industry insights and
+                    ethical growth direction for businesses across the wellness
+                    ecosystem.
                   </p>
                 </div>
               </div>
@@ -344,7 +413,11 @@ export default function AboutPage() {
 
           {/* Bottom Live Wave */}
           <div className="absolute bottom-0 left-0 right-0 h-14 sm:h-16 md:h-20 w-full overflow-hidden leading-none z-0 pointer-events-none">
-            <svg viewBox="0 0 2400 120" preserveAspectRatio="none" className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current">
+            <svg
+              viewBox="0 0 2400 120"
+              preserveAspectRatio="none"
+              className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current"
+            >
               <path d="M0,60 C200,8 400,8 600,60 C800,108 1000,108 1200,60 C1400,8 1600,8 1800,60 C2000,108 2200,108 2400,60 L2400,120 L0,120 Z"></path>
             </svg>
           </div>
@@ -353,7 +426,6 @@ export default function AboutPage() {
         {/* 5. Our Approach: 7-Step Strategic Flow (Architectural Layout, Not Too Many Cards) */}
         <section id="approach" className="py-20 sm:py-28 bg-[#ece8df]">
           <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
-            
             <div className="max-w-3xl mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-4 shadow-sm">
                 <span>Methodology</span>
@@ -362,7 +434,9 @@ export default function AboutPage() {
                 Our Strategic Approach
               </h2>
               <p className="font-raleway text-lg sm:text-xl md:text-[22px] text-[#0d3822] font-medium leading-snug">
-                We do not begin with content calendars or advertising. We begin by understanding the product, audience, market, business objective and the barriers affecting trust and decision-making.
+                We do not begin with content calendars or advertising. We begin
+                by understanding the product, audience, market, business
+                objective and the barriers affecting trust and decision-making.
               </p>
             </div>
 
@@ -388,14 +462,12 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
         {/* 6. Our Core Values: 5 Guiding Principles (Clean Editorial Split) */}
         <section className="py-20 sm:py-28 bg-[#fbf9f4] border-y border-[#d5cbba]">
           <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
-            
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3.5 shadow-sm">
@@ -406,7 +478,8 @@ export default function AboutPage() {
                 Our Core Values
               </h2>
               <p className="mt-4 text-base sm:text-lg text-[#4a5f4c] font-normal max-w-xl mx-auto">
-                The non-negotiable principles that guide our strategy, communication, and advisory relationships.
+                The non-negotiable principles that guide our strategy,
+                communication, and advisory relationships.
               </p>
             </div>
 
@@ -441,12 +514,13 @@ export default function AboutPage() {
                     Thoughtful Partnership
                   </h3>
                   <p className="text-sm sm:text-[14.5px] text-[#d6e4d2] leading-relaxed font-normal">
-                    The Wellness Ahead aims to become more than a service provider. It seeks to be a thoughtful strategic partner for businesses building the future of wellness.
+                    The Wellness Ahead aims to become more than a service
+                    provider. It seeks to be a thoughtful strategic partner for
+                    businesses building the future of wellness.
                   </p>
                 </div>
               </div>
             </div>
-
           </div>
         </section>
 
@@ -466,7 +540,9 @@ export default function AboutPage() {
                 </h2>
 
                 <p className="mt-6 text-sm sm:text-base text-[#d2e0ce] font-normal leading-relaxed max-w-xl mx-auto">
-                  Partner with an advisory platform that speaks the language of formulation, clinical credibility, and sustainable market expansion.
+                  Partner with an advisory platform that speaks the language of
+                  formulation, clinical credibility, and sustainable market
+                  expansion.
                 </p>
 
                 <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -475,7 +551,10 @@ export default function AboutPage() {
                     className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 rounded-xl text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-[0_8px_25px_rgba(10,90,99,0.35)] hover:shadow-[0_12px_32px_rgba(10,90,99,0.48)] transform hover:-translate-y-0.5 group border border-[#0A5A63]/60"
                   >
                     <span>Explore Our Services</span>
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight
+                      size={18}
+                      className="group-hover:translate-x-1 transition-transform duration-300"
+                    />
                   </Link>
                   <Link
                     href="/contact"

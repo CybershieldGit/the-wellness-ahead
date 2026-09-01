@@ -126,6 +126,42 @@ export default function Process() {
 
           {/* 6 Connected Steps Roadmap with Scroll-Driven Vine Inking */}
           <div className="relative w-full py-4">
+            {/* Freehand Gestural Botanical Connecting Path (Mobile/Tablet 2-Col SVG) */}
+            <div className="block lg:hidden absolute inset-0 pointer-events-none z-0">
+              <svg
+                className="w-full h-full"
+                viewBox="0 0 100 100"
+                fill="none"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* 1. Subtle background dotted guide trace */}
+                <path
+                  d="M 25 9 L 75 9 C 96 9, 96 25.75, 50 25.75 C 4 25.75, 4 42.5, 25 42.5 L 75 42.5 C 96 42.5, 96 59.25, 50 59.25 C 4 59.25, 4 76, 25 76 L 75 76"
+                  stroke="#b5c4af"
+                  strokeWidth="2"
+                  strokeDasharray="6 6"
+                  strokeLinecap="round"
+                  vectorEffect="non-scaling-stroke"
+                />
+
+                {/* 2. Scroll-Driven Inked Vine Path on Mobile */}
+                <path
+                  pathLength="1000"
+                  d="M 25 9 L 75 9 C 96 9, 96 25.75, 50 25.75 C 4 25.75, 4 42.5, 25 42.5 L 75 42.5 C 96 42.5, 96 59.25, 50 59.25 C 4 59.25, 4 76, 25 76 L 75 76"
+                  stroke="#0d3822"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  vectorEffect="non-scaling-stroke"
+                  style={{
+                    strokeDasharray: '1000',
+                    strokeDashoffset: `${1000 * (1 - Math.min(inkingProgress * 1.05, 1))}`,
+                  }}
+                />
+              </svg>
+            </div>
+
             {/* Freehand Gestural Botanical Connecting Path (Desktop SVG) */}
             <div className="hidden lg:block absolute top-[44px] left-0 right-0 h-[60px] pointer-events-none z-0">
               <svg
