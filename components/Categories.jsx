@@ -8,7 +8,7 @@ const categories = [
     tag: 'Formulation',
     title: 'Nutraceuticals',
     description: 'Science-backed nutrients, vitamins, and bio-available supplements engineered for optimal vitality.',
-    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Nutraceuticals.png',
     stats: 'Clinical Credibility',
   },
   {
@@ -16,7 +16,7 @@ const categories = [
     tag: 'Heritage',
     title: 'Herbal & Ayurvedic',
     description: 'Ancient botanical wisdom reimagined through rigorous modern extraction and pure processing.',
-    image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80',
+    image: '/images/herbal.png',
     stats: 'Time-Tested Purity',
   },
   {
@@ -24,7 +24,7 @@ const categories = [
     tag: 'Wellness',
     title: 'Dietary Supplements',
     description: 'Daily tailored nutritional support designed to enhance immunity, cognition, and longevity.',
-    image: 'https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Dietary_supplements.png',
     stats: 'Daily Performance',
   },
   {
@@ -32,7 +32,7 @@ const categories = [
     tag: 'Nutrition',
     title: 'Functional Foods',
     description: 'Nutrient-dense superfoods, functional beverages, and elixirs that seamlessly blend taste with healing.',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Functional_Foods.png',
     stats: 'Active Nourishment',
   },
   {
@@ -40,7 +40,7 @@ const categories = [
     tag: 'Sourcing',
     title: 'Botanical Ingredients',
     description: 'Pure, potent, and sustainably harvested plant extracts cultivated with ethical agricultural practices.',
-    image: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Botanical_Ingredients.png',
     stats: '100% Traceable',
   },
   {
@@ -48,7 +48,7 @@ const categories = [
     tag: 'Manufacturing',
     title: 'Contract Manufacturing',
     description: 'State-of-the-art cGMP certified facilities delivering end-to-end production with uncompromised precision.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+    image: '/images/contract.png',
     stats: 'cGMP Certified',
   },
   {
@@ -56,7 +56,7 @@ const categories = [
     tag: 'Branding',
     title: 'Private-Label Products',
     description: 'Turnkey market-ready formulations tailored to elevate your brand identity and accelerate go-to-market speed.',
-    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80',
+    image: '/images/private_label.png',
     stats: 'Turnkey Solutions',
   },
   {
@@ -174,12 +174,6 @@ export default function Categories() {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="overflow-hidden relative w-full -my-6 py-6 sm:-my-8 sm:py-8 px-3 sm:px-5">
-          {/* Left Edge Fade-Out Gradient Mask */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-gradient-to-r from-[#ece8df] via-[#ece8df]/85 to-transparent pointer-events-none z-30"></div>
-
-          {/* Right Edge Fade-Out Gradient Mask */}
-          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-gradient-to-l from-[#ece8df] via-[#ece8df]/85 to-transparent pointer-events-none z-30"></div>
-
           {/* Horizontal Track with Continuous Infinite Glide */}
           <div
             ref={trackRef}
