@@ -38,14 +38,14 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-3.5 sm:top-5 left-0 right-0 z-50 px-4 sm:px-8 lg:px-12 max-w-[1440px] mx-auto pointer-events-none">
+    <header className="fixed top-3.5 sm:top-5 inset-x-0 w-full z-50 px-4 sm:px-8 lg:px-12 max-w-[1440px] mx-auto pointer-events-none box-border">
       <nav
-        className="pointer-events-auto flex items-center justify-between px-6 sm:px-8 lg:px-10 py-2 sm:py-2.5 md:py-3 rounded-full transition-all duration-500 ease-out bg-[#fbf9f4]/92 backdrop-blur-2xl border border-[#d9d0c1] text-[#0d3822] shadow-[0_14px_36px_rgba(13,56,34,0.12),0_1px_2px_rgba(0,0,0,0.05)] hover:bg-[#ffffff]/95 hover:shadow-[0_18px_42px_rgba(13,56,34,0.16)]"
+        className="pointer-events-auto w-full flex items-center justify-between px-5 sm:px-8 lg:px-10 py-3 sm:py-2.5 md:py-3 rounded-full transition-all duration-500 ease-out bg-[#fbf9f4]/92 backdrop-blur-2xl border border-[#d9d0c1] text-[#0d3822] shadow-[0_14px_36px_rgba(13,56,34,0.12),0_1px_2px_rgba(0,0,0,0.05)] hover:bg-[#ffffff]/95 hover:shadow-[0_18px_42px_rgba(13,56,34,0.16)]"
       >
         {/* Brand Logo Container */}
         <Link
           href="/"
-          className="relative flex items-center h-9 sm:h-10 md:h-11 lg:h-[46px] w-[130px] sm:w-[155px] md:w-[175px] overflow-hidden group select-none"
+          className="relative flex items-center h-10 sm:h-10 md:h-11 lg:h-[46px] w-[145px] sm:w-[155px] md:w-[175px] overflow-hidden group select-none"
         >
           <img
             src="/images/Color.svg"
