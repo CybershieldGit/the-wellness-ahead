@@ -138,16 +138,16 @@ function LeadCaptureForm() {
   };
 
   return (
-    <div className="bg-[#fbf9f4] border border-[#d6ccba] rounded-3xl p-6 sm:p-7 xl:p-8 shadow-[0_18px_45px_rgba(13,56,34,0.09)]">
+    <div className="bg-[#fbf9f4] border border-[#d6ccba] rounded-2xl sm:rounded-3xl p-4 sm:p-6 xl:p-7 shadow-[0_18px_45px_rgba(13,56,34,0.09)]">
       {submitted ? (
-        <div className="py-12 text-center flex flex-col items-center justify-center animate-fade-in">
-          <div className="w-14 h-14 rounded-full bg-[#0d3822] text-[#c5deb9] flex items-center justify-center mb-5 shadow-md">
-            <CheckCircle2 size={32} />
+        <div className="py-10 text-center flex flex-col items-center justify-center animate-fade-in">
+          <div className="w-12 h-12 rounded-full bg-[#0d3822] text-[#c5deb9] flex items-center justify-center mb-4 shadow-md">
+            <CheckCircle2 size={28} />
           </div>
-          <h3 className="font-raleway text-2xl font-bold text-[#0d3822] mb-2">
+          <h3 className="font-raleway text-xl sm:text-2xl font-bold text-[#0d3822] mb-1.5">
             Enquiry Received.
           </h3>
-          <p className="text-sm text-[#3e5642] max-w-sm mx-auto leading-relaxed mb-6">
+          <p className="text-xs sm:text-sm text-[#3e5642] max-w-sm mx-auto leading-relaxed mb-5">
             Thank you for reaching out. A senior strategist will review your business context and connect with you within 24–48 hours.
           </p>
           <button
@@ -166,16 +166,16 @@ function LeadCaptureForm() {
                 description: ''
               });
             }}
-            className="px-6 py-2.5 rounded-xl bg-[#0A5A63] text-white text-xs font-semibold hover:bg-[#07454C] transition-colors"
+            className="px-5 py-2 rounded-xl bg-[#0A5A63] text-white text-xs font-semibold hover:bg-[#07454C] transition-colors"
           >
             Submit Another Requirement
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-3.5">
           
-          <div className="border-b border-[#e2d8c8] pb-3 mb-2">
-            <h3 className="font-raleway text-xl sm:text-2xl font-bold text-[#0d3822]">
+          <div className="border-b border-[#e2d8c8] pb-2 mb-1">
+            <h3 className="font-raleway text-lg sm:text-xl font-bold text-[#0d3822]">
               Initiate Strategic Enquiry
             </h3>
             <p className="text-xs text-[#526a57] mt-0.5">
@@ -184,9 +184,9 @@ function LeadCaptureForm() {
           </div>
 
           {/* Row 1: Name & Company */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
             <div>
-              <label className="block text-xs font-bold text-[#0d3822] mb-1">
+              <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
                 Name <span className="text-[#a43b2d]">*</span>
               </label>
               <input
@@ -196,12 +196,12 @@ function LeadCaptureForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your full name"
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
+                className="w-full px-3 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#0d3822] mb-1">
+              <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
                 Company <span className="text-[#a43b2d]">*</span>
               </label>
               <input
@@ -211,15 +211,15 @@ function LeadCaptureForm() {
                 value={formData.company}
                 onChange={handleChange}
                 placeholder="Brand / Company name"
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
+                className="w-full px-3 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
               />
             </div>
           </div>
 
           {/* Row 2: Business Email & Phone */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
             <div>
-              <label className="block text-xs font-bold text-[#0d3822] mb-1">
+              <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
                 Business Email <span className="text-[#a43b2d]">*</span>
               </label>
               <input
@@ -229,13 +229,13 @@ function LeadCaptureForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="name@company.com"
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
+                className="w-full px-3 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#0d3822] mb-1">
-                Phone <span className="text-[10px] text-[#738a6f] font-normal">(optional)</span>
+              <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
+                Phone <span className="text-xs text-[#738a6f] font-normal">(optional)</span>
               </label>
               <input
                 type="tel"
@@ -243,15 +243,15 @@ function LeadCaptureForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="+1 (555) 000-0000"
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
+                className="w-full px-3 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
               />
             </div>
           </div>
 
           {/* Row 3: Website or LinkedIn */}
           <div>
-            <label className="block text-xs font-bold text-[#0d3822] mb-1">
-              Website or LinkedIn <span className="text-[10px] text-[#738a6f] font-normal">(optional)</span>
+            <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
+              Website or LinkedIn <span className="text-xs text-[#738a6f] font-normal">(optional)</span>
             </label>
             <input
               type="text"
@@ -259,14 +259,14 @@ function LeadCaptureForm() {
               value={formData.website}
               onChange={handleChange}
               placeholder="https://yourbrand.com or linkedin.com/in/..."
-              className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
+              className="w-full px-3 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
             />
           </div>
 
           {/* Row 4: Type of Business & Service Required */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
             <div>
-              <label className="block text-xs font-bold text-[#0d3822] mb-1">
+              <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
                 Type of Business <span className="text-[#a43b2d]">*</span>
               </label>
               <select
@@ -274,7 +274,7 @@ function LeadCaptureForm() {
                 required
                 value={formData.businessType}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all cursor-pointer"
+                className="w-full px-3 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all cursor-pointer"
               >
                 <option value="">Select type</option>
                 {businessTypes.map((type, idx) => (
@@ -286,7 +286,7 @@ function LeadCaptureForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#0d3822] mb-1">
+              <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
                 Service Required <span className="text-[#a43b2d]">*</span>
               </label>
               <select
@@ -294,7 +294,7 @@ function LeadCaptureForm() {
                 required
                 value={formData.serviceRequired}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all cursor-pointer font-medium"
+                className="w-full px-3 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all cursor-pointer font-medium"
               >
                 <option value="">Select a service</option>
                 {serviceOptions.map((service, idx) => (
@@ -307,9 +307,9 @@ function LeadCaptureForm() {
           </div>
 
           {/* Row 5: Project Stage & Approximate Requirement */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
             <div>
-              <label className="block text-xs font-bold text-[#0d3822] mb-1">
+              <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
                 Project Stage <span className="text-[#a43b2d]">*</span>
               </label>
               <select
@@ -317,7 +317,7 @@ function LeadCaptureForm() {
                 required
                 value={formData.projectStage}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all cursor-pointer"
+                className="w-full px-3 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all cursor-pointer"
               >
                 <option value="">Select stage</option>
                 {projectStages.map((stage, idx) => (
@@ -329,7 +329,7 @@ function LeadCaptureForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#0d3822] mb-1">
+              <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
                 Approximate Requirement
               </label>
               <input
@@ -338,45 +338,45 @@ function LeadCaptureForm() {
                 value={formData.approximateRequirement}
                 onChange={handleChange}
                 placeholder="e.g. 3-Month Retainer, Q3 Launch..."
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
+                className="w-full px-3 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all"
               />
             </div>
           </div>
 
           {/* Row 6: Brief Project Description */}
           <div>
-            <label className="block text-xs font-bold text-[#0d3822] mb-1">
+            <label className="block text-[14px] sm:text-[15px] font-semibold text-[#0d3822] mb-1">
               Brief Project Description <span className="text-[#a43b2d]">*</span>
             </label>
             <textarea
               name="description"
               required
-              rows={3}
+              rows={2}
               value={formData.description}
               onChange={handleChange}
               placeholder="Tell us what you are building and where your marketing feels stuck..."
-              className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-xs focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all resize-y"
+              className="w-full px-3 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-white border border-[#d2c7b5] text-[#1c2e22] placeholder-[#9bb098] text-[13px] sm:text-sm focus:outline-none focus:ring-1.5 focus:ring-[#075f2c] focus:border-transparent transition-all resize-y"
             ></textarea>
           </div>
 
           {/* Reassurance note */}
-          <p className="text-[11px] text-[#5f7862] leading-tight italic">
+          <p className="text-[11px] sm:text-xs text-[#5f7862] leading-tight italic">
             You do not need to arrive with a perfect brief. A clear conversation is often the best place to begin.
           </p>
 
           {/* Error Feedback Message */}
           {errorMessage && (
-            <div className="p-3 rounded-xl bg-[#fdf2f2] border border-[#f5c2c2] text-[#a43b2d] text-xs font-medium animate-fade-in">
+            <div className="p-2.5 rounded-xl bg-[#fdf2f2] border border-[#f5c2c2] text-[#a43b2d] text-xs font-medium animate-fade-in">
               {errorMessage}
             </div>
           )}
 
           {/* Submit Button */}
-          <div>
+          <div className="pt-0.5">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl text-sm font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.38)] transform hover:-translate-y-0.5 group disabled:opacity-75 disabled:cursor-not-allowed"
+              className="w-full inline-flex items-center justify-center gap-2 py-3 sm:py-3.5 px-6 rounded-xl text-sm sm:text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.38)] transform hover:-translate-y-0.5 group disabled:opacity-75 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <span>Processing Enquiry...</span>
@@ -414,73 +414,27 @@ export default function ContactPage() {
                 
                 {/* Hero Headline & Narrative */}
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] font-semibold uppercase tracking-wider text-[#143420] mb-3 shadow-xs">
-                    <MessageSquare size={12} className="text-[#0d3822]" />
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3.5 shadow-xs">
+                    <MessageSquare size={13} className="text-[#0d3822]" />
                     <span>Direct Strategic Consultation</span>
                   </div>
 
-                  <h1 className="font-raleway text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] text-[#0d3822] tracking-tight font-bold leading-[1.18] mb-3">
+                  <h1 className="font-raleway text-[38px] xs:text-[42px] sm:text-[46px] md:text-5xl lg:text-[40px] xl:text-[44px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.14] mb-4">
                     Tell Us What You Are Building and <br />
-                    <span className="text-[#075f2c]">
+                    <span className="text-[#075f2c] font-bold">
                       Where Your Marketing Feels Stuck.
                     </span>
                   </h1>
 
-                  <p className="text-sm sm:text-[15px] text-[#3e5642] font-normal leading-relaxed">
+                  <p className="text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.65] tracking-[0.01em]">
                     Share your current requirement, challenge or business objective. A focused conversation can help clarify the right next step.
                   </p>
                 </div>
 
-                {/* Quick Consultation FAQ Accordion Cards with Smooth Hover Reveal */}
-                <div>
-                  <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-[#d8cfbe]">
-                    <div className="flex items-center gap-1.5">
-                      <Compass size={14} className="text-[#075f2c]" />
-                      <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#075f2c]">
-                        Consultation FAQs
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono text-[#738a6f]">
-                      Hover to reveal answer
-                    </span>
-                  </div>
 
-                  <div className="space-y-2">
-                    {commonQuestions.map((item, idx) => (
-                      <div
-                        key={idx}
-                        className="group bg-[#fbf9f4] hover:bg-[#f6f1e6] border border-[#d8cfbe] hover:border-[#8fa687] rounded-xl p-3 sm:p-3.5 transition-all duration-300 shadow-xs cursor-pointer"
-                      >
-                        {/* Question Title Bar */}
-                        <div className="flex items-center justify-between gap-2.5">
-                          <div className="flex items-center gap-2">
-                            <span className="w-4.5 h-4.5 rounded-full bg-[#dfd7c8] text-[#0d3822] group-hover:bg-[#0d3822] group-hover:text-[#c5deb9] flex items-center justify-center text-[9.5px] font-mono font-bold transition-colors duration-300 flex-shrink-0">
-                              0{idx + 1}
-                            </span>
-                            <h4 className="text-xs sm:text-[13px] font-bold text-[#0d3822] group-hover:text-[#075f2c] transition-colors leading-snug">
-                              {item.q}
-                            </h4>
-                          </div>
-                          <span className="text-xs font-mono text-[#738a6f] group-hover:text-[#075f2c] group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0">
-                            ↓
-                          </span>
-                        </div>
 
-                        {/* Hover Reveal Answer Container */}
-                        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-out">
-                          <div className="overflow-hidden">
-                            <p className="text-[11.5px] sm:text-xs text-[#3e5642] leading-relaxed pt-2 mt-1.5 border-t border-[#dfd6c6]">
-                              {item.a}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Confidentiality Guaranteed Direct Contact Strip */}
-                <div className="p-4 sm:p-4.5 rounded-xl bg-[#092214] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-md border border-[#1b4329]">
+                {/* Confidentiality Guaranteed Direct Contact Strip (Desktop Position) */}
+                <div className="hidden lg:flex p-4 sm:p-4.5 rounded-xl bg-[#092214] text-white flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-md border border-[#1b4329]">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#c5deb9]">
                       <Mail size={15} />
@@ -511,6 +465,27 @@ export default function ContactPage() {
                 }>
                   <LeadCaptureForm />
                 </Suspense>
+
+                {/* Confidentiality Guaranteed Direct Contact Strip (Mobile Position: After the Form) */}
+                <div className="lg:hidden mt-6 p-4 rounded-2xl bg-[#092214] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-md border border-[#1b4329]">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#c5deb9]">
+                      <Mail size={15} />
+                    </div>
+                    <div>
+                      <span className="text-[10.5px] text-[#9bb597] block font-mono">
+                        Direct Strategic Desk
+                      </span>
+                      <a href="mailto:hello@thewellnessahead.com" className="text-xs font-medium text-white hover:text-[#c5deb9] transition-colors">
+                        hello@thewellnessahead.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <span className="text-[10px] font-mono text-[#9bb597] uppercase">
+                    Proprietary Discretion Guaranteed
+                  </span>
+                </div>
               </div>
 
             </div>

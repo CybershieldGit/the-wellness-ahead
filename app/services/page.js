@@ -400,7 +400,7 @@ export default function ServicesPage() {
           <div className="relative z-20 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center justify-center">
             <div className="max-w-3xl sm:max-w-4xl mx-auto flex flex-col items-center mt-4 sm:mt-6 md:mt-8">
               {/* Main Headline (Clean 3-Line Structured Layout) */}
-              <h1 className="font-raleway text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.18] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-1 sm:gap-1.5">
+              <h1 className="font-raleway text-[38px] xs:text-[42px] sm:text-[46px] md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.14] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-1 sm:gap-1.5">
                 <span>Strategic Marketing Services</span>
                 <span>for Wellness &amp;</span>
                 <span className="text-[#075f2c] font-bold transition-all duration-500 group-hover:text-[#0b6c34] group-hover:drop-shadow-[0_2px_20px_rgba(7,95,44,0.18)]">
@@ -409,7 +409,7 @@ export default function ServicesPage() {
               </h1>
 
               {/* Subtitle */}
-              <p className="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-[#344d39] font-normal leading-[1.75] tracking-[0.02em] max-w-3xl mx-auto text-center transition-colors duration-500 group-hover:text-[#1e3b26]">
+              <p className="mt-6 sm:mt-7 text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.65] tracking-[0.01em] max-w-3xl mx-auto text-center transition-colors duration-500 group-hover:text-[#1e3b26]">
                 From brand clarity and product communication to digital presence
                 and ongoing consulting, our services help wellness businesses
                 strengthen how they are understood, trusted and positioned in

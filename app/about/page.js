@@ -200,7 +200,7 @@ export default function AboutPage() {
           <div className="relative z-20 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center justify-center">
             <div className="max-w-3xl sm:max-w-4xl mx-auto flex flex-col items-center mt-4 sm:mt-6 md:mt-8">
               {/* Main Headline (Clean 3-Line Structured Layout) */}
-              <h1 className="font-raleway text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.18] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-1 sm:gap-1.5">
+              <h1 className="font-raleway text-[38px] xs:text-[42px] sm:text-[46px] md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.14] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-1 sm:gap-1.5">
                 <span>Marketing Built</span>
                 <span>Around the Realities</span>
                 <span className="text-[#075f2c] font-bold transition-all duration-500 group-hover:text-[#0b6c34] group-hover:drop-shadow-[0_2px_20px_rgba(7,95,44,0.18)]">
@@ -209,7 +209,7 @@ export default function AboutPage() {
               </h1>
 
               {/* Subtitle (Centered with subtle color depth on hover) */}
-              <p className="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-[#344d39] font-normal leading-[1.75] tracking-[0.02em] max-w-2xl mx-auto text-center transition-colors duration-500 group-hover:text-[#1e3b26]">
+              <p className="mt-6 sm:mt-7 text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.65] tracking-[0.01em] max-w-2xl mx-auto text-center transition-colors duration-500 group-hover:text-[#1e3b26]">
                 The Wellness Ahead is an independent strategic marketing and
                 insights platform created to help wellness businesses
                 communicate with greater clarity, relevance and confidence.
@@ -294,8 +294,8 @@ export default function AboutPage() {
 
               {/* Right Column: Studio Framing & Apothecary Media (5 Cols) */}
               <div className="lg:col-span-5 flex justify-center">
-                <div className="group relative w-full max-w-md bg-[#f4efe4] rounded-[2.5rem] p-4 sm:p-5 shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#d2c5b3] transition-all duration-500 hover:shadow-[0_24px_60px_rgba(13,56,34,0.18)]">
-                  <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#ded5c6]">
+                <div className="group relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-md bg-[#f4efe4] rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] p-3 sm:p-4 lg:p-5 shadow-[0_16px_40px_rgba(13,56,34,0.12)] border border-[#d2c5b3] transition-all duration-500 hover:shadow-[0_24px_60px_rgba(13,56,34,0.18)]">
+                  <div className="relative aspect-[4/5] rounded-xl sm:rounded-2xl lg:rounded-[2rem] overflow-hidden bg-[#ded5c6]">
                     <img
                       src="/images/insights3.png"
                       alt="Nutraceutical and botanical formulation innovation"
@@ -304,12 +304,12 @@ export default function AboutPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0d3822]/70 via-transparent to-transparent pointer-events-none"></div>
 
                     {/* Floating Manifesto Badge */}
-                    <div className="absolute bottom-5 left-5 right-5 z-10">
-                      <div className="bg-[#fbf9f4]/95 backdrop-blur-md border border-[#c5deb9]/50 rounded-2xl p-4 shadow-lg text-left transform group-hover:-translate-y-1 transition-transform duration-300">
-                        <div className="text-[10.5px] font-mono font-bold uppercase tracking-widest text-[#0d3822] mb-1">
+                    <div className="absolute bottom-3.5 left-3.5 right-3.5 sm:bottom-5 sm:left-5 sm:right-5 z-10">
+                      <div className="bg-[#fbf9f4]/95 backdrop-blur-md border border-[#c5deb9]/50 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-lg text-left transform group-hover:-translate-y-1 transition-transform duration-300">
+                        <div className="text-[10px] sm:text-[10.5px] font-mono font-bold uppercase tracking-widest text-[#0d3822] mb-1">
                           Strategic Alignment
                         </div>
-                        <p className="text-xs text-[#3a5440] font-medium leading-relaxed">
+                        <p className="text-[11px] sm:text-xs text-[#3a5440] font-medium leading-relaxed">
                           Translating clinical credibility into irresistible
                           commercial value.
                         </p>
@@ -323,45 +323,49 @@ export default function AboutPage() {
         </section>
 
         {/* 4. Purpose, Vision & Mission: The Strategic Triad (Wave Divider Ambience) */}
-        <section className="relative py-20 md:py-28 bg-[#d1ddcc] overflow-hidden">
+        <section className="relative py-8 sm:py-14 md:py-28 bg-[#d1ddcc] overflow-hidden">
           {/* Top Live Wave */}
-          <div className="absolute top-0 left-0 right-0 h-14 sm:h-16 md:h-20 w-full overflow-hidden leading-none z-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-7 sm:h-14 md:h-20 w-full overflow-hidden leading-none z-0 pointer-events-none">
             <svg
               viewBox="0 0 2400 120"
               preserveAspectRatio="none"
-              className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current"
+              className="w-full h-7 sm:h-14 md:h-20 text-[#ece8df] fill-current"
             >
               <path d="M0,60 C200,112 400,112 600,60 C800,12 1000,12 1200,60 C1400,112 1600,112 1800,60 C2000,12 2200,12 2400,60 L2400,0 L0,0 Z"></path>
             </svg>
           </div>
 
-          <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10 pt-4">
+          <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10 pt-1 sm:pt-4">
             {/* Header */}
-            <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3.5 shadow-sm">
-                <Compass size={14} className="text-[#0d3822]" />
+            <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-10 lg:mb-18">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[10.5px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-2 sm:mb-3.5 shadow-sm">
+                <Compass size={12} className="text-[#0d3822]" />
                 <span>Our North Star</span>
               </div>
-              <h2 className="font-raleway text-3xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight">
-                Purpose, Vision & Mission
+              <h2 className="font-raleway text-2xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight">
+                Purpose, Vision &amp; Mission
               </h2>
             </div>
 
             {/* Triad Column Presentation (Clean Typographic Architecture) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-5 lg:gap-10">
               {/* Purpose */}
-              <div className="bg-[#fbf9f4]/85 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-[#b8cbb4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="bg-[#fbf9f4]/85 backdrop-blur-md rounded-xl sm:rounded-3xl p-4 sm:p-6 lg:p-10 border border-[#b8cbb4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#0d3822] text-[#fbf9f4] flex items-center justify-center mb-6 shadow-sm">
-                    <Target size={22} />
+                  <div className="flex items-center gap-3 mb-2.5 sm:mb-4">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-[#0d3822] text-[#fbf9f4] flex items-center justify-center shadow-sm">
+                      <Target size={16} className="sm:w-[22px] sm:h-[22px]" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-[#56755a] block">
+                        01 / Foundational Goal
+                      </span>
+                      <h3 className="font-raleway text-lg sm:text-2xl font-bold text-[#0d3822] tracking-tight">
+                        Our Purpose
+                      </h3>
+                    </div>
                   </div>
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#56755a] block mb-2">
-                    01 / Foundational Goal
-                  </span>
-                  <h3 className="font-raleway text-2xl font-bold text-[#0d3822] tracking-tight mb-4">
-                    Our Purpose
-                  </h3>
-                  <p className="text-sm sm:text-[15px] text-[#344d3a] leading-relaxed font-normal">
+                  <p className="text-[13px] sm:text-[15px] text-[#344d3a] leading-relaxed font-normal">
                     To help wellness businesses make better marketing decisions
                     and communicate their value in ways that build
                     understanding, trust and sustainable growth.
@@ -370,18 +374,22 @@ export default function AboutPage() {
               </div>
 
               {/* Vision */}
-              <div className="bg-[#fbf9f4]/85 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-[#b8cbb4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="bg-[#fbf9f4]/85 backdrop-blur-md rounded-xl sm:rounded-3xl p-4 sm:p-6 lg:p-10 border border-[#b8cbb4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#0d3822] text-[#fbf9f4] flex items-center justify-center mb-6 shadow-sm">
-                    <Compass size={22} />
+                  <div className="flex items-center gap-3 mb-2.5 sm:mb-4">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-[#0d3822] text-[#fbf9f4] flex items-center justify-center shadow-sm">
+                      <Compass size={16} className="sm:w-[22px] sm:h-[22px]" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-[#56755a] block">
+                        02 / Long-Term Horizon
+                      </span>
+                      <h3 className="font-raleway text-lg sm:text-2xl font-bold text-[#0d3822] tracking-tight">
+                        Our Vision
+                      </h3>
+                    </div>
                   </div>
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#56755a] block mb-2">
-                    02 / Long-Term Horizon
-                  </span>
-                  <h3 className="font-raleway text-2xl font-bold text-[#0d3822] tracking-tight mb-4">
-                    Our Vision
-                  </h3>
-                  <p className="text-sm sm:text-[15px] text-[#344d3a] leading-relaxed font-normal">
+                  <p className="text-[13px] sm:text-[15px] text-[#344d3a] leading-relaxed font-normal">
                     To become a trusted strategic marketing and knowledge
                     platform for the wellness and nutraceutical industry.
                   </p>
@@ -389,18 +397,22 @@ export default function AboutPage() {
               </div>
 
               {/* Mission */}
-              <div className="bg-[#fbf9f4]/85 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-[#b8cbb4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="bg-[#fbf9f4]/85 backdrop-blur-md rounded-xl sm:rounded-3xl p-4 sm:p-6 lg:p-10 border border-[#b8cbb4] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#0d3822] text-[#fbf9f4] flex items-center justify-center mb-6 shadow-sm">
-                    <ShieldCheck size={22} />
+                  <div className="flex items-center gap-3 mb-2.5 sm:mb-4">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-[#0d3822] text-[#fbf9f4] flex items-center justify-center shadow-sm">
+                      <ShieldCheck size={16} className="sm:w-[22px] sm:h-[22px]" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-[#56755a] block">
+                        03 / Daily Commitment
+                      </span>
+                      <h3 className="font-raleway text-lg sm:text-2xl font-bold text-[#0d3822] tracking-tight">
+                        Our Mission
+                      </h3>
+                    </div>
                   </div>
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#56755a] block mb-2">
-                    03 / Daily Commitment
-                  </span>
-                  <h3 className="font-raleway text-2xl font-bold text-[#0d3822] tracking-tight mb-4">
-                    Our Mission
-                  </h3>
-                  <p className="text-sm sm:text-[15px] text-[#344d3a] leading-relaxed font-normal">
+                  <p className="text-[13px] sm:text-[15px] text-[#344d3a] leading-relaxed font-normal">
                     To provide focused marketing strategy, practical
                     communication support, valuable industry insights and
                     ethical growth direction for businesses across the wellness
@@ -412,11 +424,11 @@ export default function AboutPage() {
           </div>
 
           {/* Bottom Live Wave */}
-          <div className="absolute bottom-0 left-0 right-0 h-14 sm:h-16 md:h-20 w-full overflow-hidden leading-none z-0 pointer-events-none">
+          <div className="absolute bottom-0 left-0 right-0 h-7 sm:h-14 md:h-20 w-full overflow-hidden leading-none z-0 pointer-events-none">
             <svg
               viewBox="0 0 2400 120"
               preserveAspectRatio="none"
-              className="w-full h-14 sm:h-16 md:h-20 text-[#ece8df] fill-current"
+              className="w-full h-7 sm:h-14 md:h-20 text-[#ece8df] fill-current"
             >
               <path d="M0,60 C200,8 400,8 600,60 C800,108 1000,108 1200,60 C1400,8 1600,8 1800,60 C2000,108 2200,108 2400,60 L2400,120 L0,120 Z"></path>
             </svg>
@@ -424,16 +436,16 @@ export default function AboutPage() {
         </section>
 
         {/* 5. Our Approach: 7-Step Strategic Flow (Architectural Layout, Not Too Many Cards) */}
-        <section id="approach" className="py-20 sm:py-28 bg-[#ece8df]">
+        <section id="approach" className="py-10 sm:py-16 lg:py-28 bg-[#ece8df]">
           <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
-            <div className="max-w-3xl mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-4 shadow-sm">
+            <div className="max-w-3xl mb-6 sm:mb-10 lg:mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-2.5 sm:mb-4 shadow-sm">
                 <span>Methodology</span>
               </div>
-              <h2 className="font-raleway text-3xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight mb-6">
+              <h2 className="font-raleway text-2xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight mb-3 sm:mb-6">
                 Our Strategic Approach
               </h2>
-              <p className="font-raleway text-lg sm:text-xl md:text-[22px] text-[#0d3822] font-medium leading-snug">
+              <p className="font-raleway text-[15px] sm:text-xl md:text-[22px] text-[#0d3822] font-medium leading-snug">
                 We do not begin with content calendars or advertising. We begin
                 by understanding the product, audience, market, business
                 objective and the barriers affecting trust and decision-making.
@@ -445,18 +457,18 @@ export default function AboutPage() {
               {approachSteps.map((step, idx) => (
                 <div
                   key={idx}
-                  className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:bg-[#fbf9f4]/60 px-4 sm:px-6 rounded-2xl transition-colors duration-200"
+                  className="py-3 sm:py-4 lg:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 group hover:bg-[#fbf9f4]/60 px-2 sm:px-4 lg:px-6 rounded-xl sm:rounded-2xl transition-colors duration-200"
                 >
-                  <div className="flex items-center gap-4 sm:gap-6 max-w-md">
-                    <span className="font-mono text-xs font-bold text-[#0d3822] bg-[#d9cfbe] px-2.5 py-1 rounded-md group-hover:bg-[#0d3822] group-hover:text-white transition-colors">
+                  <div className="flex items-center gap-2.5 sm:gap-4 lg:gap-6 max-w-md">
+                    <span className="font-mono text-[11px] sm:text-xs font-bold text-[#0d3822] bg-[#d9cfbe] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md group-hover:bg-[#0d3822] group-hover:text-white transition-colors">
                       {step.step}
                     </span>
-                    <h3 className="font-raleway text-lg sm:text-xl font-bold text-[#0d3822] tracking-tight group-hover:text-[#075f2c] transition-colors">
+                    <h3 className="font-raleway text-base sm:text-lg lg:text-xl font-bold text-[#0d3822] tracking-tight group-hover:text-[#075f2c] transition-colors">
                       {step.title}
                     </h3>
                   </div>
 
-                  <p className="text-sm sm:text-[15px] text-[#405644] max-w-xl sm:text-right font-normal leading-relaxed">
+                  <p className="text-xs sm:text-sm lg:text-[15px] text-[#405644] max-w-xl sm:text-right font-normal leading-relaxed pl-7 sm:pl-0">
                     {step.desc}
                   </p>
                 </div>
@@ -466,38 +478,38 @@ export default function AboutPage() {
         </section>
 
         {/* 6. Our Core Values: 5 Guiding Principles (Clean Editorial Split) */}
-        <section className="py-20 sm:py-28 bg-[#fbf9f4] border-y border-[#d5cbba]">
+        <section className="pt-16 sm:pt-20 lg:pt-28 pb-10 sm:pb-16 lg:pb-28 bg-[#fbf9f4] border-y border-[#d5cbba]">
           <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
             {/* Header */}
-            <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3.5 shadow-sm">
-                <Award size={14} className="text-[#0d3822]" />
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-10 lg:mb-18">
+              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-2.5 sm:mb-3.5 shadow-sm">
+                <Award size={13} className="text-[#0d3822]" />
                 <span>Foundational Standards</span>
               </div>
-              <h2 className="font-raleway text-3xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight">
+              <h2 className="font-raleway text-[28px] xs:text-3xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight">
                 Our Core Values
               </h2>
-              <p className="mt-4 text-base sm:text-lg text-[#4a5f4c] font-normal max-w-xl mx-auto">
+              <p className="mt-2.5 sm:mt-4 text-[13.5px] sm:text-base lg:text-lg text-[#4a5f4c] font-normal max-w-xl mx-auto">
                 The non-negotiable principles that guide our strategy,
                 communication, and advisory relationships.
               </p>
             </div>
 
             {/* 5 Editorial Value Rows / Columns */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-5 lg:gap-10">
               {brandValues.map((val, vIdx) => (
                 <div
                   key={vIdx}
-                  className="p-6 sm:p-7 rounded-2xl bg-[#ece8df]/60 border border-[#d9d0c0] flex flex-col justify-between hover:bg-[#ece8df] transition-colors duration-200"
+                  className="p-3.5 sm:p-5 lg:p-7 rounded-xl sm:rounded-2xl bg-[#ece8df]/60 border border-[#d9d0c0] flex flex-col justify-between hover:bg-[#ece8df] transition-colors duration-200"
                 >
                   <div>
-                    <span className="text-xs font-mono font-bold text-[#627760] block mb-2">
+                    <span className="text-[10px] sm:text-xs font-mono font-bold text-[#627760] block mb-1">
                       PRINCIPLE {val.number}
                     </span>
-                    <h3 className="font-raleway text-xl sm:text-2xl font-bold text-[#0d3822] tracking-tight mb-3">
+                    <h3 className="font-raleway text-base sm:text-xl lg:text-2xl font-bold text-[#0d3822] tracking-tight mb-1 sm:mb-2">
                       {val.title}
                     </h3>
-                    <p className="text-sm sm:text-[14.5px] text-[#3c5341] leading-relaxed font-normal">
+                    <p className="text-[12.5px] sm:text-[14.5px] text-[#3c5341] leading-relaxed font-normal">
                       {val.description}
                     </p>
                   </div>
@@ -505,15 +517,15 @@ export default function AboutPage() {
               ))}
 
               {/* 6th Slot: Brand Commitment Summary */}
-              <div className="p-6 sm:p-7 rounded-2xl bg-[#0d3822] text-white flex flex-col justify-between border border-[#1b4d32] shadow-sm">
+              <div className="p-3.5 sm:p-5 lg:p-7 rounded-xl sm:rounded-2xl bg-[#0d3822] text-white flex flex-col justify-between border border-[#1b4d32] shadow-sm">
                 <div>
-                  <span className="text-xs font-mono font-bold text-[#c5deb9] block mb-2">
+                  <span className="text-[10px] sm:text-xs font-mono font-bold text-[#c5deb9] block mb-1">
                     THE PROMISE
                   </span>
-                  <h3 className="font-raleway text-xl sm:text-2xl font-bold text-white tracking-tight mb-3">
+                  <h3 className="font-raleway text-base sm:text-xl lg:text-2xl font-bold text-white tracking-tight mb-1 sm:mb-2">
                     Thoughtful Partnership
                   </h3>
-                  <p className="text-sm sm:text-[14.5px] text-[#d6e4d2] leading-relaxed font-normal">
+                  <p className="text-[12.5px] sm:text-[14.5px] text-[#d6e4d2] leading-relaxed font-normal">
                     The Wellness Ahead aims to become more than a service
                     provider. It seeks to be a thoughtful strategic partner for
                     businesses building the future of wellness.

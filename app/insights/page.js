@@ -104,7 +104,7 @@ export default function InsightsPage() {
         {/* 2. Hero Section: Minimalist Luxury Editorial Header */}
         <section
           id="insights-hero"
-          className="group relative min-h-screen flex items-center justify-center pt-28 sm:pt-32 pb-16 sm:pb-20 bg-gradient-to-b from-[#ece8df] via-[#f4efe4] to-[#ece8df] border-b border-[#ded6c7] select-none"
+          className="group relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-32 pb-16 sm:pb-20 bg-gradient-to-b from-[#ece8df] via-[#f4efe4] to-[#ece8df] border-b border-[#ded6c7] select-none"
         >
           {/* Subtle Organic Radial Glows */}
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[350px] bg-[#d1ddcc]/45 rounded-full blur-[100px] pointer-events-none group-hover:scale-125 group-hover:bg-[#c5deb9]/65 transition-all duration-1000 ease-out"></div>
@@ -112,7 +112,7 @@ export default function InsightsPage() {
           <div className="relative z-20 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
             <div className="max-w-3xl sm:max-w-4xl mx-auto text-center flex flex-col items-center">
               {/* Main Headline (Clean 3-Line Structured Layout) */}
-              <h1 className="font-raleway text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.18] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-1 sm:gap-1.5">
+              <h1 className="font-raleway text-[38px] xs:text-[42px] sm:text-[46px] md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.14] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-1 sm:gap-1.5">
                 <span>Insights for Brands</span>
                 <span>Building the Future</span>
                 <span className="text-[#075f2c] font-bold transition-all duration-500 group-hover:text-[#0b6c34] group-hover:drop-shadow-[0_2px_20px_rgba(7,95,44,0.18)]">
@@ -121,19 +121,19 @@ export default function InsightsPage() {
               </h1>
 
               {/* Subtitle */}
-              <p className="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-[#344d39] font-normal leading-[1.75] tracking-[0.02em] max-w-3xl mx-auto text-center">
+              <p className="mt-6 sm:mt-7 text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.65] tracking-[0.01em] max-w-3xl mx-auto text-center">
                 Explore strategic perspectives on wellness marketing, brand
                 building, consumer behaviour, nutraceutical trends and
                 responsible communication.
               </p>
 
               {/* Minimalist Filter Pill Tabs */}
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+              <div className="mt-9 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
                 {categories.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`px-4 py-2 rounded-full text-xs sm:text-[13px] font-medium transition-all duration-300 ${
+                    className={`px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-full text-[13.5px] sm:text-[14px] font-medium transition-all duration-300 ${
                       selectedCategory === cat
                         ? "bg-[#0d3822] text-white shadow-sm scale-105"
                         : "bg-[#fbf9f4] text-[#4a634e] hover:bg-white border border-[#d8cfbe]"
@@ -154,40 +154,40 @@ export default function InsightsPage() {
             {selectedCategory === "All Insights" ? (
               <div className="space-y-14 sm:space-y-18">
                 {/* 1. Featured Split Showcase Card */}
-                <div className="relative bg-[#fbf9f4] border border-[#d6ccba] rounded-3xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-[0_12px_36px_rgba(13,56,34,0.06)] hover:border-[#98ad8e] transition-all duration-500 group">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div className="relative bg-[#fbf9f4] border border-[#d6ccba] rounded-2xl sm:rounded-3xl lg:rounded-[2rem] p-5 sm:p-8 lg:p-10 shadow-[0_12px_36px_rgba(13,56,34,0.06)] hover:border-[#98ad8e] transition-all duration-500 group">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
                     {/* Left Column: Rich Editorial Typography */}
                     <div className="lg:col-span-7 flex flex-col justify-between">
                       <div>
                         {/* Eyebrow & Number */}
-                        <div className="flex items-center gap-3 pb-3 mb-4 border-b border-[#dfd6c6]">
-                          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#075f2c]">
+                        <div className="flex items-center gap-2.5 sm:gap-3 pb-2.5 sm:pb-3 mb-3 sm:mb-4 border-b border-[#dfd6c6]">
+                          <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-widest text-[#075f2c]">
                             PERSPECTIVE {featuredItem.number} / 04
                           </span>
                           <span className="text-xs text-[#9eb393]">•</span>
-                          <span className="text-xs font-medium text-[#738a6f] uppercase tracking-wider">
+                          <span className="text-[11px] sm:text-xs font-medium text-[#738a6f] uppercase tracking-wider">
                             {featuredItem.category}
                           </span>
-                          <span className="ml-auto text-xs font-mono text-[#738a6f] flex items-center gap-1">
+                          <span className="ml-auto text-[11px] sm:text-xs font-mono text-[#738a6f] flex items-center gap-1">
                             <Clock size={12} />
                             <span>{featuredItem.readTime}</span>
                           </span>
                         </div>
 
                         {/* Title */}
-                        <h2 className="font-raleway text-2xl sm:text-3xl lg:text-[32px] font-bold text-[#0d3822] tracking-tight leading-snug mb-4 group-hover:text-[#075f2c] transition-colors">
+                        <h2 className="font-raleway text-xl sm:text-3xl lg:text-[32px] font-bold text-[#0d3822] tracking-tight leading-snug mb-3 sm:mb-4 group-hover:text-[#075f2c] transition-colors">
                           {featuredItem.title}
                         </h2>
 
                         {/* Description */}
-                        <p className="text-base text-[#3e5642] leading-relaxed font-normal mb-5">
+                        <p className="text-sm sm:text-base text-[#3e5642] leading-relaxed font-normal mb-4 sm:mb-5">
                           {featuredItem.description}
                         </p>
 
                         {/* Strategic Takeaway Strip */}
-                        <div className="p-3.5 rounded-xl bg-[#eef4ec] border border-[#c2d7be]">
-                          <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-[#0d3822] mb-0.5">
-                            <Sparkles size={13} className="text-[#075f2c]" />
+                        <div className="p-3 sm:p-3.5 rounded-xl bg-[#eef4ec] border border-[#c2d7be]">
+                          <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[#0d3822] mb-0.5">
+                            <Sparkles size={12} className="text-[#075f2c]" />
                             <span>Strategic Core Takeaway</span>
                           </div>
                           <p className="text-xs sm:text-[13px] font-medium text-[#1c3825]">
@@ -199,15 +199,15 @@ export default function InsightsPage() {
 
                     {/* Right Column: Artisan Framed Visual */}
                     <div className="lg:col-span-5 relative">
-                      <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#dfd7c9] relative shadow-md">
+                      <div className="w-full aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-[#dfd7c9] relative shadow-md">
                         <img
                           src={featuredItem.image}
                           alt={featuredItem.alt}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
-                        <div className="absolute bottom-3 left-3">
-                          <span className="px-2.5 py-1 rounded-md bg-[#fbf9f4]/95 text-[10.5px] font-mono font-bold uppercase tracking-wider text-[#0d3822]">
+                        <div className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3">
+                          <span className="px-2.5 py-1 rounded-md bg-[#fbf9f4]/95 text-[10px] sm:text-[10.5px] font-mono font-bold uppercase tracking-wider text-[#0d3822]">
                             {featuredItem.tag}
                           </span>
                         </div>
@@ -219,24 +219,24 @@ export default function InsightsPage() {
                 {/* 2. Full-Bleed Cover Image Background Cards (Cinematic Poster Design) */}
                 <div>
                   {/* Section Eyebrow Header */}
-                  <div className="flex items-center justify-between pb-3.5 mb-7 border-b border-[#d8cfbe]">
-                    <div className="flex items-center gap-2.5">
+                  <div className="flex items-center justify-between pb-3 mb-5 sm:mb-7 border-b border-[#d8cfbe]">
+                    <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-[#075f2c]"></span>
                       <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#075f2c]">
                         More Strategic Perspectives
                       </span>
                     </div>
-                    <span className="text-xs font-mono text-[#738a6f]">
+                    <span className="text-[11px] sm:text-xs font-mono text-[#738a6f]">
                       03 ARTICLES AVAILABLE
                     </span>
                   </div>
 
                   {/* 3 Full-Bleed Image Background Cards */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-7">
                     {ledgerItems.map((item) => (
                       <article
                         key={item.id}
-                        className="group relative min-h-[410px] sm:min-h-[440px] rounded-3xl overflow-hidden border border-white/10 shadow-[0_16px_40px_rgba(10,35,21,0.18)] hover:shadow-[0_24px_50px_rgba(10,35,21,0.3)] hover:-translate-y-2 transition-all duration-700 flex flex-col justify-between p-6 sm:p-7"
+                        className="group relative min-h-[350px] sm:min-h-[400px] lg:min-h-[440px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-[0_16px_40px_rgba(10,35,21,0.18)] hover:shadow-[0_24px_50px_rgba(10,35,21,0.3)] hover:-translate-y-2 transition-all duration-700 flex flex-col justify-between p-5 sm:p-6 lg:p-7"
                       >
                         {/* 1. Full-Bleed Background Image with Smooth 700ms Zoom */}
                         <img
@@ -251,29 +251,29 @@ export default function InsightsPage() {
 
                         {/* 3. Card Top Floating Header: Frosted Category Pill + Number */}
                         <div className="relative z-20 flex items-center justify-between">
-                          <span className="px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/25 text-[11px] font-mono font-bold uppercase tracking-wider text-white shadow-xs">
+                          <span className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/25 text-[10.5px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-white shadow-xs">
                             {item.category}
                           </span>
-                          <span className="font-mono text-xs font-bold text-[#c5deb9] bg-black/35 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+                          <span className="font-mono text-[11px] sm:text-xs font-bold text-[#c5deb9] bg-black/35 backdrop-blur-md px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-white/10">
                             #{item.number}
                           </span>
                         </div>
 
                         {/* 4. Card Bottom Content: Headline, Excerpt & Action Link */}
-                        <div className="relative z-20 mt-auto pt-6">
+                        <div className="relative z-20 mt-auto pt-4 sm:pt-6">
                           {/* Title */}
-                          <h3 className="font-raleway text-xl sm:text-[21px] font-bold text-white leading-snug mb-3 group-hover:text-[#c5deb9] transition-colors duration-300">
+                          <h3 className="font-raleway text-lg sm:text-[21px] font-bold text-white leading-snug mb-2 sm:mb-3 group-hover:text-[#c5deb9] transition-colors duration-300">
                             {item.title}
                           </h3>
 
                           {/* Description */}
-                          <p className="text-xs sm:text-[13.5px] text-[#d6e6d2] leading-relaxed font-normal mb-5 line-clamp-3">
+                          <p className="text-xs sm:text-[13.5px] text-[#d6e6d2] leading-relaxed font-normal mb-3.5 sm:mb-5 line-clamp-3">
                             {item.description}
                           </p>
 
                           {/* Bottom Row: Read Time */}
-                          <div className="pt-3.5 border-t border-white/15 flex items-center justify-between">
-                            <span className="flex items-center gap-1.5 text-[11.5px] font-mono text-[#b3ccaf]">
+                          <div className="pt-2.5 sm:pt-3.5 border-t border-white/15 flex items-center justify-between">
+                            <span className="flex items-center gap-1.5 text-[11px] sm:text-[11.5px] font-mono text-[#b3ccaf]">
                               <Clock size={12} className="text-[#c5deb9]" />
                               <span>{item.readTime}</span>
                             </span>
@@ -286,11 +286,11 @@ export default function InsightsPage() {
               </div>
             ) : (
               /* Filtered View (Full-Bleed Cover Image Background Cards) */
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
                 {filteredInsights.map((item) => (
                   <article
                     key={item.id}
-                    className="group relative min-h-[410px] sm:min-h-[440px] rounded-3xl overflow-hidden border border-white/10 shadow-[0_16px_40px_rgba(10,35,21,0.18)] hover:shadow-[0_24px_50px_rgba(10,35,21,0.3)] hover:-translate-y-2 transition-all duration-700 flex flex-col justify-between p-6 sm:p-7"
+                    className="group relative min-h-[350px] sm:min-h-[400px] lg:min-h-[440px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-[0_16px_40px_rgba(10,35,21,0.18)] hover:shadow-[0_24px_50px_rgba(10,35,21,0.3)] hover:-translate-y-2 transition-all duration-700 flex flex-col justify-between p-5 sm:p-6 lg:p-7"
                   >
                     {/* Background Image */}
                     <img
@@ -305,26 +305,26 @@ export default function InsightsPage() {
 
                     {/* Top Row */}
                     <div className="relative z-20 flex items-center justify-between">
-                      <span className="px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/25 text-[11px] font-mono font-bold uppercase tracking-wider text-white shadow-xs">
+                      <span className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/25 text-[10.5px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-white shadow-xs">
                         {item.category}
                       </span>
-                      <span className="font-mono text-xs font-bold text-[#c5deb9] bg-black/35 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+                      <span className="font-mono text-[11px] sm:text-xs font-bold text-[#c5deb9] bg-black/35 backdrop-blur-md px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-white/10">
                         #{item.number}
                       </span>
                     </div>
 
                     {/* Content */}
-                    <div className="relative z-20 mt-auto pt-6">
-                      <h3 className="font-raleway text-xl sm:text-[21px] font-bold text-white leading-snug mb-3 group-hover:text-[#c5deb9] transition-colors duration-300">
+                    <div className="relative z-20 mt-auto pt-4 sm:pt-6">
+                      <h3 className="font-raleway text-lg sm:text-[21px] font-bold text-white leading-snug mb-2 sm:mb-3 group-hover:text-[#c5deb9] transition-colors duration-300">
                         {item.title}
                       </h3>
 
-                      <p className="text-xs sm:text-[13.5px] text-[#d6e6d2] leading-relaxed font-normal mb-5 line-clamp-3">
+                      <p className="text-xs sm:text-[13.5px] text-[#d6e6d2] leading-relaxed font-normal mb-3.5 sm:mb-5 line-clamp-3">
                         {item.description}
                       </p>
 
-                      <div className="pt-3.5 border-t border-white/15 flex items-center justify-between">
-                        <span className="flex items-center gap-1.5 text-[11.5px] font-mono text-[#b3ccaf]">
+                      <div className="pt-2.5 sm:pt-3.5 border-t border-white/15 flex items-center justify-between">
+                        <span className="flex items-center gap-1.5 text-[11px] sm:text-[11.5px] font-mono text-[#b3ccaf]">
                           <Clock size={12} className="text-[#c5deb9]" />
                           <span>{item.readTime}</span>
                         </span>

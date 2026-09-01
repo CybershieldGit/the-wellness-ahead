@@ -5,6 +5,14 @@ import Lenis from 'lenis';
 
 export default function SmoothScroll({ children }) {
   useEffect(() => {
+    // Only activate Lenis smooth scrolling on desktop devices; let mobile use native OS hardware touch inertia
+    const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 1024);
+    
+    if (isTouch) {
+      // Mobile native 120Hz/60Hz hardware scroll (zero lag)
+      return () => {};
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -12,7 +20,6 @@ export default function SmoothScroll({ children }) {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1.5,
       infinite: false,
     });
 
