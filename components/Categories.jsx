@@ -24,7 +24,7 @@ const categories = [
     tag: 'Wellness',
     title: 'Dietary Supplements',
     description: 'Daily tailored nutritional support designed to enhance immunity, cognition, and longevity.',
-    image: '/images/DietarySupplements.png',
+    image: '/images/Dietary_Supplements.png',
     stats: 'Daily Performance',
   },
   {
