@@ -112,7 +112,7 @@ export default function InsightsPage() {
           <div className="relative z-20 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
             <div className="max-w-3xl sm:max-w-4xl mx-auto text-center flex flex-col items-center">
               {/* Main Headline (Clean 3-Line Structured Layout) */}
-              <h1 className="font-raleway text-[38px] xs:text-[42px] sm:text-[46px] md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.14] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-1 sm:gap-1.5">
+              <h1 className="font-raleway text-[26px] min-[360px]:text-[29px] min-[390px]:text-[34px] min-[420px]:text-[38px] sm:text-[46px] md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.015em] sm:tracking-[0.02em] font-semibold leading-[1.12] sm:leading-[1.14] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-0.5 sm:gap-1.5">
                 <span>Insights for Brands</span>
                 <span>Building the Future</span>
                 <span className="text-[#075f2c] font-bold transition-all duration-500 group-hover:text-[#0b6c34] group-hover:drop-shadow-[0_2px_20px_rgba(7,95,44,0.18)]">
@@ -121,7 +121,7 @@ export default function InsightsPage() {
               </h1>
 
               {/* Subtitle */}
-              <p className="mt-6 sm:mt-7 text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.65] tracking-[0.01em] max-w-3xl mx-auto text-center">
+              <p className="mt-4 sm:mt-7 text-[14.5px] min-[360px]:text-[15.5px] min-[390px]:text-[17px] min-[420px]:text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.55] sm:leading-[1.65] tracking-[0.01em] max-w-3xl mx-auto text-center">
                 Explore strategic perspectives on wellness marketing, brand
                 building, consumer behaviour, nutraceutical trends and
                 responsible communication.

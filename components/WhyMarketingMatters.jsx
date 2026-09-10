@@ -153,11 +153,11 @@ export default function WhyMarketingMatters() {
   const currentItem = reasonsList[activeIndex];
 
   return (
-    <section id="why-marketing-matters" className="pt-12 sm:pt-12 md:pt-16 pb-12 sm:pb-0 bg-[#ece8df] select-none">
+    <section id="why-marketing-matters" className="pt-16 sm:pt-16 md:pt-20 pb-16 sm:pb-0 bg-[#ece8df] select-none">
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-8 md:mb-12">
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-2 sm:mb-3 shadow-sm">
+        <div className="text-center max-w-3xl mx-auto mb-7 sm:mb-8 md:mb-12">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-2.5 sm:mb-3 shadow-sm">
             <Sparkles size={13} className="text-[#0d3822]" />
             Specialized Advantage
           </div>
@@ -168,17 +168,17 @@ export default function WhyMarketingMatters() {
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-28 sm:w-36 h-[2.5px] sm:h-[3px] bg-[#7a9170] rounded-full"></span>
             </span>
           </h2>
-          <p className="mt-2.5 sm:mt-6 text-sm sm:text-base md:text-lg text-[#3d5042] font-normal leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-3.5 sm:mt-6 text-sm sm:text-base md:text-lg text-[#3d5042] font-normal leading-relaxed max-w-2xl mx-auto">
             Wellness marketing goes beyond attractive design—it requires deep category insight, scientific translation, and responsible health communication.
           </p>
         </div>
 
         {/* 2-Column Side-by-Side Synchronized Interactive Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-center pb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center pb-0">
           {/* Left Column (5 Cols): Horizontal Scrollable Pill Bar on Mobile, Vertical Stack on Desktop */}
           <div
             ref={tabsContainerRef}
-            className="lg:col-span-5 flex flex-row overflow-x-auto pb-1 lg:pb-0 lg:overflow-visible lg:flex-col gap-2 lg:gap-0 lg:space-y-4 no-scrollbar scroll-smooth"
+            className="lg:col-span-5 flex flex-row overflow-x-auto pb-2.5 lg:pb-0 lg:overflow-visible lg:flex-col gap-2.5 sm:gap-3 lg:gap-0 lg:space-y-4 no-scrollbar scroll-smooth"
           >
             {reasonsList.map((item, index) => {
               const isActive = activeIndex === index;
@@ -188,7 +188,7 @@ export default function WhyMarketingMatters() {
                   key={index}
                   ref={(el) => (tabRefs.current[index] = el)}
                   onClick={() => handleSelectIndex(index)}
-                  className={`group flex-shrink-0 text-left px-3.5 py-1.5 sm:px-4 sm:py-2.5 lg:p-4.5 rounded-full lg:rounded-2xl transition-all duration-300 flex items-center justify-between cursor-pointer whitespace-nowrap lg:whitespace-normal ${
+                  className={`group flex-shrink-0 text-left px-4 py-2 sm:px-4 sm:py-2.5 lg:p-4.5 rounded-full lg:rounded-2xl transition-all duration-300 flex items-center justify-between cursor-pointer whitespace-nowrap lg:whitespace-normal ${
                     isActive
                       ? 'bg-[#0d3822] text-[#fbf9f4] lg:bg-[#fbf9f4] lg:text-[#0d3822] lg:border-l-4 lg:border-l-[#0d3822] lg:border-y lg:border-r lg:border-[#cfc5b3] shadow-sm lg:shadow-[0_6px_20px_rgba(13,56,34,0.07)]'
                       : 'bg-[#fbf9f4]/60 hover:bg-[#fbf9f4] text-[#4a634c] lg:text-[#657d67] lg:hover:text-[#0d3822] border border-[#ddd6c9] lg:border-l-4 lg:border-l-transparent lg:border-y lg:border-r lg:border-[#ddd6c9]/70 hover:border-r-[#cfc5b3]'
@@ -232,7 +232,7 @@ export default function WhyMarketingMatters() {
 
           {/* Right Column (7 Cols): Dynamic Swipe-Up Feature Showcase Card */}
           <div className="lg:col-span-7">
-            <div className="bg-[#d1ddcc] text-[#0d3822] rounded-2xl sm:rounded-3xl p-4 sm:p-7 lg:p-8 shadow-[0_16px_40px_rgba(13,56,34,0.10)] border border-[#b8cbb4] relative overflow-hidden min-h-0 sm:min-h-[400px] flex flex-col justify-between">
+            <div className="bg-[#d1ddcc] text-[#0d3822] rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-[0_16px_40px_rgba(13,56,34,0.10)] border border-[#b8cbb4] relative overflow-hidden min-h-0 sm:min-h-[420px] flex flex-col justify-between">
               {/* Background Ambient Glow */}
               <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#ffffff]/30 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -242,26 +242,26 @@ export default function WhyMarketingMatters() {
                 className="relative z-10 animate-swipeUp"
               >
                 {/* Top Hook Statement */}
-                <h3 className="font-raleway text-sm sm:text-lg md:text-[20px] font-bold text-[#0d3822] uppercase tracking-tight leading-snug mb-2 sm:mb-2.5">
+                <h3 className="font-raleway text-sm sm:text-lg md:text-[20px] font-bold text-[#0d3822] uppercase tracking-tight leading-snug mb-3 sm:mb-3.5">
                   {currentItem.hook}
                 </h3>
 
                 {/* Subtitle Description */}
-                <p className="text-xs sm:text-[13px] text-[#38513e] leading-relaxed mb-3.5 sm:mb-4 font-normal">
+                <p className="text-xs sm:text-[13.5px] text-[#38513e] leading-relaxed mb-5 sm:mb-6 font-normal">
                   {currentItem.description}
                 </p>
 
                 {/* 2-Column Inside Layout: Bullet Checklist + Compact Media */}
-                <div className="grid grid-cols-12 gap-2.5 sm:gap-5 items-center pt-0.5 sm:pt-1">
+                <div className="grid grid-cols-12 gap-4 sm:gap-6 items-center pt-1.5 sm:pt-2">
                   {/* Bullets (7 cols) */}
                   <div className="col-span-7 sm:col-span-7">
-                    <span className="text-[10.5px] sm:text-[10.5px] font-bold tracking-widest text-[#1e462a] uppercase block mb-1.5 sm:mb-2.5">
+                    <span className="text-[10.5px] sm:text-[11px] font-bold tracking-widest text-[#1e462a] uppercase block mb-2 sm:mb-3">
                       KEY PILLARS & IMPACT:
                     </span>
-                    <ul className="space-y-1.5 sm:space-y-2">
+                    <ul className="space-y-2.5 sm:space-y-3">
                       {currentItem.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx} className="flex items-start gap-1.5 sm:gap-2 text-[11.5px] sm:text-[12.5px] text-[#1c3822] font-semibold leading-tight">
-                          <CheckCircle2 size={13.5} className="text-[#0d3822] flex-shrink-0 mt-0.5" />
+                        <li key={bIdx} className="flex items-start gap-2 sm:gap-2.5 text-[11.5px] sm:text-[12.5px] text-[#1c3822] font-semibold leading-snug">
+                          <CheckCircle2 size={14} className="text-[#0d3822] flex-shrink-0 mt-0.5" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -282,7 +282,7 @@ export default function WhyMarketingMatters() {
               </div>
 
               {/* Bottom Navigation & Indicator Bar */}
-              <div className="relative z-10 pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-[#b8cbb4]/80 flex items-center justify-between">
+              <div className="relative z-10 pt-4 sm:pt-5 mt-5 sm:mt-6 border-t border-[#b8cbb4]/80 flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#143420]">
                   <span className="bg-[#fbf9f4]/80 px-2 py-0.5 rounded border border-[#b8cbb4] text-[10px] sm:text-xs">
                     {currentItem.id} / 06

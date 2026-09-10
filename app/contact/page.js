@@ -414,19 +414,19 @@ export default function ContactPage() {
                 
                 {/* Hero Headline & Narrative */}
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3.5 shadow-xs">
+                  <div className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[10.5px] min-[375px]:text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3 sm:mb-3.5 shadow-xs">
                     <MessageSquare size={13} className="text-[#0d3822]" />
                     <span>Direct Strategic Consultation</span>
                   </div>
 
-                  <h1 className="font-raleway text-[38px] xs:text-[42px] sm:text-[46px] md:text-5xl lg:text-[40px] xl:text-[44px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.14] mb-4">
-                    Tell Us What You Are Building and <br />
+                  <h1 className="font-raleway text-[26px] min-[360px]:text-[29px] min-[390px]:text-[34px] min-[420px]:text-[38px] sm:text-[46px] md:text-5xl lg:text-[40px] xl:text-[44px] text-[#0d3822] tracking-[0.015em] sm:tracking-[0.02em] font-semibold leading-[1.12] sm:leading-[1.14] mb-3 sm:mb-4">
+                    Tell Us What You Are Building and <br className="hidden sm:inline" />
                     <span className="text-[#075f2c] font-bold">
                       Where Your Marketing Feels Stuck.
                     </span>
                   </h1>
 
-                  <p className="text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.65] tracking-[0.01em]">
+                  <p className="text-[14.5px] min-[360px]:text-[15.5px] min-[390px]:text-[17px] min-[420px]:text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.55] sm:leading-[1.65] tracking-[0.01em]">
                     Share your current requirement, challenge or business objective. A focused conversation can help clarify the right next step.
                   </p>
                 </div>

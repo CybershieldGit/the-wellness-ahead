@@ -400,7 +400,7 @@ export default function ServicesPage() {
           <div className="relative z-20 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center justify-center">
             <div className="max-w-3xl sm:max-w-4xl mx-auto flex flex-col items-center mt-4 sm:mt-6 md:mt-8">
               {/* Main Headline (Clean 3-Line Structured Layout) */}
-              <h1 className="font-raleway text-[38px] xs:text-[42px] sm:text-[46px] md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.02em] font-semibold leading-[1.14] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-1 sm:gap-1.5">
+              <h1 className="font-raleway text-[26px] min-[360px]:text-[29px] min-[390px]:text-[34px] min-[420px]:text-[38px] sm:text-[46px] md:text-5xl lg:text-[54px] xl:text-[58px] text-[#0d3822] tracking-[0.015em] sm:tracking-[0.02em] font-semibold leading-[1.12] sm:leading-[1.14] text-center transition-transform duration-700 ease-out group-hover:scale-[1.01] flex flex-col items-center gap-0.5 sm:gap-1.5">
                 <span>Strategic Marketing Services</span>
                 <span>for Wellness &amp;</span>
                 <span className="text-[#075f2c] font-bold transition-all duration-500 group-hover:text-[#0b6c34] group-hover:drop-shadow-[0_2px_20px_rgba(7,95,44,0.18)]">
@@ -409,7 +409,7 @@ export default function ServicesPage() {
               </h1>
 
               {/* Subtitle */}
-              <p className="mt-6 sm:mt-7 text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.65] tracking-[0.01em] max-w-3xl mx-auto text-center transition-colors duration-500 group-hover:text-[#1e3b26]">
+              <p className="mt-4 sm:mt-7 text-[14.5px] min-[360px]:text-[15.5px] min-[390px]:text-[17px] min-[420px]:text-[19px] sm:text-xl md:text-xl text-[#344d39] font-normal leading-[1.55] sm:leading-[1.65] tracking-[0.01em] max-w-3xl mx-auto text-center transition-colors duration-500 group-hover:text-[#1e3b26]">
                 From brand clarity and product communication to digital presence
                 and ongoing consulting, our services help wellness businesses
                 strengthen how they are understood, trusted and positioned in
@@ -417,17 +417,17 @@ export default function ServicesPage() {
               </p>
 
               {/* Quick Jump Action Pill Group */}
-              <div className="mt-9 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <div className="mt-7 sm:mt-10 flex flex-col min-[390px]:flex-row items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto">
                 <a
                   href="#services-list"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm sm:text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.38)] transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3 rounded-xl text-sm sm:text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.38)] transform hover:-translate-y-0.5 w-full min-[390px]:w-auto"
                 >
                   <span>Explore All 11 Capabilities</span>
                   <span>↓</span>
                 </a>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-7 py-3 rounded-xl text-sm sm:text-base font-medium text-[#0d3822] bg-[#fbf9f4] hover:bg-white border border-[#d5cbba] hover:border-[#b8cbb4] transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded-xl text-sm sm:text-base font-medium text-[#0d3822] bg-[#fbf9f4] hover:bg-white border border-[#d5cbba] hover:border-[#b8cbb4] transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 w-full min-[390px]:w-auto"
                 >
                   Start a Conversation
                 </Link>

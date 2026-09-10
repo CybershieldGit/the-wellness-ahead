@@ -191,19 +191,19 @@ export default function Hero() {
           </div>
 
           {/* Main Headline (Exact Reference Typography & Editorial Serif Aesthetic) */}
-          <h1 className="font-fraunces text-4xl sm:text-5xl md:text-[54px] lg:text-[58px] xl:text-[62px] text-black sm:text-[#0f2a17] font-normal tracking-[-0.015em] leading-[1.08] flex flex-col gap-1 sm:gap-1.5 max-w-fit drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)] sm:drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
+          <h1 className="font-fraunces text-[28px] min-[360px]:text-[32px] min-[390px]:text-[36px] sm:text-5xl md:text-[54px] lg:text-[58px] xl:text-[62px] text-black sm:text-[#0f2a17] font-normal tracking-[-0.015em] leading-[1.08] flex flex-col gap-0.5 sm:gap-1.5 max-w-fit drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)] sm:drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]">
             <span className="block">Strategic Marketing</span>
             <span className="block">That Makes Wellness</span>
             <span className="block">Brands Stand Out.</span>
           </h1>
 
           {/* Subtitle matching reference layout & typography */}
-          <p className="mt-4 sm:mt-6 md:mt-7 text-sm sm:text-lg md:text-[18px] text-[#1c2e22] sm:text-[#2c4031] font-normal leading-[1.6] sm:leading-[1.55] max-w-lg drop-shadow-none sm:drop-shadow-[0_1px_1px_rgba(255,255,255,0.3)]">
+          <p className="mt-3.5 sm:mt-6 md:mt-7 text-[13.5px] min-[360px]:text-[14.5px] min-[390px]:text-[15.5px] sm:text-lg md:text-[18px] text-[#1c2e22] sm:text-[#2c4031] font-normal leading-[1.5] sm:leading-[1.55] max-w-lg drop-shadow-none sm:drop-shadow-[0_1px_1px_rgba(255,255,255,0.3)]">
             We help wellness brands build trust, strengthen their positioning, and grow through focused, industry-specific marketing.
           </p>
 
           {/* Dual Action Buttons matching reference mockup */}
-          <div className="mt-5 sm:mt-9 flex flex-row flex-wrap items-start sm:items-center gap-2.5 sm:gap-3.5 md:gap-4">
+          <div className="mt-4 sm:mt-9 flex flex-row flex-wrap items-start sm:items-center gap-2.5 sm:gap-3.5 md:gap-4">
             <Link
               href="/services"
               className="hidden sm:inline-flex items-center justify-center px-4 sm:px-7 md:px-8 py-2 sm:py-3.5 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold text-white bg-[#255953] hover:bg-[#1a433e] transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
@@ -212,7 +212,7 @@ export default function Hero() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 rounded-lg sm:rounded-xl text-base sm:text-base font-semibold text-white sm:text-[#273f2c] bg-[#255953] sm:bg-transparent border-0 sm:border sm:border-[#526655] hover:bg-[#1a433e] sm:hover:bg-black/5 transition-all duration-300 shadow-sm sm:shadow-2xs"
+              className="inline-flex items-center justify-center px-4.5 min-[375px]:px-5 sm:px-7 md:px-8 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl text-[13.5px] min-[375px]:text-sm sm:text-base font-medium sm:font-semibold text-white sm:text-[#273f2c] bg-[#255953] sm:bg-transparent border-0 sm:border sm:border-[#526655] hover:bg-[#1a433e] sm:hover:bg-black/5 transition-all duration-300 shadow-sm sm:shadow-2xs active:scale-[0.98]"
             >
               Start Conversation
             </Link>
