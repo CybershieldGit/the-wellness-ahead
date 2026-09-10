@@ -77,14 +77,31 @@ export default function Categories() {
   const [singleCardStep, setSingleCardStep] = useState(320);
   const [currentOffset, setCurrentOffset] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileActiveIndex, setMobileActiveIndex] = useState(1);
   const offsetRef = useRef(0);
   const rafIdRef = useRef(null);
   const isHoveredRef = useRef(false);
+  const isMobileRef = useRef(false);
 
-  // Keep hover ref in sync for 60fps loop
+  // Keep hover & mobile refs in sync
   useEffect(() => {
     isHoveredRef.current = isHovered;
   }, [isHovered]);
+
+  useEffect(() => {
+    isMobileRef.current = isMobile;
+  }, [isMobile]);
+
+  // Check screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Measure card spacing on mount and resize
   useEffect(() => {
@@ -107,7 +124,7 @@ export default function Categories() {
     };
   }, []);
 
-  // Butter-smooth automatic 60fps infinite translation loop
+  // Butter-smooth automatic 60fps infinite translation loop (DESKTOP ONLY)
   useEffect(() => {
     let lastTime = performance.now();
 
@@ -117,7 +134,7 @@ export default function Categories() {
 
       const loopWidth = singleCardStep * categories.length;
 
-      if (!isHoveredRef.current && loopWidth > 0) {
+      if (!isHoveredRef.current && !isMobileRef.current && loopWidth > 0) {
         // Continuous steady glide (~50px per second)
         const speed = 0.050 * delta;
         offsetRef.current += speed;
@@ -161,15 +178,73 @@ export default function Categories() {
 
           {/* Dynamic Real-Time Minimal Counter (Top Right: 01/08 -> 08/08) */}
           <div className="font-mono text-base sm:text-lg md:text-xl font-bold text-[#0d3822] tracking-tight pb-1.5 select-none self-start md:self-auto">
-            <span>{String(activeCardIndex).padStart(2, '0')}</span>
+            <span>{String(isMobile ? mobileActiveIndex : activeCardIndex).padStart(2, '0')}</span>
             <span className="text-[#8e9e8f] font-normal text-sm sm:text-base">/08</span>
           </div>
         </div>
       </div>
 
-      {/* 4-Card Framed Viewport Container with Infinite Automatic Animation & Hover Zoom */}
+      {/* MOBILE ONLY: Native Touch Horizontal Scroll (No Auto-Scrolling) */}
+      <div className="sm:hidden w-full">
+        <div
+          onScroll={(e) => {
+            const el = e.currentTarget;
+            const card = el.querySelector('.mobile-cat-card');
+            const cardWidth = card ? card.offsetWidth : 270;
+            const gap = 16;
+            const index = Math.round((el.scrollLeft - 8) / (cardWidth + gap)) + 1;
+            setMobileActiveIndex(Math.min(Math.max(index, 1), categories.length));
+          }}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar py-3 scroll-pl-6 scroll-pr-6"
+        >
+          {categories.map((item, index) => (
+            <div
+              key={index}
+              className={`mobile-cat-card snap-start flex-shrink-0 w-[270px] min-[375px]:w-[285px] h-[330px] bg-[#143520] overflow-hidden rounded-2xl relative select-none flex flex-col justify-between shadow-md ${
+                index === 0 ? 'ml-6' : ''
+              } ${index === categories.length - 1 ? 'mr-6' : ''}`}
+            >
+              {/* 100% Full-Bleed Cover Image */}
+              <img
+                src={item.image}
+                alt={item.title}
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+
+              {/* Theme Light Green Soft Gradient Scrim */}
+              <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#d1ddcc] via-[#d1ddcc]/95 via-60% to-transparent pointer-events-none"></div>
+
+              {/* Top Bar: Soft Badges */}
+              <div className="relative z-20 p-3.5 flex items-center justify-between">
+                <span className="px-2.5 py-0.5 backdrop-blur-md rounded-full text-[9.5px] font-semibold tracking-wider uppercase bg-[#0d3822] text-[#fbf9f4] shadow-sm">
+                  {item.tag}
+                </span>
+                <span className="px-2 py-0.5 backdrop-blur-md rounded-full text-[9.5px] font-mono font-bold bg-white/90 text-[#0d3822] border border-[#cfc5b3] shadow-sm">
+                  {item.id}
+                </span>
+              </div>
+
+              {/* Bottom Content Area */}
+              <div className="relative z-20 p-3.5">
+                <div className="text-[10px] font-bold text-[#1a4b2c] tracking-widest uppercase mb-0.5">
+                  {item.stats}
+                </div>
+                <h3 className="font-raleway text-[16.5px] font-bold leading-snug mb-1.5 text-[#0d3822]">
+                  {item.title}
+                </h3>
+                <p className="text-[11.5px] text-[#2c4834] leading-relaxed line-clamp-3 font-medium">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* DESKTOP ONLY: 4-Card Framed Viewport Container with Infinite Automatic Animation & Hover Zoom */}
       <div
-        className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative"
+        className="hidden sm:block max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

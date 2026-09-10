@@ -24,7 +24,7 @@ const beliefPillars = [
 
 export default function Beliefs() {
   return (
-    <section id="beliefs" className="relative pt-10 pb-12 sm:py-16 md:py-28 bg-[#d1ddcc] overflow-hidden">
+    <section id="beliefs" className="relative pt-16 pb-16 sm:py-20 md:py-28 bg-[#d1ddcc] overflow-hidden">
       {/* Dynamic Keyframes for Continuous Seamless Moving Live Waves */}
       <style>{`
         @keyframes waveFlowForward {
@@ -61,12 +61,12 @@ export default function Beliefs() {
         </div>
       </div>
 
-      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10 pt-2 sm:pt-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-14 items-center">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10 pt-4 sm:pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
           
           {/* Left Column: Premium Studio Imagery with Luxury Framing (5 Cols) */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-[280px] sm:max-w-md bg-[#f6f3eb] rounded-2xl sm:rounded-[2.5rem] p-2.5 sm:p-5 shadow-[0_12px_30px_rgba(13,56,34,0.1)] sm:shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#c4d0bf]">
+            <div className="relative w-full max-w-[280px] sm:max-w-md bg-[#f6f3eb] rounded-2xl sm:rounded-[2.5rem] p-3 sm:p-5 shadow-[0_12px_30px_rgba(13,56,34,0.1)] sm:shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#c4d0bf]">
               {/* Central Botanical Science Image */}
               <div className="relative aspect-[16/10] sm:aspect-[4/5] rounded-xl sm:rounded-[2rem] overflow-hidden bg-[#ded8ca]">
                 <img
@@ -95,8 +95,8 @@ export default function Beliefs() {
           {/* Right Column: Editorial Title, Manifesto & 3 Core Pillars (7 Cols) */}
           <div className="lg:col-span-7">
             {/* Header */}
-            <div className="mb-4 sm:mb-6 text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-2.5 sm:mb-3.5 shadow-sm">
+            <div className="mb-6 sm:mb-8 text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#dfd7c8] border border-[#cfc4b2] text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#143420] mb-3 sm:mb-3.5 shadow-sm">
                 <Sparkles size={13} className="text-[#0d3822]" />
                 <span>Our Guiding Philosophy</span>
               </div>
@@ -109,17 +109,17 @@ export default function Beliefs() {
               </h2>
 
               {/* Editorial Statement */}
-              <p className="font-raleway text-sm sm:text-xl md:text-[22px] text-[#0d3822] font-medium leading-snug mt-3 sm:mt-6 max-w-2xl">
+              <p className="font-raleway text-[15px] sm:text-xl md:text-[22px] text-[#0d3822] font-medium leading-relaxed sm:leading-snug mt-4 sm:mt-6 max-w-2xl">
                 We believe sustainable category leadership in wellness is built on <span className="text-[#194a2e] font-bold">clinical trust</span>, <span className="text-[#194a2e] font-bold">scientific clarity</span>, and <span className="text-[#194a2e] font-bold">ethical conviction</span>.
               </p>
             </div>
 
             {/* 3 Meaningful Pillars - Pure Editorial Typography Presentation (No Cards) */}
-            <div className="mt-4 sm:mt-8 border-t border-[#b8cbb4]/80 divide-y divide-[#b8cbb4]/80">
+            <div className="mt-6 sm:mt-8 md:mt-10 border-t border-[#b8cbb4]/80 divide-y divide-[#b8cbb4]/80">
               {beliefPillars.map((pillar, index) => (
                 <div
                   key={index}
-                  className="py-3 sm:py-5 md:py-6 flex items-start gap-3 sm:gap-6 group"
+                  className="py-4.5 sm:py-5.5 md:py-6 flex items-start gap-4 sm:gap-6 group"
                 >
                   {/* Subtle Monospace Index Badge */}
                   <span className="text-[11px] sm:text-sm font-mono font-bold text-[#0d3822] bg-[#c5deb9]/70 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg flex-shrink-0 mt-0.5 shadow-sm">
@@ -131,7 +131,7 @@ export default function Beliefs() {
                     <h3 className="font-raleway text-base sm:text-xl md:text-[21px] font-bold text-[#0d3822] tracking-tight group-hover:text-[#184a2b] transition-colors">
                       {pillar.title}
                     </h3>
-                    <p className="text-xs sm:text-[15px] text-[#354f3b] leading-relaxed font-normal mt-1 sm:mt-1.5 max-w-xl">
+                    <p className="text-[13px] sm:text-[15px] text-[#354f3b] leading-relaxed font-normal mt-1.5 sm:mt-1.5 max-w-xl">
                       {pillar.description}
                     </p>
                   </div>
