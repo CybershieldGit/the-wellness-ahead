@@ -51,61 +51,96 @@ const processSteps = [
 export default function Process() {
   const containerRef = useRef(null);
   const [smoothProgress, setSmoothProgress] = useState(0);
-  const targetProgressRef = useRef(0);
-  const currentProgressRef = useRef(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileStep, setMobileStep] = useState(0);
+  const [isResetting, setIsResetting] = useState(false);
   const rafIdRef = useRef(null);
 
+  // Detect mobile/tablet screen (< 1024px)
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const container = containerRef.current;
-      const rect = container.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalScrollable = container.offsetHeight - windowHeight;
-
-      if (totalScrollable <= 0) return;
-
-      const scrolled = -rect.top;
-      const progress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
-      targetProgressRef.current = progress;
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
     };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-    // 60/120fps physics dampening loop for buttery-smooth scroll inking
-    const physicsLoop = () => {
-      const diff = targetProgressRef.current - currentProgressRef.current;
-      if (Math.abs(diff) > 0.00005) {
-        currentProgressRef.current += diff * 0.14; // Buttery 14% spring dampening
-        setSmoothProgress(currentProgressRef.current);
+  // Mobile: Automatically run & glow cards in continuous series without dead intervals
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const interval = setInterval(() => {
+      setMobileStep((prev) => (prev + 1) % processSteps.length);
+    }, 1100);
+
+    return () => clearInterval(interval);
+  }, [isMobile]);
+
+  // Desktop: Automatic continuous smooth animation loop with no step delay (snake continuous)
+  useEffect(() => {
+    if (isMobile) return;
+
+    let lastTime = null;
+    let accumulatedTime = 0;
+    const DURATION = 7500; // 7.5s active continuous inking traversal across all 6 steps (~1.25s per step)
+    const HOLD_TIME = 600;  // 600ms hold when step 6 reaches completion
+    const RESET_TIME = 400; // 400ms smooth fade reset before next wave
+    const TOTAL_CYCLE = DURATION + HOLD_TIME + RESET_TIME;
+
+    const animate = (currentTime) => {
+      if (lastTime === null) {
+        lastTime = currentTime;
       }
-      rafIdRef.current = requestAnimationFrame(physicsLoop);
+      const delta = currentTime - lastTime;
+      lastTime = currentTime;
+
+      accumulatedTime = (accumulatedTime + Math.min(delta, 100)) % TOTAL_CYCLE;
+      const elapsed = accumulatedTime;
+
+      if (elapsed < DURATION) {
+        setIsResetting(false);
+        setSmoothProgress(elapsed / DURATION);
+      } else if (elapsed < DURATION + HOLD_TIME) {
+        setIsResetting(false);
+        setSmoothProgress(1);
+      } else {
+        setIsResetting(true);
+      }
+
+      rafIdRef.current = requestAnimationFrame(animate);
     };
 
-    rafIdRef.current = requestAnimationFrame(physicsLoop);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll);
-    handleScroll();
+    rafIdRef.current = requestAnimationFrame(animate);
 
     return () => {
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
     };
-  }, []);
+  }, [isMobile]);
 
-  // Synchronized inking progress (0.0 to 1.0)
-  const inkingProgress = smoothProgress;
+  // Synchronized inking progress and active step split
+  const isMobileView = isMobile;
 
-  // Active step index (0 to 5) determined by real scroll progress
-  const activeStep = Math.min(Math.floor(smoothProgress * 5.99), 5);
-  const isResting = smoothProgress <= 0.008;
+  const activeStep = isMobileView
+    ? mobileStep
+    : Math.min(Math.floor(smoothProgress * 5.99), 5);
+
+  const isResting = isMobileView ? false : isResetting;
+
+  const inkingProgress = isMobileView
+    ? (mobileStep + 1) / processSteps.length
+    : smoothProgress;
 
   return (
-    <section ref={containerRef} id="process" className="relative h-[240vh] bg-[#ece8df] select-none">
-      {/* Sticky Full-Viewport Stage */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center pt-0 sm:pt-1 pb-2 sm:pb-4 overflow-hidden z-20">
+    <section
+      ref={containerRef}
+      id="process"
+      className="relative h-auto py-14 sm:py-18 lg:py-24 bg-[#ece8df] select-none overflow-hidden"
+    >
+      {/* Natural Stage Container */}
+      <div className="relative h-auto w-full flex flex-col justify-center pt-0 sm:pt-1 pb-2 sm:pb-4 overflow-hidden z-20">
         <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
-          {/* Section Header with Minimal Index Counter */}
+          {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
             <div className="max-w-3xl lg:max-w-4xl">
               <h2 className="font-raleway text-3xl sm:text-4xl md:text-5xl text-[#0d3822] font-semibold tracking-tight leading-snug">
@@ -115,12 +150,6 @@ export default function Process() {
                   <span className="absolute bottom-0 left-0 w-28 sm:w-36 h-[2.5px] bg-[#8fa687] rounded-full"></span>
                 </span>
               </h2>
-            </div>
-
-            {/* Simple Minimal Index Counter */}
-            <div className="font-mono text-base sm:text-lg md:text-xl font-bold text-[#0d3822] tracking-tight pb-1.5 select-none self-start md:self-auto">
-              <span>{isResting ? '01' : String(activeStep + 1).padStart(2, '0')}</span>
-              <span className="text-[#8e9e8f] font-normal text-sm sm:text-base">/06</span>
             </div>
           </div>
 
@@ -145,7 +174,7 @@ export default function Process() {
                   vectorEffect="non-scaling-stroke"
                 />
 
-                {/* 2. Scroll-Driven Inked Vine Path on Mobile */}
+                {/* 2. Inked Vine Path on Mobile (Auto-advancing with smooth transition) */}
                 <path
                   pathLength="1000"
                   d="M 25 9 L 75 9 C 96 9, 96 25.75, 50 25.75 C 4 25.75, 4 42.5, 25 42.5 L 75 42.5 C 96 42.5, 96 59.25, 50 59.25 C 4 59.25, 4 76, 25 76 L 75 76"
@@ -157,6 +186,7 @@ export default function Process() {
                   style={{
                     strokeDasharray: '1000',
                     strokeDashoffset: `${1000 * (1 - Math.min(inkingProgress * 1.05, 1))}`,
+                    transition: isMobile ? 'stroke-dashoffset 0.7s ease-out' : 'none',
                   }}
                 />
               </svg>
@@ -180,7 +210,7 @@ export default function Process() {
                   strokeLinecap="round"
                 />
 
-                {/* 2. Scroll-Driven Inked Vine Path (Syncs 1:1 with Scroll Progress) */}
+                {/* 2. Inked Vine Path (Continuous Automatic Glide) */}
                 <path
                   d="M 90 30 Q 180 50 270 30 T 450 30 T 630 30 T 810 30 T 1010 30"
                   stroke="#0d3822"
@@ -190,6 +220,8 @@ export default function Process() {
                   style={{
                     strokeDasharray: '1000',
                     strokeDashoffset: `${1000 * (1 - Math.min(inkingProgress * 1.05, 1))}`,
+                    opacity: isResetting ? 0 : 1,
+                    transition: isResetting ? 'opacity 0.35s ease-out' : 'none',
                   }}
                 />
 
@@ -200,12 +232,16 @@ export default function Process() {
                   r="6"
                   fill="#8fa687"
                   className="drop-shadow-[0_0_10px_#8fa687]"
+                  style={{
+                    opacity: isResetting ? 0 : 1,
+                    transition: isResetting ? 'opacity 0.35s ease-out' : 'none',
+                  }}
                 />
               </svg>
             </div>
 
             {/* 6 Process Nodes in Sequence */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 lg:gap-3 relative z-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-5 lg:gap-3 relative z-10">
               {processSteps.map((step, index) => {
                 const IconComponent = step.icon;
                 const isPassed = !isResting && index < activeStep;
@@ -215,9 +251,12 @@ export default function Process() {
                 return (
                   <div
                     key={index}
-                    className={`group relative overflow-hidden flex flex-col items-center text-center p-3.5 sm:p-4 rounded-2xl cursor-pointer will-change-transform transition-all duration-700 ease-out ${
+                    onClick={() => {
+                      if (isMobile) setMobileStep(index);
+                    }}
+                    className={`group relative overflow-hidden flex flex-col items-center text-center p-3 sm:p-4 rounded-xl sm:rounded-2xl cursor-pointer will-change-transform transition-all duration-700 ease-out ${
                       isCurrent
-                        ? 'shadow-[0_14px_32px_rgba(13,56,34,0.15)] border-2 border-[#8fa687] -translate-y-2 scale-[1.03] ring-2 ring-[#8fa687]/30 opacity-100 z-20'
+                        ? 'shadow-[0_14px_32px_rgba(13,56,34,0.15)] border-2 border-[#8fa687] -translate-y-1.5 sm:-translate-y-2 scale-[1.02] sm:scale-[1.03] ring-2 ring-[#8fa687]/30 opacity-100 z-20'
                         : isPassed
                         ? 'border border-[#d9d0c1] shadow-sm opacity-100'
                         : 'border border-transparent opacity-60 hover:opacity-80'
@@ -234,9 +273,9 @@ export default function Process() {
                     ></div>
 
                     {/* Connected Step Node Icon */}
-                    <div className="relative mb-3.5 flex items-center justify-center">
+                    <div className="relative mb-2.5 sm:mb-3.5 flex items-center justify-center">
                       <div
-                        className={`w-13 h-13 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-700 ease-out ${
+                        className={`w-11 h-11 min-[375px]:w-12 min-[375px]:h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center transition-all duration-700 ease-out ${
                           isCurrent
                             ? 'bg-[#0d3822] text-[#fbf9f4] shadow-md ring-4 ring-[#8fa687]/35 scale-105 rotate-3'
                             : isPassed
@@ -244,12 +283,12 @@ export default function Process() {
                             : 'bg-[#dfd7c8] text-[#7d8f7e] border border-[#cec2af]'
                         }`}
                       >
-                        <IconComponent size={22} strokeWidth={isCompletedOrActive ? 2.2 : 1.8} />
+                        <IconComponent size={20} className="sm:w-[22px] sm:h-[22px]" strokeWidth={isCompletedOrActive ? 2.2 : 1.8} />
                       </div>
 
                       {/* Step Number Tag Badge */}
                       <span
-                        className={`absolute -top-1.5 -right-1.5 text-[10px] font-bold px-1.5 py-0.5 rounded-full border transition-all duration-700 ease-out ${
+                        className={`absolute -top-1.5 -right-1.5 text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded-full border transition-all duration-700 ease-out ${
                           isCurrent
                             ? 'bg-[#8fa687] text-[#0d3822] border-[#8fa687]'
                             : isPassed
@@ -263,7 +302,7 @@ export default function Process() {
 
                     {/* Step Stage Tag */}
                     <span
-                      className={`text-[10px] font-semibold tracking-wider uppercase mb-1 transition-colors duration-700 ease-out ${
+                      className={`text-[9px] min-[375px]:text-[9.5px] sm:text-[10px] font-semibold tracking-wider uppercase mb-0.5 sm:mb-1 transition-colors duration-700 ease-out ${
                         isCurrent
                           ? 'text-[#075f2c] font-bold'
                           : isPassed
@@ -276,7 +315,7 @@ export default function Process() {
 
                     {/* Step Title */}
                     <h3
-                      className={`font-raleway text-base sm:text-lg font-semibold mb-1.5 transition-colors duration-700 ease-out ${
+                      className={`font-raleway text-[14.5px] min-[375px]:text-[15.5px] sm:text-lg font-semibold mb-1 sm:mb-1.5 transition-colors duration-700 ease-out ${
                         isCurrent
                           ? 'text-[#0d3822] font-bold'
                           : isPassed
@@ -289,7 +328,7 @@ export default function Process() {
 
                     {/* Step Description */}
                     <p
-                      className={`text-[11.5px] sm:text-xs leading-relaxed line-clamp-3 transition-colors duration-700 ease-out ${
+                      className={`text-[11px] min-[375px]:text-[11.5px] sm:text-xs leading-normal sm:leading-relaxed line-clamp-3 transition-colors duration-700 ease-out ${
                         isCompletedOrActive ? 'text-[#445847]' : 'text-[#6f8270]'
                       }`}
                     >
@@ -298,7 +337,7 @@ export default function Process() {
 
                     {/* Active Indicator Pulse Dot */}
                     <div
-                      className={`mt-3 w-1.5 h-1.5 rounded-full transition-all duration-700 ease-out ${
+                      className={`mt-2 sm:mt-3 w-1.5 h-1.5 rounded-full transition-all duration-700 ease-out ${
                         isCurrent
                           ? 'bg-[#0d3822] scale-125'
                           : isPassed

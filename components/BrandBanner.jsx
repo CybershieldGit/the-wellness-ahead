@@ -1,48 +1,65 @@
+'use client';
+
 import React from 'react';
 
 export default function BrandBanner() {
   return (
-    <section className="py-6 md:py-16 bg-[#ece8df]">
-      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="relative overflow-hidden bg-[#e5dcce] border border-[#d6ccbc] rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-12 lg:p-16 shadow-sm">
-          {/* Subtle background growth line vector */}
-          <div className="absolute right-12 top-8 opacity-25 pointer-events-none hidden md:block">
-            <svg width="280" height="200" viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 180L70 140L130 155L190 85L270 20" stroke="#8fa687" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M250 20H270V40" stroke="#8fa687" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-              <rect x="20" y="160" width="16" height="30" fill="#8fa687" opacity="0.3" rx="2" />
-              <rect x="80" y="120" width="16" height="70" fill="#8fa687" opacity="0.4" rx="2" />
-              <rect x="140" y="100" width="16" height="90" fill="#8fa687" opacity="0.5" rx="2" />
-              <rect x="200" y="60" width="16" height="130" fill="#8fa687" opacity="0.6" rx="2" />
-              <rect x="260" y="20" width="16" height="170" fill="#8fa687" opacity="0.7" rx="2" />
-            </svg>
+    <section className="relative py-5 sm:py-7 md:py-8 bg-[#e5dcce] overflow-hidden border-y border-[#d6ccbc] select-none mb-3 sm:mb-5">
+      <style>{`
+        @keyframes marqueeFlow {
+          0% {
+            transform: translate3d(0, 0, 0);
+          }
+          100% {
+            transform: translate3d(-50%, 0, 0);
+          }
+        }
+        .animate-marquee-flow {
+          display: flex;
+          width: max-content;
+          animation: marqueeFlow 38s linear infinite;
+          will-change: transform;
+        }
+        .animate-marquee-flow:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
+      {/* Subtle Edge Gradient Masks for Smooth Vignette Inset */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 md:w-36 bg-gradient-to-r from-[#e5dcce] via-[#e5dcce]/90 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 md:w-36 bg-gradient-to-l from-[#e5dcce] via-[#e5dcce]/90 to-transparent z-10" />
+
+      {/* Infinite Scrolling Marquee Track (Right to Left) */}
+      <div className="flex overflow-hidden">
+        <div className="animate-marquee-flow items-center py-1">
+          {/* Primary Sequence */}
+          <div className="flex items-center flex-shrink-0">
+            {[0, 1].map((i) => (
+              <div key={i} className="flex items-center flex-shrink-0">
+                <span className="font-raleway text-lg sm:text-2xl md:text-[26px] lg:text-[29px] font-medium text-[#0d3822] tracking-tight whitespace-nowrap">
+                  <span className="font-bold text-[#075f2c]">The Wellness Ahead</span>{' '}
+                  helps translate product strengths, technical knowledge and business goals into communication that audiences can understand, trust and act upon.
+                </span>
+                <span className="inline-flex items-center justify-center mx-6 sm:mx-10 text-[#075f2c]/50 text-sm sm:text-lg">
+                  ✦
+                </span>
+              </div>
+            ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
-            {/* Left Text Block */}
-            <div className="lg:col-span-7 flex flex-col items-start justify-center">
-              <h2 className="font-raleway text-xl sm:text-3xl lg:text-[34px] leading-[1.35] text-[#123321] font-medium tracking-tight">
-                The Wellness Ahead helps translate product strengths, technical knowledge and business goals into communication that audiences can understand, trust and act upon.
-              </h2>
-              <a
-                href="#about"
-                className="mt-5 sm:mt-10 inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-xl text-sm sm:text-base font-medium text-white bg-[#0e3520] hover:bg-[#082415] transition-all duration-200 shadow-md hover:shadow-lg"
-              >
-                Know About Us
-              </a>
-            </div>
-
-            {/* Right Product Mockup */}
-            <div className="hidden lg:flex lg:col-span-5 justify-center items-center">
-              <div className="relative w-full max-w-[120px] sm:max-w-sm aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-[#d2c5b3] bg-[#ded5c6] group">
-                <img
-                  src="/images/brand_banner.png"
-                  alt="Premium botanical wellness formulation and amber apothecary packaging"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none"></div>
+          {/* Identical Cloned Sequence for Infinite Seamless Loop */}
+          <div className="flex items-center flex-shrink-0" aria-hidden="true">
+            {[0, 1].map((i) => (
+              <div key={`dup-${i}`} className="flex items-center flex-shrink-0">
+                <span className="font-raleway text-lg sm:text-2xl md:text-[26px] lg:text-[29px] font-medium text-[#0d3822] tracking-tight whitespace-nowrap">
+                  <span className="font-bold text-[#075f2c]">The Wellness Ahead</span>{' '}
+                  helps translate product strengths, technical knowledge and business goals into communication that audiences can understand, trust and act upon.
+                </span>
+                <span className="inline-flex items-center justify-center mx-6 sm:mx-10 text-[#075f2c]/50 text-sm sm:text-lg">
+                  ✦
+                </span>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

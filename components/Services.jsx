@@ -42,6 +42,7 @@ export default function Services() {
   const [activeService, setActiveService] = useState(null);
   const [mousePos, setMousePos] = useState({ x: null, y: null });
   const [pitchTilt, setPitchTilt] = useState(0);
+  const [mobileActiveIndex, setMobileActiveIndex] = useState(0);
 
   const windowCursorRef = useRef({ clientX: null, clientY: null });
   const mousePosRef = useRef({ x: 0, y: 0 });
@@ -116,9 +117,9 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative py-16 sm:py-20 md:py-24 bg-[#ece8df] overflow-hidden select-none"
+      className="relative py-10 sm:py-20 md:py-24 bg-[#ece8df] overflow-hidden select-none"
     >
-      {/* Floating Cursor-Following Vertical Portrait Image Preview with Top-Backward Lean */}
+      {/* Floating Cursor-Following Vertical Portrait Image Preview with Top-Backward Lean (Desktop Only) */}
       <div
         className="pointer-events-none absolute z-30 hidden lg:block transition-transform duration-75 ease-out will-change-transform"
         style={{
@@ -147,18 +148,78 @@ export default function Services() {
 
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <h2 className="font-raleway text-[27px] sm:text-4xl md:text-[38px] text-[#0d3822] font-semibold tracking-tight leading-snug">
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-12">
+          <h2 className="font-raleway text-[25px] min-[375px]:text-[27px] sm:text-4xl md:text-[38px] text-[#0d3822] font-semibold tracking-tight leading-snug">
             Where Strategy Meets Market <br />
-            <span className="relative inline-block pb-2 sm:pb-2.5 mt-1">
+            <span className="relative inline-block pb-1.5 sm:pb-2.5 mt-0.5 sm:mt-1">
               Communication
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-[2.5px] bg-[#8fa687] rounded-full"></span>
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-28 sm:w-40 h-[2px] sm:h-[2.5px] bg-[#8fa687] rounded-full"></span>
             </span>
           </h2>
         </div>
 
-        {/* Editorial Text-Based Interactive Capability Rows */}
-        <div className="max-w-6xl lg:max-w-[1240px] mx-auto">
+        {/* MOBILE ONLY: Concise Horizontal Swipe Cards (No squished text, space-efficient) */}
+        <div className="sm:hidden w-full">
+          <div
+            onScroll={(e) => {
+              const el = e.currentTarget;
+              const card = el.querySelector('.mobile-service-card');
+              const cardWidth = card ? card.offsetWidth : 280;
+              const gap = 16;
+              const index = Math.round((el.scrollLeft - 8) / (cardWidth + gap));
+              setMobileActiveIndex(Math.min(Math.max(index, 0), servicesList.length - 1));
+            }}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar py-2 scroll-pl-6 scroll-pr-6"
+          >
+            {servicesList.map((service, index) => (
+              <div
+                key={index}
+                className={`mobile-service-card snap-start flex-shrink-0 w-[82vw] max-w-[310px] bg-[#fbf9f4] border border-[#d5ccbe] rounded-2xl p-5 shadow-[0_4px_16px_rgba(13,56,34,0.06)] flex flex-col justify-between ${
+                  index === 0 ? 'ml-6' : ''
+                } ${index === servicesList.length - 1 ? 'mr-6' : ''}`}
+              >
+                <div>
+                  {/* Top Bar: Number Badge + Tag */}
+                  <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[#e8dfd2]">
+                    <span className="font-raleway text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#0d3822] text-[#fbf9f4]">
+                      {service.id}
+                    </span>
+                    <span className="text-[10px] font-semibold text-[#7a8e78] tracking-wider uppercase truncate">
+                      {service.tag}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-raleway text-[17px] font-bold text-[#0d3822] mt-3 leading-snug">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-[12.5px] text-[#4a5f4d] leading-relaxed mt-2 font-normal">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Swipe Dot Indicators */}
+          <div className="flex items-center justify-center gap-1.5 mt-3">
+            {servicesList.map((_, dotIdx) => (
+              <span
+                key={dotIdx}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  mobileActiveIndex === dotIdx
+                    ? 'w-5 bg-[#0d3822]'
+                    : 'w-1.5 bg-[#8fa687]/45'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* DESKTOP ONLY: Editorial Text-Based Interactive Capability Rows */}
+        <div className="hidden sm:block max-w-6xl lg:max-w-[1240px] mx-auto">
           <div
             className="border-t border-[#d5ccbe]"
             onMouseLeave={() => setActiveService(null)}
@@ -218,7 +279,7 @@ export default function Services() {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-8 sm:mt-12 md:mt-14 text-center">
+        <div className="mt-6 sm:mt-12 md:mt-14 text-center">
           <Link
             href="/services"
             className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3 sm:py-3.5 rounded-xl text-sm font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-md hover:shadow-[0_10px_25px_rgba(10,90,99,0.35)] hover:scale-[1.02]"

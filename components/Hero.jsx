@@ -206,15 +206,15 @@ export default function Hero() {
           <div className="mt-4 sm:mt-9 flex flex-row flex-wrap items-start sm:items-center gap-2.5 sm:gap-3.5 md:gap-4">
             <Link
               href="/services"
-              className="hidden sm:inline-flex items-center justify-center px-4 sm:px-7 md:px-8 py-2 sm:py-3.5 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold text-white bg-[#255953] hover:bg-[#1a433e] transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+              className="hidden sm:inline-flex items-center justify-center px-4 sm:px-7 md:px-8 py-2 sm:py-3.5 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold text-white bg-[#0A5A63] hover:bg-[#07454C] transition-all duration-300 shadow-sm hover:shadow-[0_6px_20px_rgba(10,90,99,0.35)] transform hover:-translate-y-0.5"
             >
               Explore Services
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-4.5 min-[375px]:px-5 sm:px-7 md:px-8 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl text-[13.5px] min-[375px]:text-sm sm:text-base font-medium sm:font-semibold text-white sm:text-[#273f2c] bg-[#255953] sm:bg-transparent border-0 sm:border sm:border-[#526655] hover:bg-[#1a433e] sm:hover:bg-black/5 transition-all duration-300 shadow-sm sm:shadow-2xs active:scale-[0.98]"
+              className="inline-flex items-center justify-center px-4.5 min-[375px]:px-5 sm:px-7 md:px-8 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl text-[13.5px] min-[375px]:text-sm sm:text-base font-medium sm:font-semibold text-white sm:text-[#273f2c] bg-[#0A5A63] sm:bg-transparent border-0 sm:border sm:border-[#526655] hover:bg-[#07454C] sm:hover:bg-black/5 transition-all duration-300 shadow-sm sm:shadow-2xs active:scale-[0.98]"
             >
-              Start Conversation
+              Discuss Your Brand
             </Link>
           </div>
         </div>

@@ -55,8 +55,7 @@ const jsonLdData = {
       "description": "Strategic marketing and category communication for nutraceutical, herbal, supplement, and wellness businesses.",
       "sameAs": [
         "https://instagram.com",
-        "https://facebook.com",
-        "https://twitter.com"
+        "https://linkedin.com"
       ]
     },
     {
