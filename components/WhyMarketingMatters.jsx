@@ -283,11 +283,8 @@ export default function WhyMarketingMatters() {
 
               {/* Bottom Navigation & Indicator Bar */}
               <div className="relative z-10 pt-4 sm:pt-5 mt-5 sm:mt-6 border-t border-[#b8cbb4]/80 flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#143420]">
-                  <span className="bg-[#fbf9f4]/80 px-2 py-0.5 rounded border border-[#b8cbb4] text-[10px] sm:text-xs">
-                    {currentItem.id} / 06
-                  </span>
-                  <span className="text-[#3b5541] font-sans font-medium text-[11px] uppercase tracking-wider hidden sm:inline-block">
+                <div className="flex items-center gap-2">
+                  <span className="text-[#3b5541] font-sans font-medium text-[11px] uppercase tracking-wider">
                     {currentItem.navTitle}
                   </span>
                 </div>

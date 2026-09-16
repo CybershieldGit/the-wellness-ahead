@@ -65,7 +65,7 @@ export default function Beliefs() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
           
           {/* Left Column: Premium Studio Imagery with Luxury Framing (5 Cols) */}
-          <div className="lg:col-span-5 flex justify-center">
+          <div className="hidden lg:flex lg:col-span-5 justify-center">
             <div className="relative w-full max-w-[280px] sm:max-w-md bg-[#f6f3eb] rounded-2xl sm:rounded-[2.5rem] p-3 sm:p-5 shadow-[0_12px_30px_rgba(13,56,34,0.1)] sm:shadow-[0_20px_50px_rgba(13,56,34,0.12)] border border-[#c4d0bf]">
               {/* Central Botanical Science Image */}
               <div className="relative aspect-[16/10] sm:aspect-[4/5] rounded-xl sm:rounded-[2rem] overflow-hidden bg-[#ded8ca]">

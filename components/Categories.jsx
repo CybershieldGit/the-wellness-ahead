@@ -164,7 +164,7 @@ export default function Categories() {
   return (
     <section id="categories" className="relative py-16 sm:py-20 md:py-24 bg-[#ece8df] select-none overflow-hidden">
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-20 mb-8 sm:mb-10">
-        {/* Header Bar with Dynamic Minimal Category Counter */}
+        {/* Header Bar */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h2 className="font-raleway text-[27px] sm:text-3xl md:text-[34px] lg:text-[40px] xl:text-[44px] text-[#0d3822] font-semibold tracking-tight whitespace-normal sm:whitespace-nowrap">
@@ -174,12 +174,6 @@ export default function Categories() {
                 <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#8fa687] rounded-full"></span>
               </span>
             </h2>
-          </div>
-
-          {/* Dynamic Real-Time Minimal Counter (Top Right: 01/08 -> 08/08) */}
-          <div className="font-mono text-base sm:text-lg md:text-xl font-bold text-[#0d3822] tracking-tight pb-1.5 select-none self-start md:self-auto">
-            <span>{String(isMobile ? mobileActiveIndex : activeCardIndex).padStart(2, '0')}</span>
-            <span className="text-[#8e9e8f] font-normal text-sm sm:text-base">/08</span>
           </div>
         </div>
       </div>
